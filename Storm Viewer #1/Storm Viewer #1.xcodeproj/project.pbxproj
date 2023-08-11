@@ -80,8 +80,8 @@
 			children = (
 				2CAE32D22A864B390087D47E /* AppDelegate.swift */,
 				2CAE32D42A864B390087D47E /* SceneDelegate.swift */,
-				2CAE32FC2A8674090087D47E /* StormDetailViewController.swift */,
 				2CAE32D62A864B390087D47E /* StormTableViewController.swift */,
+				2CAE32FC2A8674090087D47E /* StormDetailViewController.swift */,
 				2CAE32D82A864B390087D47E /* Main.storyboard */,
 				2CAE32DB2A864B3A0087D47E /* Assets.xcassets */,
 				2CAE32DD2A864B3A0087D47E /* LaunchScreen.storyboard */,

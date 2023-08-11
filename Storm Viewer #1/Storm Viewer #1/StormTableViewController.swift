@@ -45,5 +45,14 @@ class StormTableViewController: UITableViewController {
         
         return cell
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        guard let stormDetailVC = storyboard?.instantiateViewController(withIdentifier: "StormDetailViewController") as? StormDetailViewController else { return }
+
+        stormDetailVC.selectedImage = images[indexPath.row]
+
+        self.navigationController?.pushViewController(stormDetailVC, animated: true)
+    }
 }
 
