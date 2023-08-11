@@ -16,6 +16,7 @@ class StormDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupTitle()
         displayImage()
     }
     
@@ -27,6 +28,13 @@ class StormDetailViewController: UIViewController {
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         navigationController?.hidesBarsOnTap = false
+    }
+    
+    private func setupTitle() {
+    
+        title = selectedImage
+        
+        navigationItem.largeTitleDisplayMode = .never
     }
     
     private func displayImage() {

@@ -15,7 +15,14 @@ class StormTableViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        setupTitle()
         addImages()
+    }
+    
+    private func setupTitle() {
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
+        title = "Storm Viewer"
     }
     
     private func addImages() {
