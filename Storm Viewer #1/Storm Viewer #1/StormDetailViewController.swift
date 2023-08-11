@@ -21,6 +21,9 @@ class StormDetailViewController: UIViewController {
     
     private func displayImage() {
         
+        imageView.contentMode = .scaleAspectFill
+        imageView.clipsToBounds = true
+        
         guard let unwrappedSelectedImage = selectedImage else { return }
         
         imageView.image = UIImage(named: unwrappedSelectedImage)
