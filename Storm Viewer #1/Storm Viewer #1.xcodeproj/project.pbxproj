@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		2CAE32D32A864B390087D47E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE32D22A864B390087D47E /* AppDelegate.swift */; };
 		2CAE32D52A864B390087D47E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE32D42A864B390087D47E /* SceneDelegate.swift */; };
-		2CAE32D72A864B390087D47E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE32D62A864B390087D47E /* ViewController.swift */; };
+		2CAE32D72A864B390087D47E /* StormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE32D62A864B390087D47E /* StormTableViewController.swift */; };
 		2CAE32DA2A864B390087D47E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CAE32D82A864B390087D47E /* Main.storyboard */; };
 		2CAE32DC2A864B3A0087D47E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CAE32DB2A864B3A0087D47E /* Assets.xcassets */; };
 		2CAE32DF2A864B3A0087D47E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CAE32DD2A864B3A0087D47E /* LaunchScreen.storyboard */; };
@@ -29,7 +29,7 @@
 		2CAE32CF2A864B390087D47E /* Storm Viewer #1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Storm Viewer #1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CAE32D22A864B390087D47E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CAE32D42A864B390087D47E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		2CAE32D62A864B390087D47E /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		2CAE32D62A864B390087D47E /* StormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StormTableViewController.swift; sourceTree = "<group>"; };
 		2CAE32D92A864B390087D47E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		2CAE32DB2A864B3A0087D47E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CAE32DE2A864B3A0087D47E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -78,7 +78,7 @@
 			children = (
 				2CAE32D22A864B390087D47E /* AppDelegate.swift */,
 				2CAE32D42A864B390087D47E /* SceneDelegate.swift */,
-				2CAE32D62A864B390087D47E /* ViewController.swift */,
+				2CAE32D62A864B390087D47E /* StormTableViewController.swift */,
 				2CAE32D82A864B390087D47E /* Main.storyboard */,
 				2CAE32DB2A864B3A0087D47E /* Assets.xcassets */,
 				2CAE32DD2A864B3A0087D47E /* LaunchScreen.storyboard */,
@@ -178,7 +178,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				2CAE32D72A864B390087D47E /* ViewController.swift in Sources */,
+				2CAE32D72A864B390087D47E /* StormTableViewController.swift in Sources */,
 				2CAE32D32A864B390087D47E /* AppDelegate.swift in Sources */,
 				2CAE32D52A864B390087D47E /* SceneDelegate.swift in Sources */,
 			);

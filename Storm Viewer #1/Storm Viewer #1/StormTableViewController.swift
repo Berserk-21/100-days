@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class StormTableViewController: UITableViewController {
     
     var images = [String]()
 
