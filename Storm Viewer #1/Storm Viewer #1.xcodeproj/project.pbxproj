@@ -23,6 +23,7 @@
 		2CAE32F72A864C8C0087D47E /* nssl0045.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2CAE32ED2A864C8C0087D47E /* nssl0045.jpg */; };
 		2CAE32F82A864C8C0087D47E /* nssl0091.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2CAE32EE2A864C8C0087D47E /* nssl0091.jpg */; };
 		2CAE32F92A864C8C0087D47E /* nssl0049.jpg in Resources */ = {isa = PBXBuildFile; fileRef = 2CAE32EF2A864C8C0087D47E /* nssl0049.jpg */; };
+		2CAE32FD2A8674090087D47E /* StormDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE32FC2A8674090087D47E /* StormDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -44,6 +45,7 @@
 		2CAE32ED2A864C8C0087D47E /* nssl0045.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0045.jpg; sourceTree = "<group>"; };
 		2CAE32EE2A864C8C0087D47E /* nssl0091.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0091.jpg; sourceTree = "<group>"; };
 		2CAE32EF2A864C8C0087D47E /* nssl0049.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = nssl0049.jpg; sourceTree = "<group>"; };
+		2CAE32FC2A8674090087D47E /* StormDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StormDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -78,6 +80,7 @@
 			children = (
 				2CAE32D22A864B390087D47E /* AppDelegate.swift */,
 				2CAE32D42A864B390087D47E /* SceneDelegate.swift */,
+				2CAE32FC2A8674090087D47E /* StormDetailViewController.swift */,
 				2CAE32D62A864B390087D47E /* StormTableViewController.swift */,
 				2CAE32D82A864B390087D47E /* Main.storyboard */,
 				2CAE32DB2A864B3A0087D47E /* Assets.xcassets */,
@@ -179,6 +182,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CAE32D72A864B390087D47E /* StormTableViewController.swift in Sources */,
+				2CAE32FD2A8674090087D47E /* StormDetailViewController.swift in Sources */,
 				2CAE32D32A864B390087D47E /* AppDelegate.swift in Sources */,
 				2CAE32D52A864B390087D47E /* SceneDelegate.swift in Sources */,
 			);
