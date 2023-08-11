@@ -8,8 +8,12 @@
 import UIKit
 
 class StormTableViewController: UITableViewController {
+
+    // MARK: - Properties
     
     var images = [String]()
+    
+    // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +22,8 @@ class StormTableViewController: UITableViewController {
         setupTitle()
         addImages()
     }
+    
+    // MARK: - Methods
     
     private func setupTitle() {
         
@@ -40,6 +46,8 @@ class StormTableViewController: UITableViewController {
         }
     }
     
+    // MARK: - UITableView DataSource
+    
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return images.count
     }
@@ -52,6 +60,8 @@ class StormTableViewController: UITableViewController {
         
         return cell
     }
+    
+    // MARK: - UITableView Delegate
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         

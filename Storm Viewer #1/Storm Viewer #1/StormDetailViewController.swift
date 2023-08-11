@@ -9,10 +9,14 @@ import UIKit
 
 class StormDetailViewController: UIViewController {
     
+    // MARK: - Properties
+    
     @IBOutlet private var imageView: UIImageView!
     
     var selectedImage: String?
-        
+     
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -29,6 +33,8 @@ class StormDetailViewController: UIViewController {
         super.viewWillDisappear(animated)
         navigationController?.hidesBarsOnTap = false
     }
+    
+    // MARK: - Methods
     
     private func setupTitle() {
     
