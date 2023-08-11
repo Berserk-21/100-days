@@ -8,12 +8,29 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    var images = [String]()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        addImages()
     }
-
-
+    
+    private func addImages() {
+        
+        let fileManager = FileManager.default
+        
+        guard let path = Bundle.main.resourcePath else { return }
+        
+        let files = try! fileManager.contentsOfDirectory(atPath: path)
+        
+        for file in files {
+            if file.hasPrefix("nssl") {
+                images.append(file)
+            }
+        }
+    }
 }
 
