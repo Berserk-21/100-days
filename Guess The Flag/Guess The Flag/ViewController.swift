@@ -20,9 +20,38 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        view.backgroundColor = .lightGray
+        setupUI()
+        setupCountries()
+        askQuestion()
     }
 
+    private func setupUI() {
+     
+        view.backgroundColor = .lightGray
 
+        topButton.clipsToBounds = true
+        midButton.clipsToBounds = true
+        bottomButton.clipsToBounds = true
+        
+        topButton.layer.cornerRadius = 4
+        midButton.layer.cornerRadius = 4
+        bottomButton.layer.cornerRadius = 4
+        
+        topButton.layer.borderWidth = 2
+        midButton.layer.borderWidth = 2
+        bottomButton.layer.borderWidth = 2
+    }
+    
+    private func setupCountries() {
+        
+        countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
+    }
+
+    private func askQuestion() {
+        
+        topButton.setImage(UIImage(named: countries[0]), for: .normal)
+        midButton.setImage(UIImage(named: countries[1]), for: .normal)
+        bottomButton.setImage(UIImage(named: countries[2]), for: .normal)
+    }
 }
 
