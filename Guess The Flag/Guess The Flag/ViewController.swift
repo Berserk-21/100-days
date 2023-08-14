@@ -12,7 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet private weak var topButton: UIButton!
     @IBOutlet private weak var midButton: UIButton!
     @IBOutlet private weak var bottomButton: UIButton!
-    @IBOutlet private weak var scoreLabel: UILabel!
+    @IBOutlet weak var scoreBarButton: UIBarButtonItem!
     
     private var countries: [String] = []
     private var score: Int = 0
@@ -77,7 +77,7 @@ class ViewController: UIViewController {
             title = "WROOONG"
         }
         
-        scoreLabel.text = "\(score)"
+        scoreBarButton.title = "score: \(score)"
         
         let message: String = "Your score is \(score)"
         
