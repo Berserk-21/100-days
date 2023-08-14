@@ -40,8 +40,11 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="us"/>
+                                <connections>
+                                    <action selector="flagWasTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Bac-aN-KV8"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2LO-BL-JGU">
+                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="2LO-BL-JGU">
                                 <rect key="frame" x="96.666666666666686" y="403" width="200" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="4LH-7m-7T1"/>
@@ -49,8 +52,11 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="monaco"/>
+                                <connections>
+                                    <action selector="flagWasTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="REy-by-UJd"/>
+                                </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYz-G0-Qz2">
+                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYz-G0-Qz2">
                                 <rect key="frame" x="96.666666666666686" y="273" width="200" height="100"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="100" id="LPi-WO-Rgp"/>
@@ -58,6 +64,9 @@
                                 </constraints>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="france"/>
+                                <connections>
+                                    <action selector="flagWasTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MZ9-3b-xzi"/>
+                                </connections>
                             </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>

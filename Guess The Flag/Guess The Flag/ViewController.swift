@@ -59,5 +59,24 @@ class ViewController: UIViewController {
         midButton.setImage(UIImage(named: countries[1]), for: .normal)
         bottomButton.setImage(UIImage(named: countries[2]), for: .normal)
     }
+    
+    // MARK: - Actions
+    
+    @IBAction func flagWasTapped(_ sender: Any) {
+        
+        if let selectedButton = sender as? UIButton {
+            
+            switch selectedButton.tag {
+            case 0:
+                print("The answer is \(countries[0])")
+            case 1:
+                print("The answer is \(countries[1])")
+            case 2:
+                print("The answer is \(countries[2])")
+            default:
+                break
+            }
+        }
+    }
 }
 
