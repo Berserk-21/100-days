@@ -49,7 +49,7 @@ class ViewController: UIViewController {
         countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
     }
 
-    private func askQuestion() {
+    @objc private func askQuestion(action: UIAlertAction? = nil) {
         
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
@@ -65,27 +65,27 @@ class ViewController: UIViewController {
     
     @IBAction func flagWasTapped(_ sender: Any) {
         
-        if let selectedButton = sender as? UIButton {
-            
-            if selectedButton.tag == correctAnswer {
-                score += 1
-            } else {
-                score -= 1
-            }
-            
-            scoreLabel.text = "\(score)"
-            
-            switch selectedButton.tag {
-            case 0:
-                print("The answer is \(countries[0])")
-            case 1:
-                print("The answer is \(countries[1])")
-            case 2:
-                print("The answer is \(countries[2])")
-            default:
-                break
-            }
+        guard let selectedButton = sender as? UIButton else { return }
+        
+        let title: String
+        
+        if selectedButton.tag == correctAnswer {
+            score += 1
+            title = "Correct !"
+        } else {
+            score -= 1
+            title = "WROOONG"
         }
+        
+        scoreLabel.text = "\(score)"
+        
+        let message: String = "Your score is \(score)"
+        
+        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "Next", style: UIAlertAction.Style.default, handler: askQuestion)
+        
+        alertController.addAction(okAction)
+        present(alertController, animated: true)
     }
 }
 
