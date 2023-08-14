@@ -12,6 +12,7 @@ class ViewController: UIViewController {
     @IBOutlet private weak var topButton: UIButton!
     @IBOutlet private weak var midButton: UIButton!
     @IBOutlet private weak var bottomButton: UIButton!
+    @IBOutlet private weak var scoreLabel: UILabel!
     
     private var countries: [String] = []
     private var score: Int = 0
@@ -65,6 +66,14 @@ class ViewController: UIViewController {
     @IBAction func flagWasTapped(_ sender: Any) {
         
         if let selectedButton = sender as? UIButton {
+            
+            if selectedButton.tag == correctAnswer {
+                score += 1
+            } else {
+                score -= 1
+            }
+            
+            scoreLabel.text = "\(score)"
             
             switch selectedButton.tag {
             case 0:
