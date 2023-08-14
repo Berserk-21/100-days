@@ -13,9 +13,14 @@ class ViewController: UIViewController {
     @IBOutlet private weak var midButton: UIButton!
     @IBOutlet private weak var bottomButton: UIButton!
     
+    var countries: [String] = []
+    var score: Int = 0
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        view.backgroundColor = .lightGray
     }
 
 
