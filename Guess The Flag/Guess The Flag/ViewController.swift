@@ -8,15 +8,22 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    // MARK: - Properties
 
     @IBOutlet private weak var topButton: UIButton!
     @IBOutlet private weak var midButton: UIButton!
     @IBOutlet private weak var bottomButton: UIButton!
-    @IBOutlet weak var scoreBarButton: UIBarButtonItem!
+    @IBOutlet private weak var scoreBarButton: UIBarButtonItem!
+    @IBOutlet private weak var numberOfQuestionsLabel: UILabel!
     
+    private var numberOfQuestions: Int = 0
+    private var maxNumberOfQuestions: Int = 10
     private var countries: [String] = []
     private var score: Int = 0
     private var correctAnswer: Int = 0
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -27,6 +34,8 @@ class ViewController: UIViewController {
         askQuestion()
     }
 
+    // MARK: - Methods
+    
     private func setupUI() {
      
         view.backgroundColor = .lightGray
@@ -51,6 +60,16 @@ class ViewController: UIViewController {
 
     @objc private func askQuestion(action: UIAlertAction? = nil) {
         
+        guard numberOfQuestions < maxNumberOfQuestions else {
+            
+            presentEndResults()
+            return
+        }
+        
+        numberOfQuestions += 1
+        
+        numberOfQuestionsLabel.text = "\(numberOfQuestions)/\(maxNumberOfQuestions)"
+        
         countries.shuffle()
         correctAnswer = Int.random(in: 0...2)
         
@@ -59,6 +78,19 @@ class ViewController: UIViewController {
         topButton.setImage(UIImage(named: countries[0]), for: .normal)
         midButton.setImage(UIImage(named: countries[1]), for: .normal)
         bottomButton.setImage(UIImage(named: countries[2]), for: .normal)
+    }
+    
+    private func presentEndResults() {
+        
+        let ac = UIAlertController(title: "End results", message: "Your final score is \(score)", preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
+            self.score = 0
+            self.askQuestion()
+        }
+        
+        present(ac, animated: true)
+        
+        return
     }
     
     // MARK: - Actions
@@ -76,6 +108,8 @@ class ViewController: UIViewController {
             score -= 1
             title = "WROOONG"
         }
+        
+        score = max(score, 0)
         
         scoreBarButton.title = "score: \(score)"
         

@@ -68,15 +68,23 @@
                                     <action selector="flagWasTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="MZ9-3b-xzi"/>
                                 </connections>
                             </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="t0V-RW-W8T">
+                                <rect key="frame" x="175.66666666666666" y="797" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="t0V-RW-W8T" secondAttribute="bottom" id="9pe-8g-I35"/>
                             <constraint firstItem="2LO-BL-JGU" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Idv-4D-Ga0"/>
                             <constraint firstItem="W1Q-VL-ywk" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="Mb5-UZ-AD6"/>
                             <constraint firstItem="WYz-G0-Qz2" firstAttribute="top" secondItem="W1Q-VL-ywk" secondAttribute="bottom" constant="30" id="UX9-xA-mAZ"/>
                             <constraint firstItem="2LO-BL-JGU" firstAttribute="top" secondItem="WYz-G0-Qz2" secondAttribute="bottom" constant="30" id="d6b-Z1-agJ"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="W1Q-VL-ywk" secondAttribute="top" constant="-40" id="nQu-1y-Mpv"/>
+                            <constraint firstItem="t0V-RW-W8T" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="pe3-Yq-3jP"/>
                             <constraint firstItem="WYz-G0-Qz2" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="xXn-VR-qda"/>
                         </constraints>
                     </view>
@@ -88,6 +96,7 @@
                     <connections>
                         <outlet property="bottomButton" destination="2LO-BL-JGU" id="KzV-Gf-ibR"/>
                         <outlet property="midButton" destination="WYz-G0-Qz2" id="oJO-ho-Tgi"/>
+                        <outlet property="numberOfQuestionsLabel" destination="t0V-RW-W8T" id="tUH-oW-xP1"/>
                         <outlet property="scoreBarButton" destination="Knt-J3-BIe" id="fUx-im-UiD"/>
                         <outlet property="topButton" destination="W1Q-VL-ywk" id="hFM-5k-ggA"/>
                     </connections>
