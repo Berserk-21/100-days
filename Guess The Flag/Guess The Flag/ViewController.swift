@@ -13,8 +13,9 @@ class ViewController: UIViewController {
     @IBOutlet private weak var midButton: UIButton!
     @IBOutlet private weak var bottomButton: UIButton!
     
-    var countries: [String] = []
-    var score: Int = 0
+    private var countries: [String] = []
+    private var score: Int = 0
+    private var correctAnswer: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,11 @@ class ViewController: UIViewController {
     }
 
     private func askQuestion() {
+        
+        countries.shuffle()
+        correctAnswer = Int.random(in: 0...2)
+        
+        title = countries[correctAnswer].capitalized
         
         topButton.setImage(UIImage(named: countries[0]), for: .normal)
         midButton.setImage(UIImage(named: countries[1]), for: .normal)
