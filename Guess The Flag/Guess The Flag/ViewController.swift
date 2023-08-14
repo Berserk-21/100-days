@@ -9,6 +9,10 @@ import UIKit
 
 class ViewController: UIViewController {
 
+    @IBOutlet private weak var topButton: UIButton!
+    @IBOutlet private weak var midButton: UIButton!
+    @IBOutlet private weak var bottomButton: UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
