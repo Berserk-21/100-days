@@ -88,6 +88,7 @@ class ViewController: UIViewController {
             self.askQuestion()
         }
         
+        ac.addAction(okAction)
         present(ac, animated: true)
         
         return
@@ -104,22 +105,26 @@ class ViewController: UIViewController {
         if selectedButton.tag == correctAnswer {
             score += 1
             title = "Correct !"
+            let message: String = "Your score is \(score)"
+            
+            let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+            let okAction = UIAlertAction(title: "Next", style: UIAlertAction.Style.default, handler: askQuestion)
+            
+            alertController.addAction(okAction)
+            present(alertController, animated: true)
         } else {
             score -= 1
+            score = max(score, 0)
+
             title = "WROOONG"
+            
+            let alertController = UIAlertController(title: title, message: "That's the flag of \(countries[selectedButton.tag].capitalized)", preferredStyle: .alert)
+            let okAction = UIAlertAction(title: "Next", style: UIAlertAction.Style.default)
+            alertController.addAction(okAction)
+            present(alertController, animated: true)
         }
         
-        score = max(score, 0)
-        
         scoreBarButton.title = "score: \(score)"
-        
-        let message: String = "Your score is \(score)"
-        
-        let alertController = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
-        let okAction = UIAlertAction(title: "Next", style: UIAlertAction.Style.default, handler: askQuestion)
-        
-        alertController.addAction(okAction)
-        present(alertController, animated: true)
     }
 }
 
