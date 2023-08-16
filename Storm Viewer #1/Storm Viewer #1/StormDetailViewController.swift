@@ -22,6 +22,7 @@ class StormDetailViewController: UIViewController {
         
         setupTitle()
         displayImage()
+        setupShareButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,6 +44,11 @@ class StormDetailViewController: UIViewController {
         navigationItem.largeTitleDisplayMode = .never
     }
     
+    private func setupShareButton() {
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fastForward, target: self, action: #selector(shareTapped))
+    }
+    
     private func displayImage() {
         
         imageView.contentMode = .scaleAspectFill
@@ -51,5 +57,16 @@ class StormDetailViewController: UIViewController {
         guard let unwrappedSelectedImage = selectedImage else { return }
         
         imageView.image = UIImage(named: unwrappedSelectedImage)
+    }
+    
+    // MARK: - Actions
+    
+    @objc private func shareTapped() {
+        
+        let praiseApp: String = "Check this amazing app my friend: Storm Viewer !"
+        
+        let ac = UIActivityViewController(activityItems: [praiseApp], applicationActivities: nil)
+        
+        present(ac, animated: true)
     }
 }
