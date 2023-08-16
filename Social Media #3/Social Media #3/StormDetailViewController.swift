@@ -40,6 +40,7 @@ class StormDetailViewController: UIViewController {
     
         title = selectedImage
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
         navigationItem.largeTitleDisplayMode = .never
     }
     
@@ -51,5 +52,19 @@ class StormDetailViewController: UIViewController {
         guard let unwrappedSelectedImage = selectedImage else { return }
         
         imageView.image = UIImage(named: unwrappedSelectedImage)
+    }
+    
+    // MARK: - Actions
+
+    @objc private func shareTapped() {
+        
+        guard let image = imageView.image?.jpegData(compressionQuality: 0.8) else {
+            print("There is no image to share")
+            return
+        }
+        
+        let vc = UIActivityViewController(activityItems: [image], applicationActivities: [])
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc, animated: true)
     }
 }
