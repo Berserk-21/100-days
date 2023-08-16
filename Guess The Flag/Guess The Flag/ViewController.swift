@@ -124,6 +124,9 @@ class ViewController: UIViewController {
             alertController.addAction(okAction)
             present(alertController, animated: true)
         }
+    }
+    
+    @IBAction private func showScoreTapped(_ sender: Any) {
         
         scoreBarButton.title = "score: \(score)"
     }
