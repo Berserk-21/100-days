@@ -22,7 +22,6 @@ class StormDetailViewController: UIViewController {
         
         setupTitle()
         displayImage()
-        setupShareButton()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -41,12 +40,8 @@ class StormDetailViewController: UIViewController {
     
         title = selectedImage
         
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
         navigationItem.largeTitleDisplayMode = .never
-    }
-    
-    private func setupShareButton() {
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.fastForward, target: self, action: #selector(shareTapped))
     }
     
     private func displayImage() {
@@ -60,13 +55,18 @@ class StormDetailViewController: UIViewController {
     }
     
     // MARK: - Actions
-    
+
     @objc private func shareTapped() {
         
-        let praiseApp: String = "Check this amazing app my friend: Storm Viewer !"
+        guard let image = imageView.image?.jpegData(compressionQuality: 0.8) else {
+            print("There is no image to share")
+            return
+        }
         
-        let ac = UIActivityViewController(activityItems: [praiseApp], applicationActivities: nil)
+        guard let imageName = selectedImage else { return }
         
-        present(ac, animated: true)
+        let vc = UIActivityViewController(activityItems: [image, imageName], applicationActivities: [])
+        vc.popoverPresentationController?.barButtonItem = navigationItem.rightBarButtonItem
+        present(vc, animated: true)
     }
 }

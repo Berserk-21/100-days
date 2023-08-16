@@ -89,8 +89,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="rrz-Mb-pZC">
-                        <barButtonItem key="rightBarButtonItem" id="Knt-J3-BIe">
+                        <barButtonItem key="rightBarButtonItem" title="Show score" id="Knt-J3-BIe">
                             <color key="tintColor" systemColor="tintColor"/>
+                            <connections>
+                                <action selector="showScoreTapped:" destination="BYZ-38-t0r" id="Lq4-x5-WlB"/>
+                            </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
