@@ -25,6 +25,7 @@
 		2C0539482A960F2D001FA6D5 /* uk.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0539302A960F2D001FA6D5 /* uk.png */; };
 		2C05394A2A960F2D001FA6D5 /* us.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0539322A960F2D001FA6D5 /* us.png */; };
 		2C05394C2A960F2D001FA6D5 /* monaco.png in Resources */ = {isa = PBXBuildFile; fileRef = 2C0539342A960F2D001FA6D5 /* monaco.png */; };
+		2C05394E2A9611B3001FA6D5 /* FlagDetailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C05394D2A9611B3001FA6D5 /* FlagDetailViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -48,6 +49,7 @@
 		2C0539302A960F2D001FA6D5 /* uk.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = uk.png; sourceTree = "<group>"; };
 		2C0539322A960F2D001FA6D5 /* us.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = us.png; sourceTree = "<group>"; };
 		2C0539342A960F2D001FA6D5 /* monaco.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = monaco.png; sourceTree = "<group>"; };
+		2C05394D2A9611B3001FA6D5 /* FlagDetailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FlagDetailViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -84,6 +86,7 @@
 				2C0538D72A960613001FA6D5 /* AppDelegate.swift */,
 				2C0538D92A960613001FA6D5 /* SceneDelegate.swift */,
 				2C0538DB2A960613001FA6D5 /* FlagListTableViewController.swift */,
+				2C05394D2A9611B3001FA6D5 /* FlagDetailViewController.swift */,
 				2C0538DD2A960613001FA6D5 /* Main.storyboard */,
 				2C0538E02A960614001FA6D5 /* Assets.xcassets */,
 				2C0538E22A960614001FA6D5 /* LaunchScreen.storyboard */,
@@ -195,6 +198,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C0538DC2A960613001FA6D5 /* FlagListTableViewController.swift in Sources */,
+				2C05394E2A9611B3001FA6D5 /* FlagDetailViewController.swift in Sources */,
 				2C0538D82A960613001FA6D5 /* AppDelegate.swift in Sources */,
 				2C0538DA2A960613001FA6D5 /* SceneDelegate.swift in Sources */,
 			);

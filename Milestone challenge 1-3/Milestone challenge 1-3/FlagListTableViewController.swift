@@ -47,5 +47,16 @@ class FlagListTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return flagsImages.count
     }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        let selectedFlag = flagsImages[indexPath.row]
+        
+        if let flagDetailVC = storyboard?.instantiateViewController(withIdentifier: "FlagDetailViewController") as? FlagDetailViewController {
+            flagDetailVC.selectedFlag = selectedFlag
+            
+        }
+        
+    }
 }
 
