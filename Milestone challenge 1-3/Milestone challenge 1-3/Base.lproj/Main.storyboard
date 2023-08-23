@@ -57,6 +57,9 @@
                         </connections>
                     </tableView>
                     <navigationItem key="navigationItem" id="Ts2-Jd-0y8"/>
+                    <connections>
+                        <segue destination="y80-iz-2hW" kind="show" identifier="ToFlagDetailViewController" id="mgd-ah-UxP"/>
+                    </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="C1e-5I-uiQ" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -71,7 +74,7 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="ATh-VS-8lE">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="8Yf-L8-pL8"/>
@@ -83,6 +86,13 @@
                             <constraint firstItem="8Yf-L8-pL8" firstAttribute="bottom" secondItem="ATh-VS-8lE" secondAttribute="bottom" id="aob-HO-cU3"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="hkC-cB-Neg">
+                        <barButtonItem key="rightBarButtonItem" title="Share" id="VE5-v9-60k">
+                            <connections>
+                                <action selector="shareFlag" destination="y80-iz-2hW" id="a5Y-t4-3hT"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="flagImageView" destination="ATh-VS-8lE" id="lCQ-yh-NDP"/>
                     </connections>

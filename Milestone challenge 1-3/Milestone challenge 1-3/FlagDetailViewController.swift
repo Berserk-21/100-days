@@ -30,4 +30,12 @@ class FlagDetailViewController: UIViewController {
             flagImageView.image = UIImage(named: unwrappedSelectedFlag)
         }
     }
+    
+    @IBAction private func shareFlag() {
+        
+        guard let selectedFlagImage = flagImageView.image?.jpegData(compressionQuality: 0.8) else { return }
+        
+        let ac = UIActivityViewController(activityItems: [selectedFlagImage], applicationActivities: nil)
+        present(ac, animated: true)
+    }
 }
