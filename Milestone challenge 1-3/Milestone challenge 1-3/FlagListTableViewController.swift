@@ -55,6 +55,7 @@ class FlagListTableViewController: UITableViewController {
         if let flagDetailVC = storyboard?.instantiateViewController(withIdentifier: "FlagDetailViewController") as? FlagDetailViewController {
             flagDetailVC.selectedFlag = selectedFlag
             
+            navigationController?.pushViewController(flagDetailVC, animated: true)
         }
         
     }
