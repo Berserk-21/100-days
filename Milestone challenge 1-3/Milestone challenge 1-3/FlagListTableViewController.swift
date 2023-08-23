@@ -9,8 +9,12 @@ import UIKit
 
 class FlagListTableViewController: UITableViewController {
     
+    // MARK: - Properties
+    
     private var flagsImages: [String] = []
 
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -19,6 +23,8 @@ class FlagListTableViewController: UITableViewController {
         loadFlags()
     }
 
+    // MARK: - Methods
+    
     private func loadFlags() {
         
         let fileManager = FileManager()
@@ -33,12 +39,15 @@ class FlagListTableViewController: UITableViewController {
         }
     }
     
+    // MARK: - UITableView Delegate and Datasource
+    
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "flagTableViewCell", for: indexPath)
         
         cell.backgroundColor = .clear
-                
+        
         cell.textLabel?.text = flagsImages[indexPath.row]
+        
         cell.imageView?.layer.borderWidth = 2.0
         cell.imageView?.layer.borderColor = UIColor.lightGray.cgColor
         cell.imageView?.image = UIImage(named: flagsImages[indexPath.row])

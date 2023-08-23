@@ -15,6 +15,8 @@ class FlagDetailViewController: UIViewController {
 
     @IBOutlet private var flagImageView: UIImageView!
     
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
