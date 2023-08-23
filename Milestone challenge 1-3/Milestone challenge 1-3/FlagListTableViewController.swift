@@ -57,7 +57,6 @@ class FlagListTableViewController: UITableViewController {
             
             navigationController?.pushViewController(flagDetailVC, animated: true)
         }
-        
     }
 }
 
