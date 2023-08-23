@@ -15,6 +15,7 @@ class FlagListTableViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        view.backgroundColor = .lightGray
         loadFlags()
     }
 
@@ -30,12 +31,14 @@ class FlagListTableViewController: UITableViewController {
                 flagsImages.append(file)
             }
         }
-        print(flagsImages)
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "flagTableViewCell", for: indexPath)
         
+        cell.backgroundColor = .clear
+                
+        cell.textLabel?.text = flagsImages[indexPath.row]
         cell.imageView?.image = UIImage(named: flagsImages[indexPath.row])
         
         return cell
