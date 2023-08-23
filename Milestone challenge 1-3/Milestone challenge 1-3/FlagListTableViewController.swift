@@ -39,6 +39,8 @@ class FlagListTableViewController: UITableViewController {
         cell.backgroundColor = .clear
                 
         cell.textLabel?.text = flagsImages[indexPath.row]
+        cell.imageView?.layer.borderWidth = 2.0
+        cell.imageView?.layer.borderColor = UIColor.lightGray.cgColor
         cell.imageView?.image = UIImage(named: flagsImages[indexPath.row])
         
         return cell
@@ -57,6 +59,10 @@ class FlagListTableViewController: UITableViewController {
             
             navigationController?.pushViewController(flagDetailVC, animated: true)
         }
+    }
+    
+    override func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 100.0
     }
 }
 
