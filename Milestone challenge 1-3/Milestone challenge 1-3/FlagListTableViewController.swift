@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class FlagListTableViewController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
