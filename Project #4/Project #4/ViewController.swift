@@ -12,7 +12,8 @@ class ViewController: UIViewController, WKNavigationDelegate {
     
     // MARK: - Properties
     
-    var webView: WKWebView!
+    private var webView: WKWebView!
+    private var progressiveView: UIProgressView!
 
     // MARK: - Life Cycle
     
@@ -23,6 +24,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         setupWebView()
         setupNavBar()
         setupToolBar()
+        addProgressObserver()
     }
     
     // MARK: - Methods
@@ -54,8 +56,26 @@ class ViewController: UIViewController, WKNavigationDelegate {
         let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
         
-        toolbarItems = [spacer, refresh]
+        progressiveView = UIProgressView(progressViewStyle: .default)
+        progressiveView.sizeToFit()
+        
+        let progressButton = UIBarButtonItem(customView: progressiveView)
+        
+        toolbarItems = [progressButton, spacer, refresh]
         navigationController?.isToolbarHidden = false
+    }
+    
+    private func addProgressObserver() {
+        
+        webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
+        
+    }
+    
+    override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
+        
+        if keyPath == "estimatedProgress" {
+            progressiveView.progress = Float(webView.estimatedProgress)
+        }
     }
 
     @objc private func openTapped() {
@@ -80,7 +100,6 @@ class ViewController: UIViewController, WKNavigationDelegate {
         let urlString = "https://\(website)"
         guard let url = URL(string: urlString) else { return }
         webView.load(URLRequest(url: url))
-        
     }
     
     // MARK: - WKNavigationDelegate
