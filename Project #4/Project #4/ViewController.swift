@@ -14,6 +14,8 @@ class ViewController: UIViewController, WKNavigationDelegate {
     
     private var webView: WKWebView!
     private var progressiveView: UIProgressView!
+    
+    private var websites: [String] = ["apple.com", "hackingwithswift.com", "netflix.com"]
 
     // MARK: - Life Cycle
     
@@ -81,8 +83,11 @@ class ViewController: UIViewController, WKNavigationDelegate {
     @objc private func openTapped() {
         
         let alertController = UIAlertController(title: "Open page...", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
-        alertController.addAction(UIAlertAction(title: "apple.com", style: .default, handler: openPage(action:)))
-        alertController.addAction(UIAlertAction(title: "hackingwithswift.com", style: .default, handler: openPage(action:)))
+        
+        for website in websites {
+            alertController.addAction(UIAlertAction(title: website, style: .default, handler: openPage(action:)))
+        }
+        
         alertController.addAction(UIAlertAction(title: "cancel", style: .cancel))
         alertController.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
         
