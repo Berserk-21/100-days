@@ -22,6 +22,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         
         setupWebView()
         setupNavBar()
+        setupToolBar()
     }
     
     // MARK: - Methods
@@ -47,6 +48,15 @@ class ViewController: UIViewController, WKNavigationDelegate {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Open", style: .plain, target: self, action: #selector(openTapped))
     }
+    
+    private func setupToolBar() {
+        
+        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
+        
+        toolbarItems = [spacer, refresh]
+        navigationController?.isToolbarHidden = false
+    }
 
     @objc private func openTapped() {
         
@@ -57,6 +67,11 @@ class ViewController: UIViewController, WKNavigationDelegate {
         alertController.popoverPresentationController?.barButtonItem = self.navigationItem.rightBarButtonItem
         
         self.present(alertController, animated: true)
+    }
+    
+    @objc private func refresh() {
+        
+        webView.reload()
     }
     
     private func openPage(action: UIAlertAction) {
