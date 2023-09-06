@@ -15,7 +15,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     private var webView: WKWebView!
     private var progressiveView: UIProgressView!
     
-    private var websites: [String] = ["apple.com", "hackingwithswift.com", "netflix.com"]
+    private var websites: [String] = ["apple", "hackingwithswift", "amazon"]
 
     // MARK: - Life Cycle
     
@@ -102,7 +102,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     private func openPage(action: UIAlertAction) {
         
         guard let website = action.title else { return }
-        let urlString = "https://\(website)"
+        let urlString = "https://www.\(website).com"
         guard let url = URL(string: urlString) else { return }
         webView.load(URLRequest(url: url))
     }
@@ -118,15 +118,23 @@ class ViewController: UIViewController, WKNavigationDelegate {
         
         let url = navigationAction.request.url
         
-        if let host = url?.host {
-            for website in websites {
-                if host.contains(website) {
-                    decisionHandler(.allow)
-                    return
-                }
+        guard let unwrappedHost = url?.host else {
+            decisionHandler(.cancel)
+            return
+        }
+        
+        for website in websites {
+            if unwrappedHost.contains(website) {
+                decisionHandler(.allow)
+                return
             }
         }
         
+        let ac = UIAlertController(title: "This website is blocked", message: nil, preferredStyle: UIAlertController.Style.alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+
+        present(ac, animated: true)
+
         decisionHandler(.cancel)
     }
 }
