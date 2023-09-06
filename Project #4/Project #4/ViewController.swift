@@ -55,7 +55,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     
     private func setupToolBar() {
         
-        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let flexibleSpacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
         
         progressiveView = UIProgressView(progressViewStyle: .default)
@@ -63,7 +63,10 @@ class ViewController: UIViewController, WKNavigationDelegate {
         
         let progressButton = UIBarButtonItem(customView: progressiveView)
         
-        toolbarItems = [progressButton, spacer, refresh]
+        let goBackButton = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .done, target: self, action: #selector(goBack))
+        let goForwardButton = UIBarButtonItem(image: UIImage(systemName: "chevron.forward"), style: .done, target: self, action: #selector(goForward))
+        
+        toolbarItems = [flexibleSpacer, goBackButton, flexibleSpacer, goForwardButton, flexibleSpacer, progressButton, flexibleSpacer, refresh]
         navigationController?.isToolbarHidden = false
     }
     
@@ -97,6 +100,14 @@ class ViewController: UIViewController, WKNavigationDelegate {
     @objc private func refresh() {
         
         webView.reload()
+    }
+    
+    @objc private func goBack() {
+        webView.goBack()
+    }
+    
+    @objc private func goForward() {
+        webView.goForward()
     }
     
     private func openPage(action: UIAlertAction) {
