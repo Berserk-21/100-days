@@ -8,12 +8,14 @@
 import UIKit
 import WebKit
 
-class ViewController: UIViewController, WKNavigationDelegate {
+class WebviewViewController: UIViewController, WKNavigationDelegate {
     
     // MARK: - Properties
     
     private var webView: WKWebView!
     private var progressiveView: UIProgressView!
+    
+    var selectedWebsite: String?
     
     private var websites: [String] = ["apple", "hackingwithswift", "amazon"]
 
@@ -43,7 +45,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
         webView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         webView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
-        guard let url = URL(string: "https://www.hackingwithswift.com") else { return }
+        guard let unwrappedSelectedWebsite = selectedWebsite, let url = URL(string: "https://www.\(unwrappedSelectedWebsite).com") else { return }
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
     }
