@@ -8,14 +8,16 @@
 import UIKit
 import WebKit
 
-class ViewController: UIViewController, WKNavigationDelegate {
+class WebviewViewController: UIViewController, WKNavigationDelegate {
     
     // MARK: - Properties
     
     private var webView: WKWebView!
     private var progressiveView: UIProgressView!
     
-    private var websites: [String] = ["apple.com", "hackingwithswift.com", "netflix.com"]
+    var selectedWebsite: String?
+    
+    private var websites: [String] = ["apple", "hackingwithswift", "amazon"]
 
     // MARK: - Life Cycle
     
@@ -38,12 +40,12 @@ class ViewController: UIViewController, WKNavigationDelegate {
         
         webView.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(webView)
-        webView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
         webView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         webView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
         webView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
         
-        guard let url = URL(string: "https://www.hackingwithswift.com") else { return }
+        guard let unwrappedSelectedWebsite = selectedWebsite, let url = URL(string: "https://www.\(unwrappedSelectedWebsite).com") else { return }
         webView.load(URLRequest(url: url))
         webView.allowsBackForwardNavigationGestures = true
     }
@@ -55,7 +57,7 @@ class ViewController: UIViewController, WKNavigationDelegate {
     
     private func setupToolBar() {
         
-        let spacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
+        let flexibleSpacer = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: self, action: nil)
         let refresh = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(refresh))
         
         progressiveView = UIProgressView(progressViewStyle: .default)
@@ -63,7 +65,10 @@ class ViewController: UIViewController, WKNavigationDelegate {
         
         let progressButton = UIBarButtonItem(customView: progressiveView)
         
-        toolbarItems = [progressButton, spacer, refresh]
+        let goBackButton = UIBarButtonItem(image: UIImage(systemName: "chevron.backward"), style: .done, target: self, action: #selector(goBack))
+        let goForwardButton = UIBarButtonItem(image: UIImage(systemName: "chevron.forward"), style: .done, target: self, action: #selector(goForward))
+        
+        toolbarItems = [flexibleSpacer, goBackButton, flexibleSpacer, goForwardButton, flexibleSpacer, progressButton, flexibleSpacer, refresh]
         navigationController?.isToolbarHidden = false
     }
     
@@ -99,10 +104,18 @@ class ViewController: UIViewController, WKNavigationDelegate {
         webView.reload()
     }
     
+    @objc private func goBack() {
+        webView.goBack()
+    }
+    
+    @objc private func goForward() {
+        webView.goForward()
+    }
+    
     private func openPage(action: UIAlertAction) {
         
         guard let website = action.title else { return }
-        let urlString = "https://\(website)"
+        let urlString = "https://www.\(website).com"
         guard let url = URL(string: urlString) else { return }
         webView.load(URLRequest(url: url))
     }
@@ -118,14 +131,23 @@ class ViewController: UIViewController, WKNavigationDelegate {
         
         let url = navigationAction.request.url
         
-        if let host = url?.host() {
-            for website in websites {
-                if host.contains(website) {
-                    decisionHandler(.allow)
-                }
+        guard let unwrappedHost = url?.host else {
+            decisionHandler(.cancel)
+            return
+        }
+        
+        for website in websites {
+            if unwrappedHost.contains(website) {
+                decisionHandler(.allow)
+                return
             }
         }
         
+        let ac = UIAlertController(title: "This website is blocked", message: nil, preferredStyle: UIAlertController.Style.alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+
+        present(ac, animated: true)
+
         decisionHandler(.cancel)
     }
 }
