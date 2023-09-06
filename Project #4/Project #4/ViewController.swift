@@ -118,10 +118,11 @@ class ViewController: UIViewController, WKNavigationDelegate {
         
         let url = navigationAction.request.url
         
-        if let host = url?.host() {
+        if let host = url?.host {
             for website in websites {
                 if host.contains(website) {
                     decisionHandler(.allow)
+                    return
                 }
             }
         }
