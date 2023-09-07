@@ -21,6 +21,7 @@ class ViewController: UITableViewController {
         // Do any additional setup after loading the view.
         
         loadWords()
+        startGame()
     }
 
     // MARK: - Methods
@@ -37,6 +38,27 @@ class ViewController: UITableViewController {
                 print("There was an error converting start.txt to words")
             }
         }
+    }
+    
+    private func startGame() {
+        
+        title = allWords.randomElement()
+        usedWords.removeAll(keepingCapacity: true)
+        tableView.reloadData()
+    }
+    
+    // MARK: - UITableView DataSource
+    
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return usedWords.count
+    }
+    
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Word", for: indexPath)
+        
+        cell.textLabel?.text = usedWords[indexPath.row]
+        
+        return cell
     }
 }
 
