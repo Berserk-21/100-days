@@ -22,9 +22,15 @@ class ViewController: UITableViewController {
         
         loadWords()
         startGame()
+        setupNavBar()
     }
 
     // MARK: - Methods
+    
+    private func setupNavBar() {
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
+    }
 
     private func loadWords() {
         
@@ -45,6 +51,24 @@ class ViewController: UITableViewController {
         title = allWords.randomElement()
         usedWords.removeAll(keepingCapacity: true)
         tableView.reloadData()
+    }
+    
+    @objc private func promptForAnswer() {
+        
+        let ac = UIAlertController(title: "Enter answer", message: nil, preferredStyle: UIAlertController.Style.alert)
+        ac.addTextField()
+        
+        let submitAction = UIAlertAction(title: "Submit", style: .default) { [weak self, weak ac] action in
+            guard let answer = ac?.textFields?[0].text else { return }
+            self?.submit(answer)
+        }
+        
+        ac.addAction(submitAction)
+        present(ac, animated: true)
+    }
+    
+    private func submit(_ answer: String) {
+        
     }
     
     // MARK: - UITableView DataSource
