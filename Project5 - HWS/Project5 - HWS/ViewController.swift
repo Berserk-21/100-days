@@ -9,8 +9,12 @@ import UIKit
 
 class ViewController: UITableViewController {
     
+    // MARK: - Properties
+    
     private var allWords = [String]()
     private var usedWords = [String]()
+
+    // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -18,6 +22,8 @@ class ViewController: UITableViewController {
         
         loadWords()
     }
+
+    // MARK: - Methods
 
     private func loadWords() {
         
