@@ -102,9 +102,7 @@ class ViewController: UITableViewController {
             errorMessage = "Be smarter, try a different word than the one prompted"
         }
         
-        let ac = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: UIAlertController.Style.alert)
-        ac.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default))
-        present(ac, animated: true)
+        showErrorMessage(title: errorTitle, message: errorMessage)
     }
     
     private func isPossible(word: String) -> Bool {
@@ -140,6 +138,13 @@ class ViewController: UITableViewController {
         let misspelledRange = checker.rangeOfMisspelledWord(in: word, range: range, startingAt: 0, wrap: false, language: "en")
                 
         return misspelledRange.location == NSNotFound
+    }
+    
+    private func showErrorMessage(title: String, message: String) {
+        
+        let ac = UIAlertController(title: title, message: message, preferredStyle: UIAlertController.Style.alert)
+        ac.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default))
+        present(ac, animated: true)
     }
     
     // MARK: - UITableView DataSource
