@@ -74,27 +74,32 @@ class ViewController: UITableViewController {
         let errorTitle: String
         let errorMessage: String
         
-        if isPossible(word: lowerAnswer) {
-            if isOriginal(word: lowerAnswer) {
-                if isReal(word: lowerAnswer) {
-                    usedWords.insert(lowerAnswer, at: 0)
-                    
-                    let indexPath = IndexPath(row: 0, section: 0)
-                    tableView.insertRows(at: [indexPath], with: .automatic)
-                    
-                    return
+        if isNew(word: lowerAnswer) {
+            if isPossible(word: lowerAnswer) {
+                if isOriginal(word: lowerAnswer) {
+                    if isReal(word: lowerAnswer) {
+                        usedWords.insert(lowerAnswer, at: 0)
+                        
+                        let indexPath = IndexPath(row: 0, section: 0)
+                        tableView.insertRows(at: [indexPath], with: .automatic)
+                        
+                        return
+                    } else {
+                        errorTitle = "Word not recognised"
+                        errorMessage = "You can't just make them up you know!"
+                    }
                 } else {
-                    errorTitle = "Word not recognised"
-                    errorMessage = "You can't just make them up you know!"
+                    errorTitle = "Word used already"
+                    errorMessage = "Be more original"
                 }
             } else {
-                errorTitle = "Word used already"
-                errorMessage = "Be more original"
+                guard let title = title?.lowercased() else { return }
+                errorTitle = "Word not possible"
+                errorMessage = "You can't spell that word from \(title)"
             }
         } else {
-            guard let title = title?.lowercased() else { return }
             errorTitle = "Word not possible"
-            errorMessage = "You can't spell that word from \(title)"
+            errorMessage = "Be smarter, try a different word than the one prompted"
         }
         
         let ac = UIAlertController(title: errorTitle, message: errorMessage, preferredStyle: UIAlertController.Style.alert)
@@ -120,6 +125,11 @@ class ViewController: UITableViewController {
     private func isOriginal(word: String) -> Bool {
         return !usedWords.contains(word)
     }
+    
+    private func isNew(word: String) -> Bool {
+        return word != title
+    }
+    
     
     private func isReal(word: String) -> Bool {
         
