@@ -51,13 +51,15 @@ class ViewController: UIViewController {
         
         var previousLabel: UILabel?
         
+        let verticalPadding: CGFloat = 20.0
+        
         for label in [label1, label2, label3, label4, label5] {
             label.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
             label.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
-            label.heightAnchor.constraint(equalToConstant: 88.0).isActive = true
+            label.heightAnchor.constraint(equalTo: view.safeAreaLayoutGuide.heightAnchor, multiplier: 1/5, constant: -verticalPadding).isActive = true
             
             if let unwrappedPreviousLabel = previousLabel {
-                label.topAnchor.constraint(equalTo: unwrappedPreviousLabel.bottomAnchor, constant: 20.0).isActive = true
+                label.topAnchor.constraint(equalTo: unwrappedPreviousLabel.bottomAnchor, constant: verticalPadding).isActive = true
             } else {
                 label.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor, constant: 0.0).isActive = true
             }
