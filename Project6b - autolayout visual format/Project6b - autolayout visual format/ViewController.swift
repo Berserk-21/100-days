@@ -52,8 +52,8 @@ class ViewController: UIViewController {
         var previousLabel: UILabel?
         
         for label in [label1, label2, label3, label4, label5] {
-            label.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-            label.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+            label.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor).isActive = true
+            label.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor).isActive = true
             label.heightAnchor.constraint(equalToConstant: 88.0).isActive = true
             
             if let unwrappedPreviousLabel = previousLabel {
