@@ -39,18 +39,6 @@ class ViewController: UIViewController {
     private func setupUI() {
      
         view.backgroundColor = .lightGray
-
-        topButton.clipsToBounds = true
-        midButton.clipsToBounds = true
-        bottomButton.clipsToBounds = true
-        
-        topButton.layer.cornerRadius = 4
-        midButton.layer.cornerRadius = 4
-        bottomButton.layer.cornerRadius = 4
-        
-        topButton.layer.borderWidth = 2
-        midButton.layer.borderWidth = 2
-        bottomButton.layer.borderWidth = 2
     }
     
     private func setupCountries() {
