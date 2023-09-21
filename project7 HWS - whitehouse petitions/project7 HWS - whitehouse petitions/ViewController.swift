@@ -17,6 +17,8 @@ class MainTableViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        setupNavBarItem()
+        
         let urlString: String
         
         if navigationController?.tabBarItem.tag == 0 {
@@ -35,6 +37,12 @@ class MainTableViewController: UITableViewController {
     }
     
     // MARK: - Methods
+    
+    private func setupNavBarItem() {
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Credits", style: UIBarButtonItem.Style.done, target: self, action: #selector(showCredits))
+    }
+    
     private func parse(json: Data) {
         let decoder = JSONDecoder()
         if let jsonPetitions = try? decoder.decode(Petitions.self, from: json) {
@@ -48,6 +56,14 @@ class MainTableViewController: UITableViewController {
     private func showError() {
         let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
+    }
+    
+    // MARK: - Actions
+    
+    @objc private func showCredits() {
+        let ac = UIAlertController(title: "Credits", message: "All data comes from the We The People API of the White House", preferredStyle: UIAlertController.Style.alert)
+        ac.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default))
         present(ac, animated: true)
     }
 
