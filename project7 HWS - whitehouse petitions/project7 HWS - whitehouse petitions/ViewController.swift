@@ -11,6 +11,7 @@ class MainTableViewController: UITableViewController {
     
     // MARK: - Properties
     private var petitions = [Petition]()
+    private var filteredPetitions = [Petition]()
 
     // MARK: - Life Cycle
     override func viewDidLoad() {
@@ -41,6 +42,7 @@ class MainTableViewController: UITableViewController {
     private func setupNavBarItem() {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Credits", style: UIBarButtonItem.Style.done, target: self, action: #selector(showCredits))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: UIBarButtonItem.Style.done, target: self, action: #selector(filterPetition))
     }
     
     private func parse(json: Data) {
@@ -66,16 +68,63 @@ class MainTableViewController: UITableViewController {
         ac.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default))
         present(ac, animated: true)
     }
+    
+    @objc private func filterPetition() {
+        
+        let ac = UIAlertController(title: "Filter", message: "Enter a keyword to show related petitions", preferredStyle: .alert)
+        ac.addTextField()
+        
+        let okAction = UIAlertAction(title: "OK", style: .default) { action in
+            
+            if let textField = ac.textFields?.first, let filter = textField.text {
+                self.filteredPetitions = self.petitions.filter({ petition in
+                    if petition.title.lowercased().contains(filter.lowercased()) {
+                        return true
+                    } else {
+                        return false
+                    }
+                })
+            }
+            
+            if self.filteredPetitions.count > 0 {
+                self.tableView.reloadData()
+            }
+        }
+        
+        let resetAction = UIAlertAction(title: "Reset", style: .destructive) { action in
+            self.filteredPetitions = []
+            self.tableView.reloadData()
+        }
+        
+        ac.addAction(resetAction)
+        ac.addAction(okAction)
+
+        present(ac, animated: true)
+    }
 
     // MARK: - UITableViewController DataSource
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        if filteredPetitions.count > 0 {
+            return filteredPetitions.count
+        }
+        
         return petitions.count
     }
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "Cell", for: indexPath)
-        cell.textLabel?.text = petitions[indexPath.row].title
-        cell.detailTextLabel?.text = petitions[indexPath.row].body
+        
+        let petitionForIndex: Petition
+        
+        if filteredPetitions.count > 0 {
+            petitionForIndex = filteredPetitions[indexPath.row]
+        } else {
+            petitionForIndex = petitions[indexPath.row]
+        }
+        
+        cell.textLabel?.text = petitionForIndex.title
+        cell.detailTextLabel?.text = petitionForIndex.body
         return cell
     }
     
