@@ -40,6 +40,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        loadLevel()
     }
     
     // MARK: - Methods
@@ -140,6 +142,28 @@ class ViewController: UIViewController {
                 button.frame = CGRect(x: xPos, y: YPos, width: buttonWidth, height: buttonHeight)
                 buttonsContainerView.addSubview(button)
                 letterButtonsContainer.append(button)
+            }
+        }
+    }
+    
+    private func loadLevel() {
+        
+        var clueString = ""
+        var solutionString = ""
+        var letterBis = [String]()
+        
+        if let levelFileURL = Bundle.main.url(forResource: "level\(level)", withExtension: "txt") {
+            if let levelContents = try? String(contentsOf: levelFileURL) {
+                var lines = levelContents.components(separatedBy: "\n")
+                lines.shuffle()
+                
+                for line in lines {
+                    
+                    if var slicedWord = line.components(separatedBy: ":").first {
+                        slicedWord.removeAll(where: { $0 == "|"})
+                        solutions.append(slicedWord)
+                    }
+                }
             }
         }
     }
