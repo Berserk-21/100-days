@@ -13,6 +13,7 @@
 		2C81247A2ABC8DB600C4843E /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C8124782ABC8DB600C4843E /* Main.storyboard */; };
 		2C81247C2ABC8DB700C4843E /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C81247B2ABC8DB700C4843E /* Assets.xcassets */; };
 		2C81247F2ABC8DB700C4843E /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C81247D2ABC8DB700C4843E /* LaunchScreen.storyboard */; };
+		2C8124872ABC9FC800C4843E /* level1.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2C8124862ABC9FC800C4843E /* level1.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2C81247B2ABC8DB700C4843E /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C81247E2ABC8DB700C4843E /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C8124802ABC8DB700C4843E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C8124862ABC9FC800C4843E /* level1.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level1.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				2C81247B2ABC8DB700C4843E /* Assets.xcassets */,
 				2C81247D2ABC8DB700C4843E /* LaunchScreen.storyboard */,
 				2C8124802ABC8DB700C4843E /* Info.plist */,
+				2C8124862ABC9FC800C4843E /* level1.txt */,
 			);
 			path = "Project 8 HWS - Swifty words";
 			sourceTree = "<group>";
@@ -126,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C81247F2ABC8DB700C4843E /* LaunchScreen.storyboard in Resources */,
+				2C8124872ABC9FC800C4843E /* level1.txt in Resources */,
 				2C81247C2ABC8DB700C4843E /* Assets.xcassets in Resources */,
 				2C81247A2ABC8DB600C4843E /* Main.storyboard in Resources */,
 			);

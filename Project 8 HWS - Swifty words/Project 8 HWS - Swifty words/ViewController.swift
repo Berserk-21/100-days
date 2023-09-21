@@ -21,7 +21,13 @@ class ViewController: UIViewController {
     private var buttonHeight: CGFloat = 80.0
     
     private var letterButtonsContainer: [UIButton] = []
-
+    
+    private var activatedButtons = [UIButton]()
+    private var solutions = [String]()
+    
+    private var score = 0
+    private var level = 1
+    
     // MARK: - Life Cycle
     
     override func loadView() {
@@ -92,6 +98,7 @@ class ViewController: UIViewController {
         let submitButton = UIButton(type: .system)
         submitButton.setTitle("SUBMIT", for: .normal)
         submitButton.translatesAutoresizingMaskIntoConstraints = false
+        submitButton.addTarget(self, action: #selector(submitTapped), for: .touchUpInside)
         view.addSubview(submitButton)
         submitButton.topAnchor.constraint(equalTo: currentAnswerTextField.bottomAnchor, constant: 0.0).isActive = true
         submitButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: -100.0).isActive = true
@@ -100,6 +107,7 @@ class ViewController: UIViewController {
         let clearButton = UIButton(type: .system)
         clearButton.setTitle("CLEAR", for: .normal)
         clearButton.translatesAutoresizingMaskIntoConstraints = false
+        clearButton.addTarget(self, action: #selector(clearTapped), for: .touchUpInside)
         view.addSubview(clearButton)
         clearButton.centerYAnchor.constraint(equalTo: submitButton.centerYAnchor, constant: 0.0).isActive = true
         clearButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 100.0).isActive = true
@@ -122,6 +130,7 @@ class ViewController: UIViewController {
                 button.titleLabel?.font = UIFont.systemFont(ofSize: 36.0)
                 button.setTitle("WWW", for: .normal)
                 button.backgroundColor = [UIColor.red, UIColor.purple, UIColor.gray, UIColor.yellow].randomElement()
+                button.addTarget(self, action: #selector(letterTapped), for: .touchUpInside)
                 let xPos = CGFloat(i) * buttonWidth
                 let YPos = CGFloat(j) * buttonHeight
                 
@@ -134,7 +143,19 @@ class ViewController: UIViewController {
             }
         }
     }
-
-
+        
+    // MARK: - Actions
+    
+    @objc private func letterTapped(_ sender: UIButton) {
+        
+    }
+    
+    @objc private func submitTapped(_ sender: UIButton) {
+        
+    }
+    
+    @objc private func clearTapped(_ sender: UIButton) {
+        
+    }
 }
 
