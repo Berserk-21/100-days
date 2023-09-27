@@ -25,7 +25,11 @@ class ViewController: UIViewController {
     private var solutions = [String]()
     private var clues = [String]()
     
-    private var score = 0
+    private var score = 0 {
+        didSet {
+            scoreLabel.text = "score: \(score)"
+        }
+    }
     private var level = 1
     private var maxLevel = 2
     private var maxLevelScore = 7
@@ -211,7 +215,6 @@ class ViewController: UIViewController {
             
             currentAnswerTextField.text = ""
             score += 1
-            scoreLabel.text = "score: \(score)"
         } else {
             
             selectedButtons.forEach({$0.isHidden = false})
