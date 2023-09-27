@@ -66,7 +66,6 @@ class ViewController: UIViewController {
         cluesLabel = UILabel()
         cluesLabel.font = UIFont.systemFont(ofSize: 24.0)
         cluesLabel.text = "CLUES"
-        cluesLabel.backgroundColor = .red
         cluesLabel.numberOfLines = 0
         cluesLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(cluesLabel)
@@ -74,7 +73,6 @@ class ViewController: UIViewController {
         answersLabel = UILabel()
         answersLabel.font = UIFont.systemFont(ofSize: 24.0)
         answersLabel.text = "ANSWERS"
-        answersLabel.backgroundColor = .blue
         answersLabel.numberOfLines = 0
         answersLabel.textAlignment = .right
         answersLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -122,8 +120,10 @@ class ViewController: UIViewController {
         clearButton.heightAnchor.constraint(equalToConstant: 44.0).isActive = true
         
         let buttonsContainerView = UIView()
+        buttonsContainerView.layer.borderWidth = 2.0
+        buttonsContainerView.layer.borderColor = UIColor.lightGray.cgColor
+        buttonsContainerView.layer.cornerRadius = 4.0
         buttonsContainerView.translatesAutoresizingMaskIntoConstraints = false
-        buttonsContainerView.backgroundColor = .green
         view.addSubview(buttonsContainerView)
         buttonsContainerView.widthAnchor.constraint(equalToConstant: 750.0).isActive = true
         buttonsContainerView.heightAnchor.constraint(equalToConstant: 320.0).isActive = true
@@ -137,7 +137,6 @@ class ViewController: UIViewController {
                 let button = UIButton(type: .system)
                 button.titleLabel?.font = UIFont.systemFont(ofSize: 36.0)
                 button.setTitle("WWW", for: .normal)
-                button.backgroundColor = [UIColor.red, UIColor.purple, UIColor.gray, UIColor.yellow].randomElement()
                 button.addTarget(self, action: #selector(letterTapped), for: .touchUpInside)
                 let xPos = CGFloat(i) * buttonWidth
                 let YPos = CGFloat(j) * buttonHeight
