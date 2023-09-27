@@ -21,6 +21,7 @@ class ViewController: UIViewController {
     private var buttonHeight: CGFloat = 80.0
         
     private var activatedButtons = [UIButton]()
+    private var selectedButtons = [UIButton]()
     private var solutions = [String]()
     private var clues = [String]()
     
@@ -189,7 +190,7 @@ class ViewController: UIViewController {
     @objc private func letterTapped(_ sender: UIButton) {
         guard let buttonTitle = sender.titleLabel?.text else { return }
         currentAnswerTextField.text = currentAnswerTextField.text?.appending(buttonTitle)
-        activatedButtons.append(sender)
+        selectedButtons.append(sender)
         sender.isHidden = true
     }
     
@@ -199,7 +200,8 @@ class ViewController: UIViewController {
         
         if let correctSolutionIndex = solutions.firstIndex(of: answerText) {
             
-            activatedButtons.removeAll()
+            activatedButtons.append(contentsOf: selectedButtons)
+            selectedButtons.removeAll()
             
             var splitAnswers = answersLabel.text?.components(separatedBy: "\n")
             
@@ -210,8 +212,15 @@ class ViewController: UIViewController {
             currentAnswerTextField.text = ""
             score += 1
         } else {
+            
+            activatedButtons.forEach({$0.isHidden = false})
+            activatedButtons.removeAll()
+            
             let ac = UIAlertController(title: "Wrong!", message: "\(answerText) is not a good answer.", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                self.selectedButtons.forEach({$0.isHidden = false})
+                self.selectedButtons.removeAll()
+            }))
             present(ac, animated: true)
         }
         
@@ -222,19 +231,15 @@ class ViewController: UIViewController {
             ac.popoverPresentationController?.sourceItem = sender
             
             present(ac, animated: true)
-        } else {
-            
         }
     }
     
     @objc private func clearTapped(_ sender: UIButton) {
         currentAnswerTextField.text = ""
         
-        for button in activatedButtons {
-            button.isHidden = false
-        }
+        selectedButtons.forEach({$0.isHidden = false})
         
-        activatedButtons.removeAll()
+        selectedButtons.removeAll()
     }
     
     @objc private func levelUp(_ :UIAlertAction) {
@@ -244,6 +249,7 @@ class ViewController: UIViewController {
         
         loadLevel()
         activatedButtons.forEach( {$0.isHidden = false })
+        activatedButtons.removeAll()
     }
 }
 
