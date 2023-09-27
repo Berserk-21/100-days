@@ -203,6 +203,8 @@ class ViewController: UIViewController {
     
     private func resetGame() {
         
+        activatedButtons.forEach({$0.isHidden = false})
+        activatedButtons.removeAll()
         level = 1
         loadLevel()
     }
