@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C65543D2AC456560034F39D /* level2.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2C65543C2AC456560034F39D /* level2.txt */; };
 		2C8124732ABC8DB600C4843E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8124722ABC8DB600C4843E /* AppDelegate.swift */; };
 		2C8124752ABC8DB600C4843E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8124742ABC8DB600C4843E /* SceneDelegate.swift */; };
 		2C8124772ABC8DB600C4843E /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C8124762ABC8DB600C4843E /* ViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C65543C2AC456560034F39D /* level2.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = level2.txt; sourceTree = "<group>"; };
 		2C81246F2ABC8DB600C4843E /* Project 8 HWS - Swifty words.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project 8 HWS - Swifty words.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C8124722ABC8DB600C4843E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C8124742ABC8DB600C4843E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				2C81247D2ABC8DB700C4843E /* LaunchScreen.storyboard */,
 				2C8124802ABC8DB700C4843E /* Info.plist */,
 				2C8124862ABC9FC800C4843E /* level1.txt */,
+				2C65543C2AC456560034F39D /* level2.txt */,
 			);
 			path = "Project 8 HWS - Swifty words";
 			sourceTree = "<group>";
@@ -128,6 +131,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				2C65543D2AC456560034F39D /* level2.txt in Resources */,
 				2C81247F2ABC8DB700C4843E /* LaunchScreen.storyboard in Resources */,
 				2C8124872ABC9FC800C4843E /* level1.txt in Resources */,
 				2C81247C2ABC8DB700C4843E /* Assets.xcassets in Resources */,
