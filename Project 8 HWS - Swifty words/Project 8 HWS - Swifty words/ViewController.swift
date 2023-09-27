@@ -27,8 +27,8 @@ class ViewController: UIViewController {
     
     private var score = 0
     private var level = 1
-
-    private var level1MaxScore = 7
+    private var maxLevel = 2
+    private var maxLevelScore = 7
     
     // MARK: - Life Cycle
     
@@ -211,20 +211,32 @@ class ViewController: UIViewController {
             
             currentAnswerTextField.text = ""
             score += 1
+            scoreLabel.text = "score: \(score)"
         } else {
             
-            activatedButtons.forEach({$0.isHidden = false})
-            activatedButtons.removeAll()
+            selectedButtons.forEach({$0.isHidden = false})
+            selectedButtons.removeAll()
             
             let ac = UIAlertController(title: "Wrong!", message: "\(answerText) is not a good answer.", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                self.currentAnswerTextField.text = ""
                 self.selectedButtons.forEach({$0.isHidden = false})
                 self.selectedButtons.removeAll()
             }))
             present(ac, animated: true)
+            return
         }
         
-        if score == level1MaxScore {
+        // End the game
+        if score == maxLevelScore * maxLevel {
+            let ac = UIAlertController(title: "THE END!", message: "Congratulations, you have won the game!", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+            return
+        }
+        
+        // Go to next level
+        if score == maxLevelScore {
             let ac = UIAlertController(title: "Well done!", message: "Are you ready for next level ?", preferredStyle: UIAlertController.Style.actionSheet)
             ac.addAction(UIAlertAction(title: "No way", style: UIAlertAction.Style.destructive))
             ac.addAction(UIAlertAction(title: "Yes!", style: UIAlertAction.Style.default, handler: levelUp))
