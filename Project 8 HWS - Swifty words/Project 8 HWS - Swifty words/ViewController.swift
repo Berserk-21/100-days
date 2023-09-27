@@ -199,7 +199,6 @@ class ViewController: UIViewController {
         
         if let correctSolutionIndex = solutions.firstIndex(of: answerText) {
             
-            print("correctSolutionIndex: ",correctSolutionIndex)
             activatedButtons.removeAll()
             
             var splitAnswers = answersLabel.text?.components(separatedBy: "\n")
@@ -210,6 +209,10 @@ class ViewController: UIViewController {
             
             currentAnswerTextField.text = ""
             score += 1
+        } else {
+            let ac = UIAlertController(title: "Wrong!", message: "\(answerText) is not a good answer.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
         }
         
         if score == level1MaxScore {
