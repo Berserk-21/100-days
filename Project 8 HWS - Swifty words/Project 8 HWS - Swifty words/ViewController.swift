@@ -30,6 +30,19 @@ class ViewController: UIViewController {
             scoreLabel.text = "score: \(score)"
         }
     }
+    
+    private var goodAnswers = 0 {
+        didSet {
+            score = goodAnswers - wrongAnswers
+        }
+    }
+    
+    private var wrongAnswers = 0 {
+        didSet {
+            score = goodAnswers - wrongAnswers
+        }
+    }
+    
     private var level = 1
     private var maxLevel = 2
     private var maxLevelScore = 7
@@ -187,6 +200,12 @@ class ViewController: UIViewController {
             }
         }
     }
+    
+    private func resetGame() {
+        
+        level = 1
+        loadLevel()
+    }
         
     // MARK: - Actions
     
@@ -213,7 +232,7 @@ class ViewController: UIViewController {
             answersLabel.text = splitAnswers?.joined(separator: "\n")
             
             currentAnswerTextField.text = ""
-            score += 1
+            goodAnswers += 1
         } else {
             
             selectedButtons.forEach({$0.isHidden = false})
@@ -221,6 +240,7 @@ class ViewController: UIViewController {
             
             let ac = UIAlertController(title: "Wrong!", message: "\(answerText) is not a good answer.", preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                self.wrongAnswers += 1
                 self.currentAnswerTextField.text = ""
                 self.selectedButtons.forEach({$0.isHidden = false})
                 self.selectedButtons.removeAll()
@@ -230,15 +250,17 @@ class ViewController: UIViewController {
         }
         
         // End the game
-        if score == maxLevelScore * maxLevel {
+        if goodAnswers == maxLevelScore * maxLevel {
             let ac = UIAlertController(title: "THE END!", message: "Congratulations, you have won the game!", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+                self.resetGame()
+            }))
             present(ac, animated: true)
             return
         }
         
         // Go to next level
-        if score == maxLevelScore {
+        if goodAnswers == maxLevelScore {
             let ac = UIAlertController(title: "Well done!", message: "Are you ready for next level ?", preferredStyle: UIAlertController.Style.actionSheet)
             ac.addAction(UIAlertAction(title: "No way", style: UIAlertAction.Style.destructive))
             ac.addAction(UIAlertAction(title: "Yes!", style: UIAlertAction.Style.default, handler: levelUp))
