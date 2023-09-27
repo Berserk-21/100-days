@@ -15,18 +15,19 @@ class ViewController: UIViewController {
     private var answersLabel: UILabel!
     private var currentAnswerTextField: UITextField!
     private var scoreLabel: UILabel!
-    private var lettersButtons = [UIButton]()
+    private var letterButtons = [UIButton]()
     
     private var buttonWidth: CGFloat = 150.0
     private var buttonHeight: CGFloat = 80.0
-    
-    private var letterButtonsContainer: [UIButton] = []
-    
+        
     private var activatedButtons = [UIButton]()
     private var solutions = [String]()
+    private var clues = [String]()
     
     private var score = 0
     private var level = 1
+
+    private var level1MaxScore = 7
     
     // MARK: - Life Cycle
     
@@ -136,12 +137,9 @@ class ViewController: UIViewController {
                 let xPos = CGFloat(i) * buttonWidth
                 let YPos = CGFloat(j) * buttonHeight
                 
-                print("xPos: ",xPos)
-                print("YPos: ",YPos)
-                
                 button.frame = CGRect(x: xPos, y: YPos, width: buttonWidth, height: buttonHeight)
                 buttonsContainerView.addSubview(button)
-                letterButtonsContainer.append(button)
+                letterButtons.append(button)
             }
         }
     }
@@ -150,20 +148,38 @@ class ViewController: UIViewController {
         
         var clueString = ""
         var solutionString = ""
-        var letterBis = [String]()
+        var letterBits = [String]()
         
         if let levelFileURL = Bundle.main.url(forResource: "level\(level)", withExtension: "txt") {
             if let levelContents = try? String(contentsOf: levelFileURL) {
                 var lines = levelContents.components(separatedBy: "\n")
                 lines.shuffle()
                 
-                for line in lines {
+                for (index, line) in lines.enumerated() {
+                    let parts = line.components(separatedBy: ":")
+                    let answer = parts[0]
+                    let clue = parts[1]
                     
-                    if var slicedWord = line.components(separatedBy: ":").first {
-                        slicedWord.removeAll(where: { $0 == "|"})
-                        solutions.append(slicedWord)
-                    }
+                    clueString += "\(index + 1).\(clue)\n"
+                    
+                    let solutionWord = answer.replacingOccurrences(of: "|", with: "")
+                    solutionString += "\(solutionWord.count) letters \n"
+                    solutions.append(solutionWord)
+                    
+                    let bits = answer.components(separatedBy: "|")
+                    letterBits += bits
                 }
+            }
+        }
+        
+        cluesLabel.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
+        answersLabel.text = solutionString.trimmingCharacters(in: .whitespacesAndNewlines)
+        
+        letterBits.shuffle()
+        
+        if letterBits.count == letterButtons.count {
+            for i in 0 ..< letterButtons.count {
+                letterButtons[i].setTitle(letterBits[i], for: .normal)
             }
         }
     }
@@ -171,15 +187,60 @@ class ViewController: UIViewController {
     // MARK: - Actions
     
     @objc private func letterTapped(_ sender: UIButton) {
-        
+        guard let buttonTitle = sender.titleLabel?.text else { return }
+        currentAnswerTextField.text = currentAnswerTextField.text?.appending(buttonTitle)
+        activatedButtons.append(sender)
+        sender.isHidden = true
     }
     
     @objc private func submitTapped(_ sender: UIButton) {
         
+        guard let answerText = currentAnswerTextField.text else { return }
+        
+        if let correctSolutionIndex = solutions.firstIndex(of: answerText) {
+            
+            print("correctSolutionIndex: ",correctSolutionIndex)
+            activatedButtons.removeAll()
+            
+            var splitAnswers = answersLabel.text?.components(separatedBy: "\n")
+            
+            splitAnswers?[correctSolutionIndex] = answerText
+            
+            answersLabel.text = splitAnswers?.joined(separator: "\n")
+            
+            currentAnswerTextField.text = ""
+            score += 1
+        }
+        
+        if score == level1MaxScore {
+            let ac = UIAlertController(title: "Well done!", message: "Are you ready for next level ?", preferredStyle: UIAlertController.Style.actionSheet)
+            ac.addAction(UIAlertAction(title: "No way", style: UIAlertAction.Style.destructive))
+            ac.addAction(UIAlertAction(title: "Yes!", style: UIAlertAction.Style.default, handler: levelUp))
+            ac.popoverPresentationController?.sourceItem = sender
+            
+            present(ac, animated: true)
+        } else {
+            
+        }
     }
     
     @objc private func clearTapped(_ sender: UIButton) {
+        currentAnswerTextField.text = ""
         
+        for button in activatedButtons {
+            button.isHidden = false
+        }
+        
+        activatedButtons.removeAll()
+    }
+    
+    @objc private func levelUp(_ :UIAlertAction) {
+        
+        level += 1
+        solutions.removeAll()
+        
+        loadLevel()
+        activatedButtons.forEach( {$0.isHidden = false })
     }
 }
 
