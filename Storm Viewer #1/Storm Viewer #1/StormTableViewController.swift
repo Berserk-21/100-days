@@ -20,7 +20,10 @@ class StormTableViewController: UITableViewController {
         // Do any additional setup after loading the view.
         
         setupTitle()
-        addImages()
+        
+        DispatchQueue.global(qos: .background).async {
+            self.addImages()
+        }
     }
     
     // MARK: - Methods
@@ -31,7 +34,7 @@ class StormTableViewController: UITableViewController {
         title = "Storm Viewer"
     }
     
-    private func addImages() {
+    @objc private func addImages() {
         
         let fileManager = FileManager.default
         
@@ -44,6 +47,11 @@ class StormTableViewController: UITableViewController {
                 images.append(file)
             }
         }
+        
+        DispatchQueue.main.async {
+            self.tableView.reloadData()
+        }
+        
     }
     
     // MARK: - UITableView DataSource
