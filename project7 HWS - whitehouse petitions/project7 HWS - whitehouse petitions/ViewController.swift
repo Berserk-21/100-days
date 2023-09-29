@@ -20,6 +20,18 @@ class MainTableViewController: UITableViewController {
         
         setupNavBarItem()
         
+        fetchJSON()
+    }
+    
+    // MARK: - Methods
+    
+    private func setupNavBarItem() {
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Credits", style: UIBarButtonItem.Style.done, target: self, action: #selector(showCredits))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: UIBarButtonItem.Style.done, target: self, action: #selector(filterPetition))
+    }
+    
+    private func fetchJSON() {
         let urlString: String
         
         if navigationController?.tabBarItem.tag == 0 {
@@ -33,18 +45,10 @@ class MainTableViewController: UITableViewController {
         DispatchQueue.global(qos: .userInitiated).async {
             if let data = try? Data(contentsOf: url) {
                 self.parse(json: data)
-                return
+            } else {
+                self.performSelector(onMainThread: #selector(self.showError), with: nil, waitUntilDone: false)
             }
-            self.showError()
         }
-    }
-    
-    // MARK: - Methods
-    
-    private func setupNavBarItem() {
-        
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Credits", style: UIBarButtonItem.Style.done, target: self, action: #selector(showCredits))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: UIBarButtonItem.Style.done, target: self, action: #selector(filterPetition))
     }
     
     private func parse(json: Data) {
@@ -55,18 +59,15 @@ class MainTableViewController: UITableViewController {
             DispatchQueue.main.async {
                 self.tableView.reloadData()
             }
-            
         } else {
-            showError()
+            performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
         }
     }
     
-    private func showError() {
-        DispatchQueue.main.async {
-            let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: .default))
-            self.present(ac, animated: true)
-        }
+    @objc private func showError() {
+        let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(ac, animated: true)
     }
     
     // MARK: - Actions
