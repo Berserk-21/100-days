@@ -20,21 +20,7 @@ class MainTableViewController: UITableViewController {
         
         setupNavBarItem()
         
-        let urlString: String
-        
-        if navigationController?.tabBarItem.tag == 0 {
-            urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
-        } else {
-            urlString = "https://www.hackingwithswift.com/samples/petitions-2.json"
-        }
-        
-        guard let url = URL(string: urlString) else { return }
-        
-        if let data = try? Data(contentsOf: url) {
-            self.parse(json: data)
-        } else {
-            showError()
-        }
+        fetchJSON()
     }
     
     // MARK: - Methods
@@ -45,20 +31,43 @@ class MainTableViewController: UITableViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Filter", style: UIBarButtonItem.Style.done, target: self, action: #selector(filterPetition))
     }
     
+    private func fetchJSON() {
+        let urlString: String
+        
+        if navigationController?.tabBarItem.tag == 0 {
+            urlString = "https://www.hackingwithswift.com/samples/petitions-1.json"
+        } else {
+            urlString = "https://www.hackingwithswift.com/samples/petitions-2.json"
+        }
+        
+        guard let url = URL(string: urlString) else { return }
+        
+        DispatchQueue.global(qos: .userInitiated).async {
+            if let data = try? Data(contentsOf: url) {
+                self.parse(json: data)
+            } else {
+                self.performSelector(onMainThread: #selector(self.showError), with: nil, waitUntilDone: false)
+            }
+        }
+    }
+    
     private func parse(json: Data) {
         let decoder = JSONDecoder()
         if let jsonPetitions = try? decoder.decode(Petitions.self, from: json) {
             petitions = jsonPetitions.results
-            tableView.reloadData()
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
         } else {
-            showError()
+            performSelector(onMainThread: #selector(showError), with: nil, waitUntilDone: false)
         }
     }
     
-    private func showError() {
+    @objc private func showError() {
         let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
-        present(ac, animated: true)
+        self.present(ac, animated: true)
     }
     
     // MARK: - Actions
@@ -74,26 +83,34 @@ class MainTableViewController: UITableViewController {
         let ac = UIAlertController(title: "Filter", message: "Enter a keyword to show related petitions", preferredStyle: .alert)
         ac.addTextField()
         
+
         let okAction = UIAlertAction(title: "OK", style: .default) { action in
             
-            if let textField = ac.textFields?.first, let filter = textField.text {
-                self.filteredPetitions = self.petitions.filter({ petition in
-                    if petition.title.lowercased().contains(filter.lowercased()) {
-                        return true
-                    } else {
-                        return false
+            DispatchQueue.global(qos: .background).async {
+                if let textField = ac.textFields?.first, let filter = textField.text {
+                    self.filteredPetitions = self.petitions.filter({ petition in
+                        if petition.title.lowercased().contains(filter.lowercased()) {
+                            return true
+                        } else {
+                            return false
+                        }
+                    })
+                }
+                
+                DispatchQueue.main.async {
+                    if self.filteredPetitions.count > 0 {
+                        self.tableView.reloadData()
                     }
-                })
-            }
-            
-            if self.filteredPetitions.count > 0 {
-                self.tableView.reloadData()
+                }
             }
         }
         
         let resetAction = UIAlertAction(title: "Reset", style: .destructive) { action in
-            self.filteredPetitions = []
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                
+                self.filteredPetitions = []
+                self.tableView.reloadData()
+            }
         }
         
         ac.addAction(resetAction)
