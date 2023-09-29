@@ -30,10 +30,12 @@ class MainTableViewController: UITableViewController {
         
         guard let url = URL(string: urlString) else { return }
         
-        if let data = try? Data(contentsOf: url) {
-            self.parse(json: data)
-        } else {
-            showError()
+        DispatchQueue.global(qos: .userInitiated).async {
+            if let data = try? Data(contentsOf: url) {
+                self.parse(json: data)
+                return
+            }
+            self.showError()
         }
     }
     
@@ -49,16 +51,22 @@ class MainTableViewController: UITableViewController {
         let decoder = JSONDecoder()
         if let jsonPetitions = try? decoder.decode(Petitions.self, from: json) {
             petitions = jsonPetitions.results
-            tableView.reloadData()
+            
+            DispatchQueue.main.async {
+                self.tableView.reloadData()
+            }
+            
         } else {
             showError()
         }
     }
     
     private func showError() {
-        let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
-        ac.addAction(UIAlertAction(title: "OK", style: .default))
-        present(ac, animated: true)
+        DispatchQueue.main.async {
+            let ac = UIAlertController(title: "Loading error", message: "There was a problem loading the feed; please check your connection and try again.", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(ac, animated: true)
+        }
     }
     
     // MARK: - Actions
