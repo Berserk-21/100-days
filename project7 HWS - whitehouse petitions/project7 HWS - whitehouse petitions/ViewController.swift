@@ -83,26 +83,34 @@ class MainTableViewController: UITableViewController {
         let ac = UIAlertController(title: "Filter", message: "Enter a keyword to show related petitions", preferredStyle: .alert)
         ac.addTextField()
         
+
         let okAction = UIAlertAction(title: "OK", style: .default) { action in
             
-            if let textField = ac.textFields?.first, let filter = textField.text {
-                self.filteredPetitions = self.petitions.filter({ petition in
-                    if petition.title.lowercased().contains(filter.lowercased()) {
-                        return true
-                    } else {
-                        return false
+            DispatchQueue.global(qos: .background).async {
+                if let textField = ac.textFields?.first, let filter = textField.text {
+                    self.filteredPetitions = self.petitions.filter({ petition in
+                        if petition.title.lowercased().contains(filter.lowercased()) {
+                            return true
+                        } else {
+                            return false
+                        }
+                    })
+                }
+                
+                DispatchQueue.main.async {
+                    if self.filteredPetitions.count > 0 {
+                        self.tableView.reloadData()
                     }
-                })
-            }
-            
-            if self.filteredPetitions.count > 0 {
-                self.tableView.reloadData()
+                }
             }
         }
         
         let resetAction = UIAlertAction(title: "Reset", style: .destructive) { action in
-            self.filteredPetitions = []
-            self.tableView.reloadData()
+            DispatchQueue.main.async {
+                
+                self.filteredPetitions = []
+                self.tableView.reloadData()
+            }
         }
         
         ac.addAction(resetAction)
