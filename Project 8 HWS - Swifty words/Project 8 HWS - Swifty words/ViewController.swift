@@ -15,6 +15,7 @@ class ViewController: UIViewController {
     private var answersLabel: UILabel!
     private var currentAnswerTextField: UITextField!
     private var scoreLabel: UILabel!
+    private var resetButton: UIButton!
     private var letterButtons = [UIButton]()
     
     private var buttonWidth: CGFloat = 150.0
@@ -73,8 +74,20 @@ class ViewController: UIViewController {
         scoreLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(scoreLabel)
         
+        resetButton = UIButton()
+        resetButton.setTitle(" Reset ", for: .normal)
+        resetButton.backgroundColor = UIColor.brown
+        resetButton.layer.cornerRadius = 4.0
+        resetButton.layer.masksToBounds = true
+        resetButton.translatesAutoresizingMaskIntoConstraints = false
+        resetButton.addTarget(self, action: #selector(resetGame), for: .touchUpInside)
+        view.addSubview(resetButton)
+        
         scoreLabel.topAnchor.constraint(equalTo: view.layoutMarginsGuide.topAnchor, constant: 0.0).isActive = true
         scoreLabel.trailingAnchor.constraint(equalTo: view.layoutMarginsGuide.trailingAnchor, constant: 0.0).isActive = true
+        
+        resetButton.topAnchor.constraint(equalTo: scoreLabel.bottomAnchor, constant: 12.0).isActive = true
+        resetButton.trailingAnchor.constraint(equalTo: scoreLabel.trailingAnchor, constant: 0.0).isActive = true
         
         cluesLabel = UILabel()
         cluesLabel.font = UIFont.systemFont(ofSize: 24.0)
@@ -91,12 +104,12 @@ class ViewController: UIViewController {
         answersLabel.translatesAutoresizingMaskIntoConstraints = false
         view.addSubview(answersLabel)
         
-        cluesLabel.topAnchor.constraint(equalTo: scoreLabel.bottomAnchor, constant: 0.0).isActive = true
+        cluesLabel.topAnchor.constraint(equalTo: resetButton.bottomAnchor, constant: 0.0).isActive = true
         cluesLabel.leadingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.leadingAnchor, constant: 100.0).isActive = true
         cluesLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.6, constant: -100).isActive = true
         cluesLabel.setContentHuggingPriority(UILayoutPriority(1), for: .vertical)
         
-        answersLabel.topAnchor.constraint(equalTo: scoreLabel.bottomAnchor, constant: 0.0).isActive = true
+        answersLabel.topAnchor.constraint(equalTo: resetButton.bottomAnchor, constant: 0.0).isActive = true
         answersLabel.trailingAnchor.constraint(equalTo: view.safeAreaLayoutGuide.trailingAnchor, constant: -100.0).isActive = true
         answersLabel.widthAnchor.constraint(equalTo: view.widthAnchor, multiplier: 0.4, constant: -100.0).isActive = true
         answersLabel.heightAnchor.constraint(equalTo: cluesLabel.heightAnchor, multiplier: 1.0).isActive = true
@@ -166,47 +179,53 @@ class ViewController: UIViewController {
         var clueString = ""
         var solutionString = ""
         var letterBits = [String]()
-        
-        if let levelFileURL = Bundle.main.url(forResource: "level\(level)", withExtension: "txt") {
-            if let levelContents = try? String(contentsOf: levelFileURL) {
-                var lines = levelContents.components(separatedBy: "\n")
-                lines.shuffle()
-                
-                for (index, line) in lines.enumerated() {
-                    let parts = line.components(separatedBy: ":")
-                    let answer = parts[0]
-                    let clue = parts[1]
+        DispatchQueue.global(qos: .background).async {
+            if let levelFileURL = Bundle.main.url(forResource: "level\(self.level)", withExtension: "txt") {
+                if let levelContents = try? String(contentsOf: levelFileURL) {
+                    var lines = levelContents.components(separatedBy: "\n")
+                    lines.shuffle()
                     
-                    clueString += "\(index + 1).\(clue)\n"
-                    
-                    let solutionWord = answer.replacingOccurrences(of: "|", with: "")
-                    solutionString += "\(solutionWord.count) letters \n"
-                    solutions.append(solutionWord)
-                    
-                    let bits = answer.components(separatedBy: "|")
-                    letterBits += bits
+                    for (index, line) in lines.enumerated() {
+                        let parts = line.components(separatedBy: ":")
+                        let answer = parts[0]
+                        let clue = parts[1]
+                        
+                        clueString += "\(index + 1).\(clue)\n"
+                        
+                        let solutionWord = answer.replacingOccurrences(of: "|", with: "")
+                        solutionString += "\(solutionWord.count) letters \n"
+                        self.solutions.append(solutionWord)
+                        
+                        let bits = answer.components(separatedBy: "|")
+                        letterBits += bits
+                    }
                 }
             }
-        }
-        
-        cluesLabel.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
-        answersLabel.text = solutionString.trimmingCharacters(in: .whitespacesAndNewlines)
-        
-        letterBits.shuffle()
-        
-        if letterBits.count == letterButtons.count {
-            for i in 0 ..< letterButtons.count {
-                letterButtons[i].setTitle(letterBits[i], for: .normal)
+            
+            DispatchQueue.main.async {
+                self.cluesLabel.text = clueString.trimmingCharacters(in: .whitespacesAndNewlines)
+                self.answersLabel.text = solutionString.trimmingCharacters(in: .whitespacesAndNewlines)
+                
+                letterBits.shuffle()
+                
+                if letterBits.count == self.letterButtons.count {
+                    for i in 0 ..< self.letterButtons.count {
+                        self.letterButtons[i].setTitle(letterBits[i], for: .normal)
+                    }
+                }
             }
         }
     }
     
-    private func resetGame() {
+    @objc private func resetGame() {
         
-        activatedButtons.forEach({$0.isHidden = false})
-        activatedButtons.removeAll()
-        level = 1
-        loadLevel()
+        DispatchQueue.global(qos: .userInitiated).async {
+            self.activatedButtons.forEach({$0.isHidden = false})
+            self.activatedButtons.removeAll()
+            
+            self.level = 1
+            self.loadLevel()
+        }
     }
         
     // MARK: - Actions
