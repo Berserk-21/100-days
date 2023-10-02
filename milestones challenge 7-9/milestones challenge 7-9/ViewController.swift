@@ -61,7 +61,7 @@ class ViewController: UIViewController {
             
             guard let randomWord = wordsToFind.randomElement() else { return }
             
-            let nbOfLetters: Int = randomWord.count
+            print("word to guess: \(randomWord)")
             
             let stackView: UIStackView = UIStackView()
             stackView.axis = .horizontal
@@ -101,5 +101,39 @@ class ViewController: UIViewController {
         }
     }
 
+    @IBAction func PlayButton(_ sender: Any) {
+        
+        let ac = UIAlertController(title: "Enter a letter", message: nil, preferredStyle: UIAlertController.Style.alert)
+        ac.addTextField()
+        
+        ac.addAction(UIAlertAction(title: "Guess", style: .default, handler: { _ in
+            if let tf = ac.textFields?.first, let letter = tf.text {
+                
+                if letter.count == 1 {
+                    self.checkLetter(for: letter)
+                } else {
+                    // present an alert to help
+                }
+            }
+        }))
+        present(ac, animated: true)
+    }
+    
+    private func checkLetter(for letter: String
+    ) {
+        
+        if let stackView = view.subviews.first(where: { $0 is UIStackView }) {
+            stackView.subviews.forEach { subview in
+                
+                if let label = subview as? UILabel {
+                    let letterToFind = label.text
+                    
+                    if letter == letterToFind {
+                        label.textColor = .black
+                    }
+                }
+            }
+        }
+    }
 }
 

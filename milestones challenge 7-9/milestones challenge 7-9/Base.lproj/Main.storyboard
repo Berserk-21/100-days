@@ -123,12 +123,32 @@
                                     <constraint firstItem="Pw4-zY-5e1" firstAttribute="top" secondItem="D02-ts-KW7" secondAttribute="bottom" id="yvf-h7-fZE"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="1MV-8R-Q1K">
+                                <rect key="frame" x="39.333333333333343" y="225.66666666666663" width="314.33333333333326" height="426"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain"/>
+                                <connections>
+                                    <action selector="PlayButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="0PH-ef-d8d"/>
+                                </connections>
+                            </button>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="TAP TO PLAY" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="deo-Ow-B8h">
+                                <rect key="frame" x="145.66666666666666" y="663.66666666666663" width="102" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
+                            <constraint firstItem="1MV-8R-Q1K" firstAttribute="bottom" secondItem="W6F-xA-Nip" secondAttribute="bottom" id="33X-4x-LI6"/>
+                            <constraint firstItem="1MV-8R-Q1K" firstAttribute="leading" secondItem="W6F-xA-Nip" secondAttribute="leading" id="3ya-Hk-luV"/>
+                            <constraint firstItem="1MV-8R-Q1K" firstAttribute="top" secondItem="W6F-xA-Nip" secondAttribute="top" id="7OO-pu-cO7"/>
+                            <constraint firstItem="1MV-8R-Q1K" firstAttribute="trailing" secondItem="W6F-xA-Nip" secondAttribute="trailing" id="F0e-rX-vUt"/>
                             <constraint firstItem="W6F-xA-Nip" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="IIU-fd-uRS"/>
+                            <constraint firstItem="deo-Ow-B8h" firstAttribute="top" secondItem="W6F-xA-Nip" secondAttribute="bottom" constant="12" id="OLO-vT-Cjv"/>
                             <constraint firstItem="W6F-xA-Nip" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="VzW-ZL-OvD"/>
+                            <constraint firstItem="deo-Ow-B8h" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="aqp-Yg-vql"/>
                             <constraint firstItem="coX-hd-xQB" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.45" id="b26-go-hAM"/>
                             <constraint firstItem="W6F-xA-Nip" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ffb-UH-BWN"/>
                             <constraint firstItem="W6F-xA-Nip" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="sNF-GD-ho4"/>
