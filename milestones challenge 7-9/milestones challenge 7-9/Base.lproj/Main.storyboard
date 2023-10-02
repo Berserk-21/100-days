@@ -135,6 +135,7 @@
                         </constraints>
                     </view>
                     <connections>
+                        <outlet property="containerView" destination="W6F-xA-Nip" id="dpl-Pr-vIN"/>
                         <outlet property="headView" destination="oFM-Ut-bNv" id="2Kr-Ea-OAd"/>
                         <outlet property="leadingArmView" destination="F4N-hy-YDc" id="quB-4m-Fcs"/>
                         <outlet property="leadingLegView" destination="4Eg-lr-PkV" id="JLs-Po-JmJ"/>

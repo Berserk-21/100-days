@@ -13,6 +13,7 @@
 		2C5373B02ACAFA81009BD759 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C5373AE2ACAFA81009BD759 /* Main.storyboard */; };
 		2C5373B22ACAFA81009BD759 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2C5373B12ACAFA81009BD759 /* Assets.xcassets */; };
 		2C5373B52ACAFA81009BD759 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C5373B32ACAFA81009BD759 /* LaunchScreen.storyboard */; };
+		2C5373BD2ACB24FC009BD759 /* words_list.txt in Resources */ = {isa = PBXBuildFile; fileRef = 2C5373BC2ACB24FC009BD759 /* words_list.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		2C5373B12ACAFA81009BD759 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2C5373B42ACAFA81009BD759 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2C5373B62ACAFA81009BD759 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2C5373BC2ACB24FC009BD759 /* words_list.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = words_list.txt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +64,7 @@
 				2C5373AE2ACAFA81009BD759 /* Main.storyboard */,
 				2C5373B12ACAFA81009BD759 /* Assets.xcassets */,
 				2C5373B32ACAFA81009BD759 /* LaunchScreen.storyboard */,
+				2C5373BC2ACB24FC009BD759 /* words_list.txt */,
 				2C5373B62ACAFA81009BD759 /* Info.plist */,
 			);
 			path = "milestones challenge 7-9";
@@ -126,6 +129,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				2C5373B52ACAFA81009BD759 /* LaunchScreen.storyboard in Resources */,
+				2C5373BD2ACB24FC009BD759 /* words_list.txt in Resources */,
 				2C5373B22ACAFA81009BD759 /* Assets.xcassets in Resources */,
 				2C5373B02ACAFA81009BD759 /* Main.storyboard in Resources */,
 			);
