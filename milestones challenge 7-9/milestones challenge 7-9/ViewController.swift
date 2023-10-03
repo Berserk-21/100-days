@@ -102,6 +102,9 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         guard let randomWord = wordsToFind.randomElement() else { return }
         result = randomWord
+        guessesLeft = 7
+        drawingViews.forEach({ $0.alpha = 0 })
+        usedLetters = []
         
         #if DEBUG
         print("word to guess: \(randomWord)")
@@ -121,7 +124,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             let l = UILabel()
             l.font = UIFont.systemFont(ofSize: 32.0, weight: .semibold)
             l.text = String(letter)
-            l.textColor = UIColor.clear
+            l.alpha = 0.0
             stackView.addArrangedSubview(l)
             
             let liner = UIView()
@@ -149,7 +152,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
             
         if usedLetters.contains(letter) {
             
-            guessesLeft -= 1
+            self.guessesLeft -= 1
             
             if guessesLeft > 0 {
                 
@@ -169,7 +172,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
                         if let label = subview as? UILabel, let letterToFind = label.text {
                             
                             if letter == letterToFind {
-                                label.textColor = .black
+                                label.alpha = 1.0
                             }
                         }
                     }
@@ -179,13 +182,17 @@ class ViewController: UIViewController, UITextFieldDelegate {
             }
         }
                 
+        // if you have used all your guesses, you lose!
         if guessesLeft == 0 {
             let ac = UIAlertController(title: "YOU LOSE!", message: nil, preferredStyle: .alert)
-            ac.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default))
+            ac.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default, handler: { _ in
+                self.setupLetters()
+            }))
             self.present(ac, animated: true)
         }
         
-        if usedLetters.count == result.count {
+        // If all letters are shown, you won!
+        if let stackView = view.subviews.first(where: { $0 is UIStackView }) as? UIStackView, !stackView.arrangedSubviews.contains(where: { $0.alpha == 0.0 }) {
             let ac = UIAlertController(title: "YOU WON!", message: nil, preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
                 self.setupLetters()
