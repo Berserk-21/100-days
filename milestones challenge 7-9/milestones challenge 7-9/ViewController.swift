@@ -21,25 +21,16 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet private weak var trailingLegView: UIView!
     @IBOutlet private weak var bodyView: UIView!
     @IBOutlet private weak var neckRopeView: UIView!
-    @IBOutlet private weak var lettersLeftLabel: UILabel!
     
     private var drawingViews: [UIView] = []
     
     private var wordsToFind: [String] = []
     private var result: String = ""
     private var usedLetters: [String] = []
-    private var lettersLeft: Int = 0 {
-        didSet {
-            lettersLeftLabel.text = "\(lettersLeft) hidden letters"
-        }
-    }
     
     private var guessesLeft: Int = 7 {
         didSet {
-            scoreLabel.text = "\(guessesLeft) attempts left"
-            if let viewToShow = drawingViews.first(where: { $0.alpha == 0.0 }) {
-                viewToShow.alpha = 1.0
-            }
+            updateGuessesLeft()
     }}
     
     // MARK: - Life Cycle
@@ -111,7 +102,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
         
         guard let randomWord = wordsToFind.randomElement() else { return }
         result = randomWord
-        lettersLeft = result.count
         
         #if DEBUG
         print("word to guess: \(randomWord)")
@@ -180,7 +170,6 @@ class ViewController: UIViewController, UITextFieldDelegate {
                             
                             if letter == letterToFind {
                                 label.textColor = .black
-                                lettersLeft -= 1
                             }
                         }
                     }
@@ -196,21 +185,21 @@ class ViewController: UIViewController, UITextFieldDelegate {
             self.present(ac, animated: true)
         }
         
-        if lettersLeft == 0 {
+        if usedLetters.count == result.count {
             let ac = UIAlertController(title: "YOU WON!", message: nil, preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-                self.resetGame()
+                self.setupLetters()
             }))
             self.present(ac, animated: true)
         }
     }
     
-    private func resetGame() {
+    private func updateGuessesLeft() {
         
-        guard let stackView = view.subviews.first(where: { $0 is UIStackView }) else { return }
-        stackView.removeFromSuperview()
-        
-        
+        scoreLabel.text = "\(guessesLeft) attempts left"
+        if let viewToShow = drawingViews.first(where: { $0.alpha == 0.0 }) {
+            viewToShow.alpha = 1.0
+        }
     }
 
     // MARK: - Actions

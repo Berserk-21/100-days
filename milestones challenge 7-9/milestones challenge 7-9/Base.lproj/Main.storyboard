@@ -143,12 +143,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CnA-nI-8CW">
-                                <rect key="frame" x="175.66666666666666" y="100" width="42" height="21"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -160,14 +154,12 @@
                             <constraint firstItem="W6F-xA-Nip" firstAttribute="width" secondItem="8bC-Xf-vdC" secondAttribute="width" multiplier="0.8" id="IIU-fd-uRS"/>
                             <constraint firstItem="deo-Ow-B8h" firstAttribute="top" secondItem="W6F-xA-Nip" secondAttribute="bottom" constant="12" id="OLO-vT-Cjv"/>
                             <constraint firstItem="W6F-xA-Nip" firstAttribute="centerY" secondItem="6Tk-OE-BBY" secondAttribute="centerY" id="VzW-ZL-OvD"/>
-                            <constraint firstItem="CnA-nI-8CW" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="a2a-rT-ejr"/>
                             <constraint firstItem="deo-Ow-B8h" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="aqp-Yg-vql"/>
                             <constraint firstItem="coX-hd-xQB" firstAttribute="height" secondItem="6Tk-OE-BBY" secondAttribute="height" multiplier="0.45" id="b26-go-hAM"/>
                             <constraint firstItem="RLd-iF-1Nd" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="12" id="dei-zM-boE"/>
                             <constraint firstItem="W6F-xA-Nip" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="ffb-UH-BWN"/>
                             <constraint firstItem="RLd-iF-1Nd" firstAttribute="centerX" secondItem="6Tk-OE-BBY" secondAttribute="centerX" id="sHX-gg-DpR"/>
                             <constraint firstItem="W6F-xA-Nip" firstAttribute="height" secondItem="8bC-Xf-vdC" secondAttribute="height" multiplier="0.5" id="sNF-GD-ho4"/>
-                            <constraint firstItem="CnA-nI-8CW" firstAttribute="top" secondItem="RLd-iF-1Nd" secondAttribute="bottom" constant="8" symbolic="YES" id="vqA-lU-lSg"/>
                         </constraints>
                     </view>
                     <connections>
@@ -176,7 +168,6 @@
                         <outlet property="headView" destination="oFM-Ut-bNv" id="2Kr-Ea-OAd"/>
                         <outlet property="leadingArmView" destination="F4N-hy-YDc" id="quB-4m-Fcs"/>
                         <outlet property="leadingLegView" destination="4Eg-lr-PkV" id="JLs-Po-JmJ"/>
-                        <outlet property="lettersLeftLabel" destination="CnA-nI-8CW" id="HNn-bO-fBg"/>
                         <outlet property="neckRopeView" destination="un2-Xg-zAZ" id="5oy-8V-3Wk"/>
                         <outlet property="scoreLabel" destination="RLd-iF-1Nd" id="tc7-3b-fZk"/>
                         <outlet property="trailingArmView" destination="VoY-a1-CJS" id="C0x-kG-JWy"/>
