@@ -58,7 +58,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
         setupLetters()
     }
     
-    // MARK: - Methods
+    // MARK: - Setup Layout
 
     private func setupLayout() {
         
@@ -151,27 +151,8 @@ class ViewController: UIViewController, UITextFieldDelegate {
         stackView.leadingAnchor.constraint(equalTo: containerView.leadingAnchor, constant: 12.0).isActive = true
         stackView.trailingAnchor.constraint(equalTo: containerView.trailingAnchor, constant: -12.0).isActive = true
     }
-
-    @IBAction func PlayButton(_ sender: Any) {
-        
-        let ac = UIAlertController(title: "Enter a letter", message: nil, preferredStyle: UIAlertController.Style.alert)
-        ac.addTextField { tf in
-            tf.delegate = self
-        }
-        
-        ac.addAction(UIAlertAction(title: "Cancel", style: .default))
-
-        ac.addAction(UIAlertAction(title: "Guess", style: .default, handler: { _ in
-            if let tf = ac.textFields?.first, let letter = tf.text {
-                
-                if letter.count == 1 {
-                    self.checkLetter(for: letter)
-                }
-            }
-        }))
-        
-        present(ac, animated: true)
-    }
+    
+    // MARK: - Methods
     
     private func checkLetter(for letter: String
     ) {
@@ -230,6 +211,29 @@ class ViewController: UIViewController, UITextFieldDelegate {
         stackView.removeFromSuperview()
         
         
+    }
+
+    // MARK: - Actions
+    
+    @IBAction func PlayButton(_ sender: Any) {
+        
+        let ac = UIAlertController(title: "Enter a letter", message: nil, preferredStyle: UIAlertController.Style.alert)
+        ac.addTextField { tf in
+            tf.delegate = self
+        }
+        
+        ac.addAction(UIAlertAction(title: "Cancel", style: .default))
+
+        ac.addAction(UIAlertAction(title: "Guess", style: .default, handler: { _ in
+            if let tf = ac.textFields?.first, let letter = tf.text {
+                
+                if letter.count == 1 {
+                    self.checkLetter(for: letter)
+                }
+            }
+        }))
+        
+        present(ac, animated: true)
     }
     
     // MARK: - UITextField Delegate
