@@ -66,7 +66,7 @@ class ViewController: UIViewController {
             let stackView: UIStackView = UIStackView()
             stackView.axis = .horizontal
             stackView.spacing = 12.0
-            stackView.distribution = .equalSpacing
+            stackView.distribution = .equalCentering
             view.addSubview(stackView)
             
             for letter in randomWord {
