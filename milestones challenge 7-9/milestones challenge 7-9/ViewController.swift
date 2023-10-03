@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UITextFieldDelegate {
     
     // MARK: - Properties
 
@@ -61,7 +61,9 @@ class ViewController: UIViewController {
             
             guard let randomWord = wordsToFind.randomElement() else { return }
             
+            #if DEBUG
             print("word to guess: \(randomWord)")
+            #endif
             
             let stackView: UIStackView = UIStackView()
             stackView.axis = .horizontal
@@ -104,18 +106,21 @@ class ViewController: UIViewController {
     @IBAction func PlayButton(_ sender: Any) {
         
         let ac = UIAlertController(title: "Enter a letter", message: nil, preferredStyle: UIAlertController.Style.alert)
-        ac.addTextField()
+        ac.addTextField { tf in
+            tf.delegate = self
+        }
         
+        ac.addAction(UIAlertAction(title: "Cancel", style: .default))
+
         ac.addAction(UIAlertAction(title: "Guess", style: .default, handler: { _ in
             if let tf = ac.textFields?.first, let letter = tf.text {
                 
                 if letter.count == 1 {
                     self.checkLetter(for: letter)
-                } else {
-                    // present an alert to help
                 }
             }
         }))
+        
         present(ac, animated: true)
     }
     
@@ -134,6 +139,15 @@ class ViewController: UIViewController {
                 }
             }
         }
+    }
+    
+    // MARK: - UITextField Delegate
+    
+    func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+        
+        guard range.location == 0 else { return false }
+        
+        return true
     }
 }
 
