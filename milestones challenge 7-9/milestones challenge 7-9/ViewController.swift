@@ -19,8 +19,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     @IBOutlet private weak var trailingLegView: UIView!
     
     private var wordsToFind: [String] = []
-    private var wrongLetters: [String] = []
-    private var goodLetters: [String] = []
+    private var usedLetters: [String] = []
     
     // MARK: - Life Cycle
 
@@ -129,31 +128,26 @@ class ViewController: UIViewController, UITextFieldDelegate {
     private func checkLetter(for letter: String
     ) {
             
-        if goodLetters.contains(letter) || wrongLetters.contains(letter) {
+        if usedLetters.contains(letter) {
             
             let ac = UIAlertController(title: "Letter already used", message: nil, preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default))
             self.present(ac, animated: true)
             
-        } else if let stackView = view.subviews.first(where: { $0 is UIStackView }) {
+        } else {
+            usedLetters.append(letter)
             
-            var letterWasFound: Bool = false
-            
-            stackView.subviews.forEach { subview in
+            if let stackView = view.subviews.first(where: { $0 is UIStackView }) {
                 
-                if let label = subview as? UILabel, let letterToFind = label.text {
-
-                    if letter == letterToFind {
-                        label.textColor = .black
-                        letterWasFound = true
+                stackView.subviews.forEach { subview in
+                    
+                    if let label = subview as? UILabel, let letterToFind = label.text {
+                        
+                        if letter == letterToFind {
+                            label.textColor = .black
+                        }
                     }
                 }
-            }
-            
-            if letterWasFound {
-                goodLetters.append(letter)
-            } else {
-                wrongLetters.append(letter)
             }
         }
     }
