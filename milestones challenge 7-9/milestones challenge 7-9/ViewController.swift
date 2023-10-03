@@ -130,7 +130,7 @@ class ViewController: UIViewController, UITextFieldDelegate {
     ) {
             
         if goodLetters.contains(letter) || wrongLetters.contains(letter) {
-            print("is part of goodLetters")
+            
             let ac = UIAlertController(title: "Letter already used", message: nil, preferredStyle: .alert)
             ac.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default))
             self.present(ac, animated: true)
