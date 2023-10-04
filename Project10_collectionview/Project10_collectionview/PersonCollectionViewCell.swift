@@ -9,8 +9,10 @@ import UIKit
 
 class PersonCollectionViewCell: UICollectionViewCell {
     
+    static let identifier: String = "PersonCollectionViewCell"
+    
     @IBOutlet var imageView: UIImageView!
-    @IBOutlet var name: UILabel!
+    @IBOutlet var nameLabel: UILabel!
     
     
 }
