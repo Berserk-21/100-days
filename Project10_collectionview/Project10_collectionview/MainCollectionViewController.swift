@@ -9,6 +9,10 @@ import UIKit
 
 class MainCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
+    // MARK: - Properties
+    
+    var people = [Person]()
+    
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
@@ -45,7 +49,16 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         let imagePath = getDocumentsDirectory().appending(path: imageName)
         
         if let jpegData = image.jpegData(compressionQuality: 0.8) {
-            try? jpegData.write(to: imagePath)
+            
+            do {
+                try jpegData.write(to: imagePath)
+                
+                let person = Person(name: "Unknown", image: imageName)
+                self.people.append(person)
+                self.collectionView.reloadData()
+            } catch let error {
+                print("There was an error trying to save image on disk: \(error.localizedDescription)")
+            }
         }
         
         dismiss(animated: true)
@@ -54,7 +67,7 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
     // MARK: - UICollectionView DataSource
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 10
+        return people.count
     }
     
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -62,7 +75,20 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
             fatalError("Unable to dequeue a PersonCollectionViewCell")
         }
         
-        cell.nameLabel.text = "coucou"
+        let person = people[indexPath.row]
+        
+        cell.nameLabel.text = person.name
+        
+        let imagePath = getDocumentsDirectory().appending(path: person.image)
+        cell.imageView.image = UIImage(contentsOfFile: imagePath.path())
+        cell.imageView.layer.borderColor = UIColor(white: 0.0, alpha: 0.3).cgColor
+        cell.imageView.layer.borderWidth = 2.0
+        cell.imageView.layer.cornerRadius = 3.0
+        cell.imageView.layer.masksToBounds = true
+        
+        cell.layer.cornerRadius = 7.0
+        cell.layer.masksToBounds = true
+        
         return cell
     }
 }
