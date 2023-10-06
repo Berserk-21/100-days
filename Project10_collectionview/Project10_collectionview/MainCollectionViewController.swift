@@ -67,15 +67,15 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         
         guard let image = info[.editedImage] as? UIImage else { return }
         
-        let imageName = UUID().uuidString
-        let imagePath = getDocumentsDirectory().appending(path: imageName)
+        let imageID = UUID().uuidString
+        let imagePath = getDocumentsDirectory().appending(path: imageID)
         
         if let jpegData = image.jpegData(compressionQuality: 0.8) {
             
             do {
                 try jpegData.write(to: imagePath)
                 
-                let person = Person(name: "Unknown", image: imageName)
+                let person = Person(name: "Unknown", image: imageID)
                 self.people.append(person)
                 self.collectionView.reloadData()
             } catch let error {
@@ -151,7 +151,7 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         
         firstAC.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
             
-            self?.people.removeAll(where: { $0.name == person.name })
+            self?.people.removeAll(where: { $0.image == person.image })
             self?.collectionView.reloadData()
         }))
         
