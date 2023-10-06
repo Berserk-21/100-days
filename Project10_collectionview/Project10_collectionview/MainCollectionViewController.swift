@@ -91,5 +91,23 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         
         return cell
     }
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let person = people[indexPath.item]
+        
+        let ac = UIAlertController(title: "Rename person", message: nil, preferredStyle: UIAlertController.Style.alert)
+        
+        ac.addTextField()
+        
+        ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            guard let newName = ac.textFields?[0].text else {
+                print("NOPE")
+                return }
+            person.name = newName
+            self.collectionView.reloadData()
+        }))
+        
+        present(ac, animated: true)
+    }
 }
 
