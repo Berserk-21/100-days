@@ -29,6 +29,16 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         return paths[0]
     }
     
+    private func showPicker(sourceType: UIImagePickerController.SourceType) {
+        
+        let picker = UIImagePickerController()
+        picker.allowsEditing = true
+        picker.delegate = self
+        picker.sourceType = sourceType
+        
+        present(picker, animated: true)
+    }
+    
     // MARK: - Actions
 
     @objc private func addPicture() {
@@ -43,21 +53,12 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
             }))
             
             ac.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel))
+            ac.popoverPresentationController?.sourceItem = navigationItem.leftBarButtonItem
             
             present(ac, animated: true)
         } else {
             self.showPicker(sourceType: .photoLibrary)
         }
-    }
-    
-    private func showPicker(sourceType: UIImagePickerController.SourceType) {
-        
-        let picker = UIImagePickerController()
-        picker.allowsEditing = true
-        picker.delegate = self
-        picker.sourceType = sourceType
-        
-        present(picker, animated: true)
     }
     
     // MARK: - UIImagePickerController Delegate
@@ -114,12 +115,18 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
     }
     
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
         let person = people[indexPath.item]
         
-        RenameOrRemove(for: person)
+        guard let selectedCell = collectionView.cellForItem(at: indexPath) else {
+            print("Couldn't get the selected cell")
+            return
+        }
+        
+        RenameOrRemove(for: person, selectedCell: selectedCell)
     }
     
-    private func RenameOrRemove(for person: Person) {
+    private func RenameOrRemove(for person: Person, selectedCell: UICollectionViewCell) {
         
         let firstAC = UIAlertController(title: "Rename or delete ?", message: nil, preferredStyle: .actionSheet)
         
@@ -138,6 +145,7 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
                 self?.collectionView.reloadData()
             }))
             
+            ac.popoverPresentationController?.sourceView = selectedCell
             self?.present(ac, animated: true)
         }))
         
@@ -148,6 +156,7 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         }))
         
         firstAC.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        firstAC.popoverPresentationController?.sourceView = selectedCell
         
         present(firstAC, animated: true)
     }
