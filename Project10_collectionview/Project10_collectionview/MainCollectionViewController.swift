@@ -33,9 +33,30 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
 
     @objc private func addPicture() {
         
+        if UIImagePickerController.isSourceTypeAvailable(.camera) {
+            let ac = UIAlertController(title: "Select a source", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+            ac.addAction(UIAlertAction(title: "Camera", style: .default, handler: { [weak self] _ in
+                self?.showPicker(sourceType: .camera)
+            }))
+            ac.addAction(UIAlertAction(title: "Photos library", style: .default, handler: { [weak self] _ in
+                self?.showPicker(sourceType: .photoLibrary)
+            }))
+            
+            ac.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel))
+            
+            present(ac, animated: true)
+        } else {
+            self.showPicker(sourceType: .photoLibrary)
+        }
+    }
+    
+    private func showPicker(sourceType: UIImagePickerController.SourceType) {
+        
         let picker = UIImagePickerController()
         picker.allowsEditing = true
         picker.delegate = self
+        picker.sourceType = sourceType
+        
         present(picker, animated: true)
     }
     
