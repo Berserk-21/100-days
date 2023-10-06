@@ -95,19 +95,40 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         let person = people[indexPath.item]
         
-        let ac = UIAlertController(title: "Rename person", message: nil, preferredStyle: UIAlertController.Style.alert)
+        RenameOrRemove(for: person)
+    }
+    
+    private func RenameOrRemove(for person: Person) {
         
-        ac.addTextField()
+        let firstAC = UIAlertController(title: "Rename or delete ?", message: nil, preferredStyle: .actionSheet)
         
-        ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            guard let newName = ac.textFields?[0].text else {
-                print("NOPE")
-                return }
-            person.name = newName
-            self.collectionView.reloadData()
+        firstAC.addAction(UIAlertAction(title: "Rename", style: .default, handler: { [weak self] _ in
+            
+            let ac = UIAlertController(title: "Rename person", message: nil, preferredStyle: UIAlertController.Style.alert)
+            
+            ac.addTextField()
+            
+            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak ac] _ in
+                guard let newName = ac?.textFields?[0].text else {
+                    return
+                }
+                
+                person.name = newName
+                self?.collectionView.reloadData()
+            }))
+            
+            self?.present(ac, animated: true)
         }))
         
-        present(ac, animated: true)
+        firstAC.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
+            
+            self?.people.removeAll(where: { $0.name == person.name })
+            self?.collectionView.reloadData()
+        }))
+        
+        firstAC.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(firstAC, animated: true)
     }
 }
 
