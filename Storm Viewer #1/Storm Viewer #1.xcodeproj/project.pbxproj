@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C90B6F62AD00C8400682DD3 /* StormCollectionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90B6F52AD00C8400682DD3 /* StormCollectionViewController.swift */; };
+		2C90B6F82AD00CC500682DD3 /* StormCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C90B6F72AD00CC500682DD3 /* StormCollectionViewCell.swift */; };
 		2CAE32D32A864B390087D47E /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE32D22A864B390087D47E /* AppDelegate.swift */; };
 		2CAE32D52A864B390087D47E /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE32D42A864B390087D47E /* SceneDelegate.swift */; };
 		2CAE32D72A864B390087D47E /* StormTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CAE32D62A864B390087D47E /* StormTableViewController.swift */; };
@@ -27,6 +29,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		2C90B6F52AD00C8400682DD3 /* StormCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StormCollectionViewController.swift; sourceTree = "<group>"; };
+		2C90B6F72AD00CC500682DD3 /* StormCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StormCollectionViewCell.swift; sourceTree = "<group>"; };
 		2CAE32CF2A864B390087D47E /* Storm Viewer #1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Storm Viewer #1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CAE32D22A864B390087D47E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CAE32D42A864B390087D47E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -82,6 +86,8 @@
 				2CAE32D42A864B390087D47E /* SceneDelegate.swift */,
 				2CAE32D62A864B390087D47E /* StormTableViewController.swift */,
 				2CAE32FC2A8674090087D47E /* StormDetailViewController.swift */,
+				2C90B6F52AD00C8400682DD3 /* StormCollectionViewController.swift */,
+				2C90B6F72AD00CC500682DD3 /* StormCollectionViewCell.swift */,
 				2CAE32D82A864B390087D47E /* Main.storyboard */,
 				2CAE32DB2A864B3A0087D47E /* Assets.xcassets */,
 				2CAE32DD2A864B3A0087D47E /* LaunchScreen.storyboard */,
@@ -182,6 +188,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CAE32D72A864B390087D47E /* StormTableViewController.swift in Sources */,
+				2C90B6F62AD00C8400682DD3 /* StormCollectionViewController.swift in Sources */,
+				2C90B6F82AD00CC500682DD3 /* StormCollectionViewCell.swift in Sources */,
 				2CAE32FD2A8674090087D47E /* StormDetailViewController.swift in Sources */,
 				2CAE32D32A864B390087D47E /* AppDelegate.swift in Sources */,
 				2CAE32D52A864B390087D47E /* SceneDelegate.swift in Sources */,
