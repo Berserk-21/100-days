@@ -76,7 +76,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     ball.physicsBody = SKPhysicsBody(circleOfRadius: ball.size.width / 2.0)
                     ball.physicsBody?.contactTestBitMask = ball.physicsBody!.collisionBitMask
                     ball.physicsBody?.restitution = 0.4
-                    ball.position = location
+                    ball.position = CGPoint(x: location.x, y: 650.0)
                     ball.name = "ball"
                     addChild(ball)
                 }
