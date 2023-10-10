@@ -75,6 +75,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     addChild(box)
                 } else {
                     
+                    guard location.y > 500.0 else { return }
                     guard let ballImage = ballImages.randomElement() else { return }
                     
                     let ball = SKSpriteNode(imageNamed: ballImage)
