@@ -10,6 +10,14 @@ import GameplayKit
 
 class GameScene: SKScene, SKPhysicsContactDelegate {
     
+    private var scoreLabel: SKLabelNode!
+    
+    var score: Int = 0 {
+        didSet {
+            scoreLabel.text = "Score: \(score)"
+        }
+    }
+    
     override func didMove(to view: SKView) {
         let background = SKSpriteNode(imageNamed: "background.jpg")
         background.position = CGPoint(x: 512, y: 384)
@@ -30,6 +38,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         makeSlot(at: CGPoint(x: 384.0, y: 0.0), isGood: false)
         makeSlot(at: CGPoint(x: 640.0, y: 0.0), isGood: true)
         makeSlot(at: CGPoint(x: 896.0, y: 0.0), isGood: false)
+        
+        setupScoreLabel()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -56,6 +66,15 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } else if nodeB.name == "ball" {
             collisionBetween(ball: contact.bodyB.node!, object: nodeA)
         }
+    }
+    
+    private func setupScoreLabel() {
+        
+        scoreLabel = SKLabelNode(fontNamed: "Chalkduster")
+        scoreLabel.text = "Score 0"
+        scoreLabel.horizontalAlignmentMode = .right
+        scoreLabel.position = CGPoint(x: 980.0, y: 700.0)
+        addChild(scoreLabel)
     }
     
     private func makeBouncer(at position: CGPoint) {
@@ -97,8 +116,10 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private func collisionBetween(ball: SKNode, object: SKNode) {
         if object.name == "good" {
             destroy(ball: ball)
+            score += 1
         } else if object.name == "bad" {
             destroy(ball: ball)
+            score -= 1
         }
     }
     
