@@ -66,6 +66,9 @@ class GameScene: SKScene {
         slotBase.position = position
         slotGlow.position = position
         
+        slotBase.physicsBody = SKPhysicsBody(rectangleOf: slotBase.size)
+        slotBase.physicsBody?.isDynamic = false
+        
         let spin = SKAction.rotate(byAngle: .pi, duration: 10)
         let spinForever = SKAction.repeatForever(spin)
         slotGlow.run(spinForever)
