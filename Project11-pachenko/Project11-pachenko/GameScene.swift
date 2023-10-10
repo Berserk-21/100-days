@@ -12,6 +12,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     
     private var scoreLabel: SKLabelNode!
     private var editLabel: SKLabelNode!
+    private var ballsLeftLabel: SKLabelNode!
     
     private var ballImages: [String] = ["ballYellow", "ballRed", "ballBlue", "ballCyan", "ballGreen", "ballGrey", "ballPurple"]
     private var ballsLimit: Int = 5
@@ -32,6 +33,13 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
             }
         }
     }
+    
+    private var ballsCreated: Int = 0 {
+        didSet {
+            ballsLeftLabel.text = "Balls left: \(ballsLimit - ballsCreated)"
+        }
+    }
+
     
     override func didMove(to view: SKView) {
         let background = SKSpriteNode(imageNamed: "background.jpg")
@@ -56,6 +64,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         setupScoreLabel()
         setupEditLabel()
+        setupBallsLeftLabel()
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -79,7 +88,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 } else {
                     
                     guard location.y > 500.0 else { return }
-                    guard !didReachMaxBalls() else { return }
+                    guard ballsCreated < ballsLimit else { return }
                     guard let ballImage = ballImages.randomElement() else { return }
                     
                     let ball = SKSpriteNode(imageNamed: ballImage)
@@ -90,6 +99,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     ball.name = "ball"
                     addChild(ball)
                     currentBalls.append(ball)
+                    ballsCreated += 1
                 }
             }
         }
@@ -122,6 +132,14 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         editLabel.text = "Edit"
         editLabel.position = CGPoint(x: 80.0, y: 700.0)
         addChild(editLabel)
+    }
+    
+    private func setupBallsLeftLabel() {
+        
+        ballsLeftLabel = SKLabelNode(fontNamed: "Chalkduster")
+        ballsLeftLabel.text = "balls left \(ballsLimit - ballsCreated)"
+        ballsLeftLabel.position = CGPoint(x: 500.0, y: 700.0)
+        addChild(ballsLeftLabel)
     }
     
     private func makeBouncer(at position: CGPoint) {
@@ -164,6 +182,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         if object.name == "good" {
             destroy(ball: ball)
             score += 1
+            ballsCreated -= 1
         } else if object.name == "bad" {
             destroy(ball: ball)
             score -= 1
