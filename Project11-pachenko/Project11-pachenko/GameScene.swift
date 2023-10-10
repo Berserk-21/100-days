@@ -14,6 +14,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
     private var editLabel: SKLabelNode!
     
     private var ballImages: [String] = ["ballYellow", "ballRed", "ballBlue", "ballCyan", "ballGreen", "ballGrey", "ballPurple"]
+    private var ballsLimit: Int = 5
+    private var currentBalls: [SKNode] = []
     
     var score: Int = 0 {
         didSet {
@@ -76,6 +78,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                 } else {
                     
                     guard location.y > 500.0 else { return }
+                    guard !didReachMaxBalls() else { return }
                     guard let ballImage = ballImages.randomElement() else { return }
                     
                     let ball = SKSpriteNode(imageNamed: ballImage)
@@ -85,6 +88,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     ball.position = CGPoint(x: location.x, y: 650.0)
                     ball.name = "ball"
                     addChild(ball)
+                    currentBalls.append(ball)
                 }
             }
         }
@@ -173,5 +177,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         }
         
         ball.removeFromParent()
+        currentBalls.removeAll(where: { $0 == ball })
+    }
+    
+    private func didReachMaxBalls() -> Bool {
+                
+        return currentBalls.count > ballsLimit - 1
     }
 }
