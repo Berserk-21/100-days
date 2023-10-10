@@ -74,6 +74,7 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
                     box.zRotation = CGFloat.random(in: 0...3)
                     box.physicsBody = SKPhysicsBody(rectangleOf: box.size)
                     box.physicsBody?.isDynamic = false
+                    box.name = "box"
                     addChild(box)
                 } else {
                     
@@ -166,6 +167,8 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         } else if object.name == "bad" {
             destroy(ball: ball)
             score -= 1
+        } else if object.name == "box" {
+            removeObstacles(node: object)
         }
     }
     
@@ -178,6 +181,11 @@ class GameScene: SKScene, SKPhysicsContactDelegate {
         
         ball.removeFromParent()
         currentBalls.removeAll(where: { $0 == ball })
+    }
+    
+    private func removeObstacles(node: SKNode) {
+        
+        node.removeFromParent()
     }
     
     private func didReachMaxBalls() -> Bool {
