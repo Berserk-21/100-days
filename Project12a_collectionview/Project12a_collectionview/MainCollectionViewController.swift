@@ -20,6 +20,7 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         // Do any additional setup after loading the view.
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPicture))
+        loadPeople()
     }
     
     // MARK: - Methods
@@ -37,6 +38,26 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         picker.sourceType = sourceType
         
         present(picker, animated: true)
+    }
+    
+    func loadPeople() {
+        
+        let defaults = UserDefaults.standard
+        if let savedPeople = defaults.object(forKey: "people") as? Data {
+            
+            if let decodedPeople = try? NSKeyedUnarchiver.unarchiveTopLevelObjectWithData(savedPeople) as? [Person] {
+                people = decodedPeople
+                collectionView.reloadData()
+            }
+        }
+    }
+    
+    func save() {
+        if let savedData = try? NSKeyedArchiver.archivedData(withRootObject: people, requiringSecureCoding: false) {
+            let defaults = UserDefaults.standard
+            
+            defaults.set(savedData, forKey: "people")
+        }
     }
     
     // MARK: - Actions
@@ -78,6 +99,7 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
                 let person = Person(name: "Unknown", image: imageID)
                 self.people.append(person)
                 self.collectionView.reloadData()
+                self.save()
             } catch let error {
                 print("There was an error trying to save image on disk: \(error.localizedDescription)")
             }
@@ -143,6 +165,7 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
                 
                 person.name = newName
                 self?.collectionView.reloadData()
+                self?.save()
             }))
             
             ac.popoverPresentationController?.sourceView = selectedCell
@@ -153,6 +176,7 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
             
             self?.people.removeAll(where: { $0.image == person.image })
             self?.collectionView.reloadData()
+            self?.save()
         }))
         
         firstAC.addAction(UIAlertAction(title: "Cancel", style: .cancel))
