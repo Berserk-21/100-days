@@ -20,6 +20,7 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         // Do any additional setup after loading the view.
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPicture))
+        loadPeople()
     }
     
     // MARK: - Methods
@@ -37,6 +38,39 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         picker.sourceType = sourceType
         
         present(picker, animated: true)
+    }
+    
+    private func loadPeople() {
+        
+        let userDefault = UserDefaults.standard
+        
+        if let savedData = userDefault.object(forKey: "people") as? Data {
+            let jsonDecoder = JSONDecoder()
+            
+            do {
+                let people = try jsonDecoder.decode([Person].self, from: savedData)
+                print("will load \(people.count) people")
+                self.people = people
+            } catch let error {
+                print("There was en error decodind data: \(error.localizedDescription)")
+            }
+        }
+        
+    }
+    
+    private func savePeople() {
+        
+        let jsonEncoder = JSONEncoder()
+        if let savedData = try? jsonEncoder.encode(people) {
+            let defaults = UserDefaults.standard
+            
+            print("will save \(people.count) people")
+            
+            defaults.removeObject(forKey: "people")
+            defaults.set(savedData, forKey: "people")
+        } else {
+            print("There was an error saving people")
+        }
     }
     
     // MARK: - Actions
@@ -78,6 +112,7 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
                 let person = Person(name: "Unknown", image: imageID)
                 self.people.append(person)
                 self.collectionView.reloadData()
+                self.savePeople()
             } catch let error {
                 print("There was an error trying to save image on disk: \(error.localizedDescription)")
             }
@@ -143,6 +178,7 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
                 
                 person.name = newName
                 self?.collectionView.reloadData()
+                self?.savePeople()
             }))
             
             ac.popoverPresentationController?.sourceView = selectedCell
@@ -153,6 +189,7 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
             
             self?.people.removeAll(where: { $0.image == person.image })
             self?.collectionView.reloadData()
+            self?.savePeople()
         }))
         
         firstAC.addAction(UIAlertAction(title: "Cancel", style: .cancel))
