@@ -66,7 +66,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Change filter"/>
                                 <connections>
-                                    <action selector="changeFilter" destination="BYZ-38-t0r" eventType="touchUpInside" id="foD-76-p9C"/>
+                                    <action selector="changeFilter" destination="BYZ-38-t0r" eventType="touchUpInside" id="4ir-Lo-S7w"/>
                                 </connections>
                             </button>
                         </subviews>

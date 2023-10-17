@@ -47,13 +47,44 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     private func applyProcessing() {
         
-        guard let image = currentFilter.outputImage else { return }
-        currentFilter.setValue(intensitySlider.value, forKey: kCIInputIntensityKey)
+        guard let unwrappedCurrentImage = currentImage else { return }
         
-        if let cgImage = context.createCGImage(image, from: image.extent) {
+        let inputKeys = currentFilter.inputKeys
+        
+        if inputKeys.contains(kCIInputIntensityKey) {
+            currentFilter.setValue(intensitySlider.value, forKey: kCIInputIntensityKey)
+        }
+        
+        if inputKeys.contains(kCIInputRadiusKey) {
+            currentFilter.setValue(intensitySlider.value * 200, forKey: kCIInputRadiusKey)
+        }
+        
+        if inputKeys.contains(kCIInputScaleKey) {
+            currentFilter.setValue(intensitySlider.value * 10, forKey: kCIInputScaleKey)
+        }
+        
+        if inputKeys.contains(kCIInputCenterKey) {
+            currentFilter.setValue(CIVector(x: unwrappedCurrentImage.size.width / 2.0, y: unwrappedCurrentImage.size.height / 2.0), forKey: kCIInputCenterKey)
+        }
+        
+        if let cgImage = context.createCGImage(currentFilter.outputImage!, from: currentFilter.outputImage!.extent) {
             let processedImage = UIImage(cgImage: cgImage)
             editedImageView.image = processedImage
         }
+    }
+    
+    private func setFilter(action: UIAlertAction) {
+        
+        guard let unwrappedCurrentImage = currentImage else { return }
+        
+        guard let actionTitle = action.title else { return }
+        
+        currentFilter = CIFilter(name: actionTitle)
+        
+        let beginImage = CIImage(image: unwrappedCurrentImage)
+        currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+        
+        applyProcessing()
     }
     
     // MARK: - Actions
@@ -68,6 +99,17 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     @IBAction private func changeFilter() {
         
+        let ac = UIAlertController(title: "Choose filter", message: nil, preferredStyle: .actionSheet)
+        ac.addAction(UIAlertAction(title: "CIBumpDistortion", style: .default, handler: setFilter))
+        ac.addAction(UIAlertAction(title: "CIGaussianBlur", style: .default, handler: setFilter))
+        ac.addAction(UIAlertAction(title: "CIPixellate", style: .default, handler: setFilter))
+        ac.addAction(UIAlertAction(title: "CISepiaTone", style: .default, handler: setFilter))
+        ac.addAction(UIAlertAction(title: "CITwirlDistortion", style: .default, handler: setFilter))
+        ac.addAction(UIAlertAction(title: "CIUnsharpMask", style: .default, handler: setFilter))
+        ac.addAction(UIAlertAction(title: "CIVignette", style: .default, handler: setFilter))
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        
+        present(ac, animated: true)
     }
     
     @IBAction private func save() {
