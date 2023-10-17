@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import CoreImage
 
 class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
@@ -13,6 +14,9 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     private var currentImage: UIImage?
     private var originalImage: UIImage?
+    
+    private var context: CIContext!
+    private var currentFilter: CIFilter!
 
     @IBOutlet private weak var editedImageView: UIImageView!
     @IBOutlet private weak var intensitySlider: UISlider!
@@ -24,6 +28,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         // Do any additional setup after loading the view.
         
         setupLayout()
+        setupFilter()
     }
     
     // MARK: - Methods
@@ -32,6 +37,23 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         title = "Instafilter"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(importPicture))
+    }
+    
+    private func setupFilter() {
+        
+        context = CIContext()
+        currentFilter = CIFilter(name: "CISepiaTone")
+    }
+    
+    private func applyProcessing() {
+        
+        guard let image = currentFilter.outputImage else { return }
+        currentFilter.setValue(intensitySlider.value, forKey: kCIInputIntensityKey)
+        
+        if let cgImage = context.createCGImage(image, from: image.extent) {
+            let processedImage = UIImage(cgImage: cgImage)
+            editedImageView.image = processedImage
+        }
     }
     
     // MARK: - Actions
@@ -53,7 +75,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
     
     @IBAction func intensityChanged(_ sender: Any) {
-        
+        applyProcessing()
     }
     
     // MARK: - UIImage Picker Delegate
@@ -65,6 +87,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         currentImage = editedImage
         self.originalImage = originalImage
+        
+        let beginImage = CIImage(image: editedImage)
+        currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
+        
+        applyProcessing()
     }
 }
 
