@@ -114,7 +114,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     @IBAction private func save() {
         
-        guard let unwrappedCurrentImage = currentImage else { return }
+        guard let unwrappedCurrentImage = currentImage else {
+            let ac = UIAlertController(title: "Can't save", message: "There is no image to save to library", preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            self.present(ac, animated: true)
+            return
+        }
         
         UIImageWriteToSavedPhotosAlbum(unwrappedCurrentImage, self, #selector(image(_: didFinishSavingWithError: contextInfo:)), nil)
     }
