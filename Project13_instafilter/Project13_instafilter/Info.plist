@@ -4,6 +4,8 @@
 <dict>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>To import and edit photos from your library</string>
+	<key>NSPhotoLibraryAddUsageDescription</key>
+	<string>To save the edited photos in your library</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>

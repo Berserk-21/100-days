@@ -114,6 +114,21 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     
     @IBAction private func save() {
         
+        guard let unwrappedCurrentImage = currentImage else { return }
+        
+        UIImageWriteToSavedPhotosAlbum(unwrappedCurrentImage, self, #selector(image(_: didFinishSavingWithError: contextInfo:)), nil)
+    }
+    
+    @objc private func image(_ image: UIImage, didFinishSavingWithError error: Error?, contextInfo: UnsafeRawPointer) {
+        if let err = error {
+            let ac = UIAlertController(title: "Save error", message: err.localizedDescription, preferredStyle: .alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        } else {
+            let ac = UIAlertController(title: "Saved to library !", message: nil, preferredStyle: UIAlertController.Style.alert)
+            ac.addAction(UIAlertAction(title: "OK", style: .default))
+            present(ac, animated: true)
+        }
     }
     
     @IBAction func intensityChanged(_ sender: Any) {
@@ -135,5 +150,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         applyProcessing()
     }
+    
+    
 }
 
