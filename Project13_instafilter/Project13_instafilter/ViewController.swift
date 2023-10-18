@@ -19,8 +19,12 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     private var currentFilter: CIFilter!
 
     @IBOutlet private weak var editedImageView: UIImageView!
-    @IBOutlet private weak var intensitySlider: UISlider!
     @IBOutlet private weak var changeFilterButton: UIButton!
+    
+    @IBOutlet private weak var intensitySlider: UISlider!
+    @IBOutlet private weak var intensityLabel: UILabel!
+    @IBOutlet private weak var radiusSlider: UISlider!
+    @IBOutlet private weak var radiusLabel: UILabel!
     
     // MARK: - Life Cycle
     
@@ -53,15 +57,23 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         let inputKeys = currentFilter.inputKeys
         
+        intensitySlider.isEnabled = false
+        radiusSlider.isEnabled = false
+        
         if inputKeys.contains(kCIInputIntensityKey) {
+            intensitySlider.isEnabled = true
+            intensityLabel.text = "Intensity:"
             currentFilter.setValue(intensitySlider.value, forKey: kCIInputIntensityKey)
         }
         
         if inputKeys.contains(kCIInputRadiusKey) {
-            currentFilter.setValue(intensitySlider.value * 200, forKey: kCIInputRadiusKey)
+            radiusSlider.isEnabled = true
+            currentFilter.setValue(radiusSlider.value * 200, forKey: kCIInputRadiusKey)
         }
         
         if inputKeys.contains(kCIInputScaleKey) {
+            intensitySlider.isEnabled = true
+            intensityLabel.text = "Scale:"
             currentFilter.setValue(intensitySlider.value * 10, forKey: kCIInputScaleKey)
         }
         
