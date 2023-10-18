@@ -20,6 +20,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
 
     @IBOutlet private weak var editedImageView: UIImageView!
     @IBOutlet private weak var intensitySlider: UISlider!
+    @IBOutlet private weak var changeFilterButton: UIButton!
     
     // MARK: - Life Cycle
     
@@ -43,6 +44,7 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         context = CIContext()
         currentFilter = CIFilter(name: "CISepiaTone")
+        changeFilterButton.setTitle("CISepiaTone", for: .normal)
     }
     
     private func applyProcessing() {
@@ -70,14 +72,20 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         if let cgImage = context.createCGImage(currentFilter.outputImage!, from: currentFilter.outputImage!.extent) {
             let processedImage = UIImage(cgImage: cgImage)
             editedImageView.image = processedImage
+            currentImage = processedImage
         }
     }
     
     private func setFilter(action: UIAlertAction) {
         
-        guard let unwrappedCurrentImage = currentImage else { return }
+        guard let unwrappedCurrentImage = currentImage else {
+            self.presentNoImageToFilterAlert()
+            return
+        }
         
         guard let actionTitle = action.title else { return }
+        
+        changeFilterButton.setTitle(actionTitle, for: .normal)
         
         currentFilter = CIFilter(name: actionTitle)
         
@@ -85,6 +93,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         currentFilter.setValue(beginImage, forKey: kCIInputImageKey)
         
         applyProcessing()
+    }
+    
+    private func presentNoImageToFilterAlert() {
+        
+        let ac = UIAlertController(title: "No photo", message: "Please import a photo first!", preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        self.present(ac, animated: true)
     }
     
     // MARK: - Actions
@@ -98,6 +113,11 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
     }
 
     @IBAction private func changeFilter() {
+        
+        guard currentImage != nil else {
+            self.presentNoImageToFilterAlert()
+            return
+        }
         
         let ac = UIAlertController(title: "Choose filter", message: nil, preferredStyle: .actionSheet)
         ac.addAction(UIAlertAction(title: "CIBumpDistortion", style: .default, handler: setFilter))
@@ -155,7 +175,5 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         applyProcessing()
     }
-    
-    
 }
 

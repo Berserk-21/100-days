@@ -2,6 +2,7 @@
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="I6H-At-mvu">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
+        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -49,7 +50,7 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Change filter"/>
                                 <connections>
-                                    <action selector="changeFilter" destination="BYZ-38-t0r" eventType="touchUpInside" id="cKC-Pp-OIP"/>
+                                    <action selector="changeFilter" destination="BYZ-38-t0r" eventType="touchUpInside" id="AzN-KA-4RL"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Z3n-eN-NP3">
@@ -58,15 +59,6 @@
                                 <buttonConfiguration key="configuration" style="plain" title="Save"/>
                                 <connections>
                                     <action selector="save" destination="BYZ-38-t0r" eventType="touchUpInside" id="YTo-MO-wU9"/>
-                                </connections>
-                            </button>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vTI-Ql-dBk">
-                                <rect key="frame" x="16" y="780" width="121.66666666666669" height="34.333333333333371"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Change filter"/>
-                                <connections>
-                                    <action selector="changeFilter" destination="BYZ-38-t0r" eventType="touchUpInside" id="4ir-Lo-S7w"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -89,6 +81,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="Vn0-9H-Yit"/>
                     <connections>
+                        <outlet property="changeFilterButton" destination="i3d-v0-c0h" id="A0v-yF-esS"/>
                         <outlet property="editedImageView" destination="g54-jV-v8u" id="Ozw-hG-Tdg"/>
                         <outlet property="intensitySlider" destination="6Bs-WG-ULl" id="Jz8-wp-2mi"/>
                     </connections>
