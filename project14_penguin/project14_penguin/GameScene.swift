@@ -10,6 +10,8 @@ import GameplayKit
 
 class GameScene: SKScene {
     
+    // MARK: - Properties
+    
     var slots: [WhackSlot] = [WhackSlot]()
     var gameScore: SKLabelNode!
     var score = 0 {
@@ -18,7 +20,11 @@ class GameScene: SKScene {
         }
     }
     
+    var numRounds = 0
+    
     var popupTime: CGFloat = 0.85
+    
+    // MARK: - Content
     
     override func didMove(to view: SKView) {
         
@@ -59,9 +65,36 @@ class GameScene: SKScene {
         }
     }
     
+    // MARK: - Actions
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         
+        guard let touch = touches.first else { return }
+        let location = touch.location(in: self)
+        let tappedNodes = nodes(at: location)
+        
+        for node in tappedNodes {
+            
+            guard let whackSlot = node.parent?.parent as? WhackSlot else { return }
+            guard whackSlot.isVisible, !whackSlot.isHit else { return }
+            
+            if node.name == "charEnemy" {
+                whackSlot.charNode.xScale = 0.85
+                whackSlot.charNode.yScale = 0.85
+                
+                score += 1
+                run(SKAction.playSoundFileNamed("whack.caf", waitForCompletion: false))
+
+            } else if node.name == "charFriend" {
+                score -= 5
+                run(SKAction.playSoundFileNamed("whackBad.caf", waitForCompletion: false))
+            }
+            
+            whackSlot.hit()
+        }
     }
+    
+    // MARK: - Methods
     
     private func createSlot(at position: CGPoint) {
         let slot = WhackSlot()
@@ -71,6 +104,21 @@ class GameScene: SKScene {
     }
     
     private func createEnemy() {
+        
+        numRounds += 1
+        
+        if numRounds >= 30 {
+            for slot in slots {
+                slot.hide()
+            }
+            
+            let gameOver = SKSpriteNode(imageNamed: "gameOver")
+            gameOver.position = CGPoint(x: UIScreen.main.bounds.midX, y: UIScreen.main.bounds.midY)
+            gameOver.zPosition = 1
+            addChild(gameOver)
+            
+            return
+        }
         
         popupTime *= 0.991
         slots.shuffle()
