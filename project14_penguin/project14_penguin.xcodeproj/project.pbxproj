@@ -22,6 +22,7 @@
 		2CF0AD6F2AE803D60063BF71 /* penguinEvil@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CF0AD672AE803D60063BF71 /* penguinEvil@2x.png */; };
 		2CF0AD702AE803D60063BF71 /* whack.caf in Resources */ = {isa = PBXBuildFile; fileRef = 2CF0AD682AE803D60063BF71 /* whack.caf */; };
 		2CF0AD712AE803D60063BF71 /* whackBackground@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 2CF0AD692AE803D60063BF71 /* whackBackground@2x.png */; };
+		2CF0AD742AE807FA0063BF71 /* WhackSlot.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CF0AD732AE807FA0063BF71 /* WhackSlot.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -41,6 +42,7 @@
 		2CF0AD672AE803D60063BF71 /* penguinEvil@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "penguinEvil@2x.png"; sourceTree = "<group>"; };
 		2CF0AD682AE803D60063BF71 /* whack.caf */ = {isa = PBXFileReference; lastKnownFileType = file; path = whack.caf; sourceTree = "<group>"; };
 		2CF0AD692AE803D60063BF71 /* whackBackground@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "whackBackground@2x.png"; sourceTree = "<group>"; };
+		2CF0AD732AE807FA0063BF71 /* WhackSlot.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhackSlot.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +79,7 @@
 				2CF0AD4D2AE802BB0063BF71 /* GameScene.sks */,
 				2CF0AD512AE802BB0063BF71 /* GameScene.swift */,
 				2CF0AD532AE802BB0063BF71 /* GameViewController.swift */,
+				2CF0AD732AE807FA0063BF71 /* WhackSlot.swift */,
 				2CF0AD552AE802BB0063BF71 /* Main.storyboard */,
 				2CF0AD582AE802BC0063BF71 /* Assets.xcassets */,
 				2CF0AD722AE803DD0063BF71 /* content */,
@@ -182,6 +185,7 @@
 			files = (
 				2CF0AD522AE802BB0063BF71 /* GameScene.swift in Sources */,
 				2CF0AD542AE802BB0063BF71 /* GameViewController.swift in Sources */,
+				2CF0AD742AE807FA0063BF71 /* WhackSlot.swift in Sources */,
 				2CF0AD4C2AE802BB0063BF71 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -335,8 +339,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -363,8 +366,7 @@
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UIStatusBarHidden = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
