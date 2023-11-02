@@ -231,10 +231,22 @@ class ViewController: UIViewController {
     // MARK: - Actions
     
     @objc private func letterTapped(_ sender: UIButton) {
-        guard let buttonTitle = sender.titleLabel?.text else { return }
-        currentAnswerTextField.text = currentAnswerTextField.text?.appending(buttonTitle)
-        selectedButtons.append(sender)
-        sender.isHidden = true
+        
+        sender.isEnabled = false
+        
+        UIView.animate(withDuration: 0.5) {
+            sender.alpha = 0.0
+        } completion: { finished in
+            if finished {
+                guard let buttonTitle = sender.titleLabel?.text else { return }
+                self.currentAnswerTextField.text = self.currentAnswerTextField.text?.appending(buttonTitle)
+                self.selectedButtons.append(sender)
+                sender.alpha = 1.0
+                sender.isHidden = true
+            }
+            
+            sender.isEnabled = true
+        }
     }
     
     @objc private func submitTapped(_ sender: UIButton) {

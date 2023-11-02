@@ -83,7 +83,13 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         
         if let cgImage = context.createCGImage(currentFilter.outputImage!, from: currentFilter.outputImage!.extent) {
             let processedImage = UIImage(cgImage: cgImage)
+            
+            editedImageView.alpha = 0.0
             editedImageView.image = processedImage
+
+            UIView.animate(withDuration: 20) {
+                self.editedImageView.alpha = 1.0
+            }
             currentImage = processedImage
         }
     }
