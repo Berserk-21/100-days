@@ -21,14 +21,24 @@
                                 <rect key="frame" x="0.0" y="59" width="393" height="759"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mD8-t1-3Hj">
+                                <rect key="frame" x="281" y="75" width="96" height="35"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="filled" title="Map type"/>
+                                <connections>
+                                    <action selector="changeMapType:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RtZ-Ds-IUV"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ind-g1-s7z" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6dA-Uk-yGW"/>
+                            <constraint firstItem="mD8-t1-3Hj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="MfI-zt-nyX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ind-g1-s7z" secondAttribute="trailing" id="QSo-h4-Y65"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ind-g1-s7z" secondAttribute="bottom" id="ftR-4D-J8B"/>
                             <constraint firstItem="ind-g1-s7z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="knF-FU-g9C"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mD8-t1-3Hj" secondAttribute="trailing" constant="16" id="m7D-aM-w2U"/>
                         </constraints>
                     </view>
                     <connections>

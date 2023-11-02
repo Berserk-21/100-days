@@ -37,6 +37,29 @@ class ViewController: UIViewController, MKMapViewDelegate {
         mapView.addAnnotations([london, oslo, paris, rome, washington])
     }
     
+    // MARK: - Actions
+    
+    @IBAction func changeMapType(_ sender: Any) {
+        
+        let alertController = UIAlertController(title: "Select a new map style", message: nil, preferredStyle: .actionSheet)
+        
+        let satelliteAction = UIAlertAction(title: "Satellite", style: .default) { [weak self] _ in
+            self?.mapView.preferredConfiguration = MKImageryMapConfiguration()
+        }
+        let hybridAction = UIAlertAction(title: "Hybrid", style: .default) { [weak self] _ in
+            self?.mapView.preferredConfiguration = MKHybridMapConfiguration()
+        }
+        let standardAction = UIAlertAction(title: "Standard", style: UIAlertAction.Style.default) { [weak self] _ in
+            self?.mapView.preferredConfiguration = MKStandardMapConfiguration()
+        }
+        
+        alertController.addAction(satelliteAction)
+        alertController.addAction(hybridAction)
+        alertController.addAction(standardAction)
+        
+        present(alertController, animated: true)
+    }
+    
     // MARK: - MKMapViewDelegate
     
     func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
