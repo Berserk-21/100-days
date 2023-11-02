@@ -36,5 +36,39 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         mapView.addAnnotations([london, oslo, paris, rome, washington])
     }
+    
+    // MARK: - MKMapViewDelegate
+    
+    func mapView(_ mapView: MKMapView, viewFor annotation: MKAnnotation) -> MKAnnotationView? {
+        
+        guard let capitalAnnotation = annotation as? Capital else { return nil }
+        
+        let identifier: String = "Capital"
+        
+        var annotationView = mapView.dequeueReusableAnnotationView(withIdentifier: identifier)
+        
+        if annotationView == nil {
+            annotationView = MKMarkerAnnotationView(annotation: capitalAnnotation, reuseIdentifier: identifier)
+            annotationView?.canShowCallout = true
+            
+            let button = UIButton(type: .detailDisclosure)
+            annotationView?.rightCalloutAccessoryView = button
+        } else {
+            annotationView?.annotation = capitalAnnotation
+        }
+        
+        return annotationView
+    }
+    
+    func mapView(_ mapView: MKMapView, annotationView view: MKAnnotationView, calloutAccessoryControlTapped control: UIControl) {
+        guard let capitalAnnotation = view.annotation as? Capital else { return }
+        
+        let title = capitalAnnotation.title
+        let info = capitalAnnotation.info
+        
+        let ac = UIAlertController(title: title, message: info, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "OK", style: .default))
+        present(ac, animated: true)
+    }
 }
 
