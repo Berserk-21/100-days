@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController, MKMapViewDelegate {
+class ViewController: UIViewController, MKMapViewDelegate, UINavigationControllerDelegate {
     
     // MARK: - Properties
     
@@ -92,7 +92,20 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         let ac = UIAlertController(title: title, message: info, preferredStyle: .alert)
         ac.addAction(UIAlertAction(title: "OK", style: .default))
+        ac.addAction(UIAlertAction(title: "see more", style: .default, handler: { [weak self] _ in
+            
+            self?.performSegue(withIdentifier: "showWebView", sender: title)
+        }))
         present(ac, animated: true)
     }
+    
+    // MARK: - Navigation
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let nextVC = segue.destination as? WebViewController, let capitalTitle = sender as? String {
+            nextVC.capitalTitle = capitalTitle
+        }
+    }
+    
 }
 

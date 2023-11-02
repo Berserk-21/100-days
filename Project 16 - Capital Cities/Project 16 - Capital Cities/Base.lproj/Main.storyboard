@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="21701" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="9gM-ng-gu5">
     <device id="retina6_12" orientation="portrait" appearance="light"/>
     <dependencies>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21678"/>
@@ -9,45 +9,94 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="crL-D0-G1J">
+            <objects>
+                <navigationController id="9gM-ng-gu5" sceneMemberID="viewController">
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="3qE-ke-RBo">
+                        <rect key="frame" x="0.0" y="59" width="393" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="BUq-MM-ROE"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Dm9-Bz-yw2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-729" y="-27"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Project_16___Capital_Cities" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ViewController" id="BYZ-38-t0r" customClass="ViewController" customModule="Project_16___Capital_Cities" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <mapView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ind-g1-s7z">
-                                <rect key="frame" x="0.0" y="59" width="393" height="759"/>
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <standardMapConfiguration key="preferredConfiguration"/>
                             </mapView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="mD8-t1-3Hj">
-                                <rect key="frame" x="281" y="75" width="96" height="35"/>
-                                <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="filled" title="Map type"/>
-                                <connections>
-                                    <action selector="changeMapType:" destination="BYZ-38-t0r" eventType="touchUpInside" id="RtZ-Ds-IUV"/>
-                                </connections>
-                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ind-g1-s7z" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="6dA-Uk-yGW"/>
-                            <constraint firstItem="mD8-t1-3Hj" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="16" id="MfI-zt-nyX"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="ind-g1-s7z" secondAttribute="trailing" id="QSo-h4-Y65"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="ind-g1-s7z" secondAttribute="bottom" id="ftR-4D-J8B"/>
                             <constraint firstItem="ind-g1-s7z" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="knF-FU-g9C"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="mD8-t1-3Hj" secondAttribute="trailing" constant="16" id="m7D-aM-w2U"/>
                         </constraints>
                     </view>
+                    <navigationItem key="navigationItem" id="Su3-Cm-qPt">
+                        <barButtonItem key="rightBarButtonItem" title="Map type" id="VWk-z8-Rxm">
+                            <connections>
+                                <action selector="changeMapType:" destination="BYZ-38-t0r" id="gIY-2L-OV4"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                     <connections>
                         <outlet property="mapView" destination="ind-g1-s7z" id="sDl-WT-NQD"/>
+                        <segue destination="Tqy-Sh-Xrw" kind="show" identifier="showWebView" id="xYy-jx-lpa"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="130.53435114503816" y="-27.464788732394368"/>
+        </scene>
+        <!--Web View Controller-->
+        <scene sceneID="yb4-W3-f3U">
+            <objects>
+                <viewController storyboardIdentifier="WebViewController" id="Tqy-Sh-Xrw" customClass="WebViewController" customModule="Project_16___Capital_Cities" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="kLc-si-iZ1">
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <wkWebView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="f60-tU-eGb">
+                                <rect key="frame" x="0.0" y="103" width="393" height="715"/>
+                                <color key="backgroundColor" red="0.36078431370000003" green="0.38823529410000002" blue="0.4039215686" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <wkWebViewConfiguration key="configuration">
+                                    <audiovisualMediaTypes key="mediaTypesRequiringUserActionForPlayback" none="YES"/>
+                                    <wkPreferences key="preferences"/>
+                                </wkWebViewConfiguration>
+                            </wkWebView>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nxA-oi-nCt"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="nxA-oi-nCt" firstAttribute="bottom" secondItem="f60-tU-eGb" secondAttribute="bottom" id="3Y2-Ad-4Z2"/>
+                            <constraint firstItem="nxA-oi-nCt" firstAttribute="trailing" secondItem="f60-tU-eGb" secondAttribute="trailing" id="Ce5-Q3-A1u"/>
+                            <constraint firstItem="f60-tU-eGb" firstAttribute="leading" secondItem="nxA-oi-nCt" secondAttribute="leading" id="iBm-fH-J56"/>
+                            <constraint firstItem="f60-tU-eGb" firstAttribute="top" secondItem="nxA-oi-nCt" secondAttribute="top" id="xbN-JC-qLG"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="K6D-n1-flU"/>
+                    <connections>
+                        <outlet property="webView" destination="f60-tU-eGb" id="DsY-Pg-Nfs"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="KMw-9p-ilt" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="994.6564885496183" y="-27.464788732394368"/>
         </scene>
     </scenes>
     <resources>
