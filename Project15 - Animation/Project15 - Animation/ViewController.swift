@@ -25,7 +25,7 @@ class ViewController: UIViewController {
         
         sender.isHidden = true
         
-        UIView.animate(withDuration: 1.0, delay: 0.0, options: []) {
+        UIView.animate(withDuration: 1.0, delay: 0.0, usingSpringWithDamping: 0.5, initialSpringVelocity: 5, options: []) {
             switch self.currentAnimation {
             case 0:
                 self.imageView.transform = CGAffineTransform(scaleX: 2.0, y: 2.0)
