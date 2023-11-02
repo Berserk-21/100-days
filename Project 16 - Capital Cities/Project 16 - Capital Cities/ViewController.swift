@@ -49,6 +49,7 @@ class ViewController: UIViewController, MKMapViewDelegate {
         
         if annotationView == nil {
             annotationView = MKMarkerAnnotationView(annotation: capitalAnnotation, reuseIdentifier: identifier)
+            annotationView?.tintColor = .red
             annotationView?.canShowCallout = true
             
             let button = UIButton(type: .detailDisclosure)
