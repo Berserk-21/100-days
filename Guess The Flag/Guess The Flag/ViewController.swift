@@ -101,6 +101,23 @@ class ViewController: UIViewController {
         
         guard let selectedButton = sender as? UIButton else { return }
         
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.25, initialSpringVelocity: 5) {
+            selectedButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+
+        } completion: { finished in
+            if finished {
+                UIView.animate(withDuration: 0.25) {
+                    selectedButton.transform = CGAffineTransform.identity
+
+                } completion: { finished in
+                    self.presentAlert(selectedButton)
+                }
+            }
+        }
+    }
+    
+    private func presentAlert(_ selectedButton: UIButton) {
+        
         let title: String
         
         let okAction = UIAlertAction(title: "Next", style: UIAlertAction.Style.default, handler: askQuestion)
