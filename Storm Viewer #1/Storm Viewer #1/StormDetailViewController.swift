@@ -20,6 +20,8 @@ class StormDetailViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        assert(selectedImage != nil, "There is no selected image to present, please check injection")
+        
         setupTitle()
         displayImage()
         setupShareButton()
