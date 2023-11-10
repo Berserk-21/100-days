@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class ViewController: UIViewController {
     
@@ -32,6 +33,7 @@ class ViewController: UIViewController {
         setupUI()
         setupCountries()
         askQuestion()
+        registerLocalNotifications()
     }
 
     // MARK: - Methods
@@ -93,6 +95,39 @@ class ViewController: UIViewController {
         present(ac, animated: true)
         
         return
+    }
+    
+    private func registerLocalNotifications() {
+        
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert]) { granted, error in
+            if let err = error {
+                print("There was an error getting notifications authorization: \(err.localizedDescription)")
+            } else {
+                
+                if granted {
+                    self.scheduleDailyNotification()
+                }
+            }
+        }
+    }
+    
+    private func scheduleDailyNotification() {
+        
+        let center = UNUserNotificationCenter.current()
+        
+        center.removeAllPendingNotificationRequests()
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Come back!"
+        content.body = "It's been a day since you played, we miss you!"
+        content.categoryIdentifier = "dailyReminder"
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 86400, repeats: true)
+            
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        
+        center.add(request)
     }
     
     // MARK: - Actions
