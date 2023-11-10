@@ -86,19 +86,24 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         let userInfo = response.notification.request.content.userInfo
         
         if let userID = userInfo["userID"] as? String {
-            print("userID: \(userID)")
-                        
+            
+            let title: String
+            
             switch response.actionIdentifier {
             case UNNotificationDefaultActionIdentifier:
-                print("Default action tapped, open app")
+                title = "Default action tapped, open app"
             case "show":
-                print("The alarm is set every day at 3pm")
+                title = "The alarm is set every day at 3pm"
             case "remove":
-                print("alarm removed")
+                title = "alarm removed"
             default:
-                print("unrecognised action")
+                title = "unrecognised action"
                 break
             }
+            
+            let alertController = UIAlertController(title: title, message: nil, preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default))
+            present(alertController, animated: true)
         }
         
         completionHandler()
