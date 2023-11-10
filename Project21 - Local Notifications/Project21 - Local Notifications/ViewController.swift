@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class ViewController: UIViewController {
 
@@ -26,7 +27,18 @@ class ViewController: UIViewController {
     
     @objc private func registerLocalNotification() {
         
-        
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.requestAuthorization(options: [.alert, .badge, .sound]) { granted, error in
+            if let err = error {
+                print("There was an error granting notification authorization: \(err.localizedDescription)")
+            } else {
+                if granted {
+                    print("Amazing!")
+                } else {
+                    print("Why ='(")
+                }
+            }
+        }
     }
     
     @objc private func scheduleNotification() {
