@@ -20,7 +20,7 @@ class ViewController: UIViewController {
     private func setupBarButtonItems() {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register", style: .plain, target: self, action: #selector(registerLocalNotification))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Schedule", style: .plain, target: self, action: #selector(scheduleNotification))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Schedule", style: .plain, target: self, action: #selector(scheduleLocalNotification))
     }
 
     // MARK: - Actions
@@ -41,9 +41,25 @@ class ViewController: UIViewController {
         }
     }
     
-    @objc private func scheduleNotification() {
+    @objc private func scheduleLocalNotification() {
         
+        var dateComponents = DateComponents()
+        dateComponents.hour = 10
+        dateComponents.minute = 30
+//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         
+        let content = UNMutableNotificationContent()
+        content.title = "Title goes here"
+        content.body = "Main text goes here"
+        content.categoryIdentifier = "customIdentifier"
+        content.userInfo = ["customDate": "fizzbuzz"]
+        content.sound = UNNotificationSound.default
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        let notificationCenter = UNUserNotificationCenter.current()
+        
+        notificationCenter.add(request)
     }
 }
 
