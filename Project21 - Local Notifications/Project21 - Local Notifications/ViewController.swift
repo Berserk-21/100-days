@@ -8,7 +8,7 @@
 import UIKit
 import UserNotifications
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, UNUserNotificationCenterDelegate {
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +23,18 @@ class ViewController: UIViewController {
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Schedule", style: .plain, target: self, action: #selector(scheduleLocalNotification))
     }
 
+    private func registerNotificationsCategory() {
+        
+        let notificationCenter = UNUserNotificationCenter.current()
+        notificationCenter.delegate = self
+        
+        let show = UNNotificationAction(identifier: "show", title: "tell me more")
+        let remove = UNNotificationAction(identifier: "remove", title: "remove alarm")
+        let category = UNNotificationCategory(identifier: "alarm", actions: [show, remove], intentIdentifiers: [])
+        
+        notificationCenter.setNotificationCategories([category])
+    }
+    
     // MARK: - Actions
     
     @objc private func registerLocalNotification() {
@@ -43,23 +55,53 @@ class ViewController: UIViewController {
     
     @objc private func scheduleLocalNotification() {
         
-        var dateComponents = DateComponents()
-        dateComponents.hour = 10
-        dateComponents.minute = 30
+        registerNotificationsCategory()
+        
+        // Use a custom date to trigger a local notification
+//        var dateComponents = DateComponents()
+//        dateComponents.hour = 10
+//        dateComponents.minute = 30
 //        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
+        
+        // Use a timeInterval to trigger a local notification
         let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
         
         let content = UNMutableNotificationContent()
-        content.title = "Title goes here"
-        content.body = "Main text goes here"
-        content.categoryIdentifier = "customIdentifier"
-        content.userInfo = ["customDate": "fizzbuzz"]
+        content.title = "Wake up!"
+        content.body = "Time to start a new day 😎"
+        content.categoryIdentifier = "alarm"
+        content.userInfo = ["userID": "whateverID"]
         content.sound = UNNotificationSound.default
         
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         let notificationCenter = UNUserNotificationCenter.current()
         
         notificationCenter.add(request)
+    }
+    
+    // MARK: - UNUserNotificationCenter Delegate
+    
+    func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Void) {
+        
+        let userInfo = response.notification.request.content.userInfo
+        
+        if let userID = userInfo["userID"] as? String {
+            print("userID: \(userID)")
+                        
+            switch response.actionIdentifier {
+            case UNNotificationDefaultActionIdentifier:
+                print("Default action tapped, open app")
+            case "show":
+                print("The alarm is set every day at 3pm")
+            case "remove":
+                print("alarm removed")
+            default:
+                print("unrecognised action")
+                break
+            }
+        }
+        
+        completionHandler()
     }
 }
 
