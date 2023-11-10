@@ -29,10 +29,37 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         notificationCenter.delegate = self
         
         let show = UNNotificationAction(identifier: "show", title: "tell me more")
-        let remove = UNNotificationAction(identifier: "remove", title: "remove alarm")
-        let category = UNNotificationCategory(identifier: "alarm", actions: [show, remove], intentIdentifiers: [])
+        let remind = UNNotificationAction(identifier: "remind", title: "remind me later")
+        let category = UNNotificationCategory(identifier: "alarm", actions: [show, remind], intentIdentifiers: [])
         
         notificationCenter.setNotificationCategories([category])
+    }
+    
+    private func addLocalNotification(delay: Bool = false) {
+        
+        registerNotificationsCategory()
+        
+        let timeInterval: TimeInterval
+        if delay {
+            timeInterval = 86400
+        } else {
+            timeInterval = 5
+        }
+        
+        // Use a timeInterval to trigger a local notification
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: false)
+        
+        let content = UNMutableNotificationContent()
+        content.title = "Wake up!"
+        content.body = "Time to start a new day 😎"
+        content.categoryIdentifier = "alarm"
+        content.userInfo = ["userID": "whateverID"]
+        content.sound = UNNotificationSound.default
+        
+        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
+        let notificationCenter = UNUserNotificationCenter.current()
+        
+        notificationCenter.add(request)
     }
     
     // MARK: - Actions
@@ -54,29 +81,8 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
     }
     
     @objc private func scheduleLocalNotification() {
-        
-        registerNotificationsCategory()
-        
-        // Use a custom date to trigger a local notification
-//        var dateComponents = DateComponents()
-//        dateComponents.hour = 10
-//        dateComponents.minute = 30
-//        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: true)
-        
-        // Use a timeInterval to trigger a local notification
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 5, repeats: false)
-        
-        let content = UNMutableNotificationContent()
-        content.title = "Wake up!"
-        content.body = "Time to start a new day 😎"
-        content.categoryIdentifier = "alarm"
-        content.userInfo = ["userID": "whateverID"]
-        content.sound = UNNotificationSound.default
-        
-        let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
-        let notificationCenter = UNUserNotificationCenter.current()
-        
-        notificationCenter.add(request)
+                
+        addLocalNotification()
     }
     
     // MARK: - UNUserNotificationCenter Delegate
@@ -94,8 +100,9 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
                 title = "Default action tapped, open app"
             case "show":
                 title = "The alarm is set every day at 3pm"
-            case "remove":
-                title = "alarm removed"
+            case "remind":
+                title = "remind me later"
+                addLocalNotification(delay: true)
             default:
                 title = "unrecognised action"
                 break
