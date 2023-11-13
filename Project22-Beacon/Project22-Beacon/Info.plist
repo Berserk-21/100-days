@@ -4,7 +4,7 @@
 <dict>
 	<key>NSLocationAlwaysAndWhenInUseUsageDescription</key>
 	<string>We want to help you find tour nearest stores</string>
-	<key>NSLocationAlwaysUsageDescription</key>
+	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We want to help you find tour nearest stores</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
