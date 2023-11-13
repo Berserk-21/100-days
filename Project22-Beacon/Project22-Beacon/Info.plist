@@ -6,6 +6,8 @@
 	<string>We want to help you find tour nearest stores</string>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>We want to help you find tour nearest stores</string>
+	<key>Bundle identifier</key>
+	<string></string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
