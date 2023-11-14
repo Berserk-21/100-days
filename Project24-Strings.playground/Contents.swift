@@ -16,6 +16,12 @@ extension String {
         guard self.hasSuffix(suffix) else { return self }
         return String(self.dropLast(suffix.count))
     }
+    
+    // Capitalized first letter
+    var capitalizedString: String {
+        guard let firstLetter = self.first else { return "" }
+        return firstLetter.uppercased() + self.dropFirst()
+    }
 }
 
 let name = "Taylor"
@@ -36,3 +42,7 @@ password.hasSuffix("345")
 let newPwrd = password.deletingPrefix("123")
 let dropLastPwrd = password.deletingSuffix("45")
 
+// Capitalize
+let weather = "it's going to rain"
+weather.capitalized
+weather.capitalizedString
