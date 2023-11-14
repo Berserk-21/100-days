@@ -42,6 +42,18 @@ extension String {
             return prefix + self
         }
     }
+    
+    // Challenge 2
+    func isNumeric() -> Bool {
+        
+        for character in self {
+            if character.isNumber {
+                return true
+            }
+        }
+        
+        return false
+    }
 }
 
 let name = "Taylor"
@@ -102,3 +114,7 @@ let car = "car"
 
 let carpet = pet.withPrefix(car)
 carpet.withPrefix(car)
+
+// Challenge 2
+let myString = "Bad Boys 2"
+myString.isNumeric()
