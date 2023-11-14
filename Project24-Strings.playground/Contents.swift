@@ -70,3 +70,20 @@ languages.contains { string in
     return input.contains(string)
 }
 languages.contains(where: input.contains)
+
+let string = "This is a test string"
+let attributes: [NSAttributedString.Key: Any] = [
+    .foregroundColor: UIColor.white,
+    .backgroundColor: UIColor.red,
+    .font: UIFont.boldSystemFont(ofSize: 36.0)
+]
+
+let attributedString = NSAttributedString(string: string, attributes: attributes)
+
+let mutableAttributedString = NSMutableAttributedString(string: string)
+mutableAttributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 8), range: NSRange(location: 0, length: 4))
+mutableAttributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 16), range: NSRange(location: 5, length: 2))
+mutableAttributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 24), range: NSRange(location: 8, length: 1))
+mutableAttributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 32), range: NSRange(location: 10, length: 4))
+mutableAttributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 40), range: NSRange(location: 15, length: 6))
+
