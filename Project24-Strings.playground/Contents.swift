@@ -22,6 +22,17 @@ extension String {
         guard let firstLetter = self.first else { return "" }
         return firstLetter.uppercased() + self.dropFirst()
     }
+    
+    // Contains any String of an array
+    func containsAny(of array: [String]) -> Bool {
+        for item in array {
+            if self.contains(item) {
+                return true
+            }
+        }
+        
+        return false
+    }
 }
 
 let name = "Taylor"
@@ -46,3 +57,16 @@ let dropLastPwrd = password.deletingSuffix("45")
 let weather = "it's going to rain"
 weather.capitalized
 weather.capitalizedString
+
+// Contains
+let input = "Swift is like Objective-C without the C"
+input.contains("Swift")
+
+let languages = ["Python", "Ruby", "Swift"]
+languages.contains("Swift")
+input.containsAny(of: languages)
+
+languages.contains { string in
+    return input.contains(string)
+}
+languages.contains(where: input.contains)
