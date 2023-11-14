@@ -54,6 +54,18 @@ extension String {
         
         return false
     }
+    
+    // Challenge 3
+    func linesToArray() -> [String] {
+        var array: [String] = []
+        
+        let components = self.components(separatedBy: "\n")
+        for component in components {
+            array.append(component)
+        }
+        
+        return array
+    }
 }
 
 let name = "Taylor"
@@ -118,3 +130,8 @@ carpet.withPrefix(car)
 // Challenge 2
 let myString = "Bad Boys 2"
 myString.isNumeric()
+
+// Challenge 3
+let superString = "this\nis\na\ntest"
+let arrayFromString = superString.linesToArray()
+

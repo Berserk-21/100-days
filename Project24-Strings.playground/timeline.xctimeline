@@ -3,11 +3,15 @@
    version = "3.0">
    <TimelineItems>
       <LoggerValueHistoryTimelineItem
-         documentLocation = "file:///Users/berserk/Documents/XCode%20Projects/100%20days%20HWS/100-days/Project24-Strings.playground#CharacterRangeLen=16&amp;CharacterRangeLoc=2462&amp;EndingColumnNumber=20&amp;EndingLineNumber=101&amp;StartingColumnNumber=4&amp;StartingLineNumber=101&amp;Timestamp=721672384.2216001"
+         documentLocation = "file:///Users/berserk/Documents/XCode%20Projects/100%20days%20HWS/100-days/Project24-Strings.playground#CharacterRangeLen=16&amp;CharacterRangeLoc=2746&amp;EndingColumnNumber=20&amp;EndingLineNumber=113&amp;StartingColumnNumber=4&amp;StartingLineNumber=113&amp;Timestamp=721673054.332"
          selectedRepresentationIndex = "0">
       </LoggerValueHistoryTimelineItem>
       <LoggerValueHistoryTimelineItem
-         documentLocation = "file:///Users/berserk/Documents/XCode%20Projects/100%20days%20HWS/100-days/Project24-Strings.playground#CharacterRangeLen=23&amp;CharacterRangeLoc=3101&amp;EndingColumnNumber=23&amp;EndingLineNumber=108&amp;StartingColumnNumber=0&amp;StartingLineNumber=108&amp;Timestamp=721672384.221689"
+         documentLocation = "file:///Users/berserk/Documents/XCode%20Projects/100%20days%20HWS/100-days/Project24-Strings.playground#CharacterRangeLen=23&amp;CharacterRangeLoc=3385&amp;EndingColumnNumber=23&amp;EndingLineNumber=120&amp;StartingColumnNumber=0&amp;StartingLineNumber=120&amp;Timestamp=721673054.332076"
+         selectedRepresentationIndex = "0">
+      </LoggerValueHistoryTimelineItem>
+      <LoggerValueHistoryTimelineItem
+         documentLocation = "file:///Users/berserk/Documents/XCode%20Projects/100%20days%20HWS/100-days/Project24-Strings.playground#CharacterRangeLen=20&amp;CharacterRangeLoc=3657&amp;EndingColumnNumber=20&amp;EndingLineNumber=131&amp;StartingColumnNumber=0&amp;StartingLineNumber=131&amp;Timestamp=721673054.332117"
          selectedRepresentationIndex = "0">
       </LoggerValueHistoryTimelineItem>
    </TimelineItems>
