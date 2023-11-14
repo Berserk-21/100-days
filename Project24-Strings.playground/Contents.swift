@@ -33,6 +33,15 @@ extension String {
         
         return false
     }
+    
+    // Challenge 1
+    func withPrefix(_ prefix: String) -> String {
+        if self.hasPrefix(prefix) {
+            return self
+        } else {
+            return prefix + self
+        }
+    }
 }
 
 let name = "Taylor"
@@ -87,3 +96,9 @@ mutableAttributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 24)
 mutableAttributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 32), range: NSRange(location: 10, length: 4))
 mutableAttributedString.addAttribute(.font, value: UIFont.systemFont(ofSize: 40), range: NSRange(location: 15, length: 6))
 
+// Challenge 1
+let pet = "pet"
+let car = "car"
+
+let carpet = pet.withPrefix(car)
+carpet.withPrefix(car)
