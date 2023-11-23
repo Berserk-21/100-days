@@ -16,6 +16,8 @@ class PhotosCollectionViewController: UICollectionViewController, UIImagePickerC
     private var peerID = MCPeerID(displayName: UIDevice.current.name)
     private var macSession: MCSession?
     private var mcAdvertiserAssistant: MCNearbyServiceAdvertiser?
+    
+    private let serviceType: String = "hws-project25"
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -52,14 +54,14 @@ class PhotosCollectionViewController: UICollectionViewController, UIImagePickerC
     }
     
     private func startHosting(action: UIAlertAction) {
-        mcAdvertiserAssistant = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: "hws-project25")
+        mcAdvertiserAssistant = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: serviceType)
         mcAdvertiserAssistant?.delegate = self
         mcAdvertiserAssistant?.startAdvertisingPeer()
     }
     
     private func joinSession(action: UIAlertAction) {
         guard let mcSession = self.macSession else { return }
-        let mcBrowser = MCBrowserViewController(serviceType: "hws-project25", session: mcSession)
+        let mcBrowser = MCBrowserViewController(serviceType: serviceType, session: mcSession)
         mcBrowser.delegate = self
         present(mcBrowser, animated: true)
     }
