@@ -18,6 +18,7 @@ class PhotosCollectionViewController: UICollectionViewController, UIImagePickerC
         
         title = "Selfie Share"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(importPicture))
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showConnectionPrompt))
         
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
@@ -31,6 +32,22 @@ class PhotosCollectionViewController: UICollectionViewController, UIImagePickerC
         picker.allowsEditing = true
         picker.delegate = self
         present(picker, animated: true)
+    }
+    
+    @objc private func showConnectionPrompt() {
+        let ac = UIAlertController(title: "Connect to others", message: nil, preferredStyle: .alert)
+        ac.addAction(UIAlertAction(title: "Host a session", style: .default, handler: startHosting(action:)))
+        ac.addAction(UIAlertAction(title: "Join a session", style: .default, handler: joinSession(action:)))
+        ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(ac, animated: true)
+    }
+    
+    private func startHosting(action: UIAlertAction) {
+        
+    }
+    
+    private func joinSession(action: UIAlertAction) {
+        
     }
     
     // MARK: - UIImagePickerController Delegate
