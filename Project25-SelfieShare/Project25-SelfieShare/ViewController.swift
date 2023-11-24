@@ -28,7 +28,7 @@ class PhotosCollectionViewController: UICollectionViewController, UIImagePickerC
         // Do any additional setup after loading the view.
         
         title = "Selfie Share"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(importPicture))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(addMedia))
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showConnectionPrompt))
         
         let layout = UICollectionViewFlowLayout()
@@ -42,11 +42,35 @@ class PhotosCollectionViewController: UICollectionViewController, UIImagePickerC
     
     // MARK: - Actions
     
-    @objc private func importPicture() {
+    @objc private func addMedia() {
+        
+        let alertController = UIAlertController(title: nil, message: nil, preferredStyle: .actionSheet)
+        alertController.addAction(UIAlertAction(title: "import a photo", style: .default, handler: importPicture))
+        alertController.addAction(UIAlertAction(title: "send hello", style: .default, handler: sendText))
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        present(alertController, animated: true)
+    }
+    
+    @objc private func importPicture(action: UIAlertAction) {
         let picker = UIImagePickerController()
         picker.allowsEditing = true
         picker.delegate = self
         present(picker, animated: true)
+    }
+    
+    @objc private func sendText(action: UIAlertAction) {
+        
+        guard let macSession = macSession else { return }
+        if macSession.connectedPeers.count > 0 {
+            
+            let textData = Data("hello friend".utf8)
+            
+            do {
+                try macSession.send(textData, toPeers: macSession.connectedPeers, with: .reliable)
+            } catch {
+                print(error.localizedDescription)
+            }
+        }
     }
     
     @objc private func showConnectionPrompt() {
@@ -148,7 +172,6 @@ class PhotosCollectionViewController: UICollectionViewController, UIImagePickerC
     }
     
     // MARK: - MCNearbyServiceAdvertiser Delegate
-
     
     func advertiser(_ advertiser: MCNearbyServiceAdvertiser, didReceiveInvitationFromPeer peerID: MCPeerID, withContext context: Data?, invitationHandler: @escaping (Bool, MCSession?) -> Void) {
         let ac = UIAlertController(title: title, message: "\(peerID.displayName)", preferredStyle: .actionSheet)
@@ -189,6 +212,10 @@ class PhotosCollectionViewController: UICollectionViewController, UIImagePickerC
             if let image = UIImage(data: data) {
                 self?.images.append(image)
                 self?.collectionView.reloadData()
+            } else if let text = String(data: data, encoding: .utf8) {
+                let alertController = UIAlertController(title: peerID.displayName, message: text, preferredStyle: .alert)
+                alertController.addAction(UIAlertAction(title: "OK", style: .default))
+                self?.present(alertController, animated: true)
             }
         }
     }
