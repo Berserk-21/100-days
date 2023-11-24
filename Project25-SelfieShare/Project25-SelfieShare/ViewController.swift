@@ -155,7 +155,7 @@ class PhotosCollectionViewController: UICollectionViewController, UIImagePickerC
         ac.addAction(UIAlertAction(title: "Allow", style: .default, handler: { [weak self] _ in
             invitationHandler(true, self?.macSession)
         }))
-        ac.addAction(UIAlertAction(title: title, style: .destructive, handler: { [weak self] _ in
+        ac.addAction(UIAlertAction(title: "Refuse", style: .destructive, handler: { [weak self] _ in
             invitationHandler(false, self?.macSession)
         }))
         present(ac, animated: true)
