@@ -29,7 +29,10 @@ class PhotosCollectionViewController: UICollectionViewController, UIImagePickerC
         
         title = "Selfie Share"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(addMedia))
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showConnectionPrompt))
+        
+        let hostBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showConnectionPrompt))
+        let connectedDevicesBarButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(showConnectedDevices))
+        navigationItem.leftBarButtonItems = [hostBarButton, connectedDevicesBarButton]
         
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
@@ -71,6 +74,17 @@ class PhotosCollectionViewController: UICollectionViewController, UIImagePickerC
                 print(error.localizedDescription)
             }
         }
+    }
+    
+    @objc private func showConnectedDevices(action: UIAlertAction) {
+        
+        guard let macSession = macSession else { return }
+        
+        let devicesName = macSession.connectedPeers.map({ $0.displayName }).joined(separator: ", ")
+        
+        let alertController = UIAlertController(title: "Peered devices", message: devicesName, preferredStyle: .alert)
+        alertController.addAction(UIAlertAction(title: "OK", style: .default))
+        present(alertController, animated: true)
     }
     
     @objc private func showConnectionPrompt() {
