@@ -144,7 +144,6 @@ class PhotosCollectionViewController: UICollectionViewController, UIImagePickerC
     
     func browserViewControllerWasCancelled(_ browserViewController: MCBrowserViewController) {
         
-        
         dismiss(animated: true)
     }
     
@@ -171,6 +170,13 @@ class PhotosCollectionViewController: UICollectionViewController, UIImagePickerC
         case .connecting:
             print("Connecting: \(peerID.displayName)")
         case .notConnected:
+            // Challenge 1
+            let alertController = UIAlertController(title: "Disconnected peer", message: "\(peerID.displayName) has disconnected", preferredStyle: .alert)
+            alertController.addAction(UIAlertAction(title: "OK", style: .default))
+            
+            DispatchQueue.main.async {
+                self.present(alertController, animated: true)
+            }
             print("Not connected: \(peerID.displayName)")
         @unknown default:
             print("Unknown state recevived: \(peerID.displayName)")
