@@ -10,6 +10,8 @@ import MultipeerConnectivity
 
 class PhotosCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, MCBrowserViewControllerDelegate {
     
+    // MARK: - Properties
+    
     private var images = [UIImage]()
     private var collectionViewInset: CGFloat = 10.0
     
@@ -19,6 +21,8 @@ class PhotosCollectionViewController: UICollectionViewController, UIImagePickerC
     
     private let serviceType: String = "hws-project25"
 
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -158,7 +162,6 @@ class PhotosCollectionViewController: UICollectionViewController, UIImagePickerC
         present(ac, animated: true)
     }
     
-    
     // MARK: - MCSession Delegate
     
     func session(_ session: MCSession, peer peerID: MCPeerID, didChange state: MCSessionState) {
@@ -178,7 +181,7 @@ class PhotosCollectionViewController: UICollectionViewController, UIImagePickerC
         
         DispatchQueue.main.async { [weak self] in
             if let image = UIImage(data: data) {
-                self?.images.insert(image, at: 0)
+                self?.images.append(image)
                 self?.collectionView.reloadData()
             }
         }
