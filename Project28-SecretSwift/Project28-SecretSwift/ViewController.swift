@@ -8,8 +8,12 @@
 import UIKit
 
 class ViewController: UIViewController, UITextViewDelegate {
+    
+    // MARK: - Properties
 
     @IBOutlet weak var secretTextView: UITextView!
+    
+    // MARK: - Life Cycle
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -20,6 +24,10 @@ class ViewController: UIViewController, UITextViewDelegate {
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
     }
+    
+    // MARK: - Methods
+    
+    // MARK: - Actions
     
     @objc private func adjustForKeyboard(notification: Notification) {
         
@@ -38,6 +46,8 @@ class ViewController: UIViewController, UITextViewDelegate {
         let selectedRange = secretTextView.selectedRange
         secretTextView.scrollRangeToVisible(selectedRange)
     }
+    
+    // MARK: - UITextView Delegate
     
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
         
