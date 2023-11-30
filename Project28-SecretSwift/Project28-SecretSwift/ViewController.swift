@@ -24,15 +24,27 @@ class ViewController: UIViewController, UITextViewDelegate {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        setupNotificationCenterObservers()
+        setupLayout()
+    }
+    
+    // MARK: - Methods
+    
+    private func setupLayout() {
+        
+        title = hiddenTitle
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveSecretMessage))
+    }
+    
+    private func setupNotificationCenterObservers() {
+        
         let notificationCenter = NotificationCenter.default
         
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(saveSecretMessage), name: UIApplication.willResignActiveNotification, object: nil)
-        title = hiddenTitle
     }
-    
-    // MARK: - Methods
     
     private func unlockSecretMessage() {
         
