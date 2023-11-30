@@ -13,6 +13,8 @@
 		2CC9B8B82B1896D5009D7DE7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC9B8B62B1896D5009D7DE7 /* Main.storyboard */; };
 		2CC9B8BA2B1896D5009D7DE7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 2CC9B8B92B1896D5009D7DE7 /* Assets.xcassets */; };
 		2CC9B8BD2B1896D5009D7DE7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2CC9B8BB2B1896D5009D7DE7 /* LaunchScreen.storyboard */; };
+		2CC9B8C62B18C89B009D7DE7 /* KeychainItemAccessibility.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC9B8C42B18C89B009D7DE7 /* KeychainItemAccessibility.swift */; };
+		2CC9B8C72B18C89B009D7DE7 /* KeychainWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2CC9B8C52B18C89B009D7DE7 /* KeychainWrapper.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		2CC9B8B92B1896D5009D7DE7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		2CC9B8BC2B1896D5009D7DE7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		2CC9B8BE2B1896D5009D7DE7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CC9B8C42B18C89B009D7DE7 /* KeychainItemAccessibility.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainItemAccessibility.swift; sourceTree = "<group>"; };
+		2CC9B8C52B18C89B009D7DE7 /* KeychainWrapper.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeychainWrapper.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -62,6 +66,8 @@
 				2CC9B8B62B1896D5009D7DE7 /* Main.storyboard */,
 				2CC9B8B92B1896D5009D7DE7 /* Assets.xcassets */,
 				2CC9B8BB2B1896D5009D7DE7 /* LaunchScreen.storyboard */,
+				2CC9B8C42B18C89B009D7DE7 /* KeychainItemAccessibility.swift */,
+				2CC9B8C52B18C89B009D7DE7 /* KeychainWrapper.swift */,
 				2CC9B8BE2B1896D5009D7DE7 /* Info.plist */,
 			);
 			path = "Project28-SecretSwift";
@@ -139,8 +145,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				2CC9B8B52B1896D5009D7DE7 /* ViewController.swift in Sources */,
+				2CC9B8C62B18C89B009D7DE7 /* KeychainItemAccessibility.swift in Sources */,
 				2CC9B8B12B1896D5009D7DE7 /* AppDelegate.swift in Sources */,
 				2CC9B8B32B1896D5009D7DE7 /* SceneDelegate.swift in Sources */,
+				2CC9B8C72B18C89B009D7DE7 /* KeychainWrapper.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

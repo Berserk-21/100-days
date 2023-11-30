@@ -13,6 +13,10 @@ class ViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var secretTextView: UITextView!
     
+    private let secretMessageKey: String = "SecretMessage"
+    private let hiddenTitle: String = "Nothing to see here"
+    private let revealedTitle: String = "Secret stuff!"
+    
     // MARK: - Life Cycle
     
     override func viewDidLoad() {
@@ -23,9 +27,30 @@ class ViewController: UIViewController, UITextViewDelegate {
         
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        title = hiddenTitle
     }
     
     // MARK: - Methods
+    
+    private func unlockSecretMessage() {
+        
+        secretTextView.isHidden = false
+        title = revealedTitle
+        
+        if let text = KeychainWrapper.standard.string(forKey: secretMessageKey) {
+            secretTextView.text = text
+        }
+    }
+    
+    private func saveSecretMessage() {
+        
+        guard secretTextView.isHidden == false else { return }
+        
+        KeychainWrapper.standard.set(secretTextView.text, forKey: secretMessageKey)
+        secretTextView.resignFirstResponder()
+        secretTextView.isHidden = true
+        title = hiddenTitle
+    }
     
     // MARK: - Actions
     
