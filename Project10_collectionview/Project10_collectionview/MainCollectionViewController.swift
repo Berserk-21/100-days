@@ -6,12 +6,15 @@
 //
 
 import UIKit
+import LocalAuthentication
 
-class MainCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MainCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout {
     
     // MARK: - Properties
     
     var people = [Person]()
+    let interItemSpacing: CGFloat = 8.0
+    let interlineSpacing: CGFloat = 16.0
     
     // MARK: - Life Cycle
 
@@ -19,10 +22,26 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPicture))
+        setupLayout()
+        
+        hidePicturesIfNeeded()
     }
     
     // MARK: - Methods
+    
+    private func setupLayout() {
+        
+        view.backgroundColor = .white
+        collectionView.backgroundColor = .white
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPicture))
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumInteritemSpacing = interItemSpacing
+        layout.minimumLineSpacing = interlineSpacing
+        layout.sectionInset = UIEdgeInsets(top: 0.0, left: interItemSpacing, bottom: 0.0, right: interItemSpacing)
+        collectionView.collectionViewLayout = layout
+    }
     
     private func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -39,26 +58,124 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         present(picker, animated: true)
     }
     
+    private func checkAuthentification(completion: @escaping (Bool, Error?) -> ()) {
+        
+        let context = LAContext()
+        var error: NSError?
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "whatever reason"
+            
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, err in
+                
+                completion(success, err)
+            }
+        } else {
+            let error = NSError(domain: "Can't evaluate policy for authentification", code: 0)
+            completion(false, error)
+        }
+    }
+    
+    private func getPictures() {
+        
+        let imagesFolderUrl = getDocumentsDirectory()
+        
+        let fileManager = FileManager.default
+        
+        do {
+            let fileURLs = try fileManager.contentsOfDirectory(at: imagesFolderUrl, includingPropertiesForKeys: nil)
+            
+            self.people = fileURLs.compactMap { url in
+                
+                let imageName = url.lastPathComponent
+                return Person(name: "Unknown", image: imageName)
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    private func hidePicturesIfNeeded() {
+        
+        getPictures()
+        
+        collectionView.isHidden = true
+        
+        checkAuthentification { [weak self] success, error in
+            if success {
+                DispatchQueue.main.async {
+                    self?.collectionView.isHidden = false
+                }
+            } else if let authError = error as? LAError {
+                print(authError.localizedDescription)
+            }
+        }
+    }
+    
+    private func RenameOrRemove(for person: Person, selectedCell: UICollectionViewCell) {
+        
+        let firstAC = UIAlertController(title: "Rename or delete ?", message: nil, preferredStyle: .actionSheet)
+        
+        firstAC.addAction(UIAlertAction(title: "Rename", style: .default, handler: { [weak self] _ in
+            
+            let ac = UIAlertController(title: "Rename person", message: nil, preferredStyle: UIAlertController.Style.alert)
+            
+            ac.addTextField()
+            
+            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak ac] _ in
+                guard let newName = ac?.textFields?[0].text else {
+                    return
+                }
+                
+                person.name = newName
+                self?.collectionView.reloadData()
+            }))
+            
+            ac.popoverPresentationController?.sourceView = selectedCell
+            self?.present(ac, animated: true)
+        }))
+        
+        firstAC.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
+            
+            self?.people.removeAll(where: { $0.image == person.image })
+            self?.collectionView.reloadData()
+        }))
+        
+        firstAC.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        firstAC.popoverPresentationController?.sourceView = selectedCell
+        
+        present(firstAC, animated: true)
+    }
+    
     // MARK: - Actions
 
     @objc private func addPicture() {
-        
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            let ac = UIAlertController(title: "Select a source", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
-            ac.addAction(UIAlertAction(title: "Camera", style: .default, handler: { [weak self] _ in
-                self?.showPicker(sourceType: .camera)
-            }))
-            ac.addAction(UIAlertAction(title: "Photos library", style: .default, handler: { [weak self] _ in
-                self?.showPicker(sourceType: .photoLibrary)
-            }))
+                
+        checkAuthentification(completion: { [weak self] success, err in
             
-            ac.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel))
-            ac.popoverPresentationController?.sourceItem = navigationItem.leftBarButtonItem
-            
-            present(ac, animated: true)
-        } else {
-            self.showPicker(sourceType: .photoLibrary)
-        }
+            DispatchQueue.main.async {
+                if success {
+                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                        let ac = UIAlertController(title: "Select a source", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+                        ac.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
+                            self?.showPicker(sourceType: .camera)
+                        }))
+                        ac.addAction(UIAlertAction(title: "Photos library", style: .default, handler: { _ in
+                            self?.showPicker(sourceType: .photoLibrary)
+                        }))
+                        
+                        ac.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel))
+                        ac.popoverPresentationController?.sourceItem = self?.navigationItem.leftBarButtonItem
+                        
+                        self?.present(ac, animated: true)
+                    } else {
+                        self?.showPicker(sourceType: .photoLibrary)
+                    }
+                } else if let error = err {
+                    print(error.localizedDescription)
+                }
+            }
+        })
     }
     
     // MARK: - UIImagePickerController Delegate
@@ -77,7 +194,9 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
                 
                 let person = Person(name: "Unknown", image: imageID)
                 self.people.append(person)
-                self.collectionView.reloadData()
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
             } catch let error {
                 print("There was an error trying to save image on disk: \(error.localizedDescription)")
             }
@@ -126,39 +245,23 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         RenameOrRemove(for: person, selectedCell: selectedCell)
     }
     
-    private func RenameOrRemove(for person: Person, selectedCell: UICollectionViewCell) {
+    // MARK: - UICollectionViewDelegate FlowLayout
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let firstAC = UIAlertController(title: "Rename or delete ?", message: nil, preferredStyle: .actionSheet)
+        let nbOfColumn: Int = 2
+        let collectionViewWidth: CGFloat = collectionView.frame.width
         
-        firstAC.addAction(UIAlertAction(title: "Rename", style: .default, handler: { [weak self] _ in
-            
-            let ac = UIAlertController(title: "Rename person", message: nil, preferredStyle: UIAlertController.Style.alert)
-            
-            ac.addTextField()
-            
-            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak ac] _ in
-                guard let newName = ac?.textFields?[0].text else {
-                    return
-                }
-                
-                person.name = newName
-                self?.collectionView.reloadData()
-            }))
-            
-            ac.popoverPresentationController?.sourceView = selectedCell
-            self?.present(ac, animated: true)
-        }))
+        let sidePaddings: CGFloat = interItemSpacing * 2
         
-        firstAC.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
-            
-            self?.people.removeAll(where: { $0.image == person.image })
-            self?.collectionView.reloadData()
-        }))
+        let labelHeight: CGFloat = 24.0
+        let labelYPadding: CGFloat = 4.0 + 4.0
         
-        firstAC.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        firstAC.popoverPresentationController?.sourceView = selectedCell
+        let itemWidth: CGFloat = (collectionViewWidth - (interItemSpacing) - sidePaddings) / CGFloat(nbOfColumn)
+        let itemHeight: CGFloat = itemWidth + labelHeight + labelYPadding
         
-        present(firstAC, animated: true)
+        return CGSize(width: itemWidth, height: itemHeight)
     }
+    
 }
 
