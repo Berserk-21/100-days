@@ -27,6 +27,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustForKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
+        notificationCenter.addObserver(self, selector: #selector(saveSecretMessage), name: UIApplication.willResignActiveNotification, object: nil)
         title = hiddenTitle
     }
     
@@ -42,7 +43,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         }
     }
     
-    private func saveSecretMessage() {
+    @objc private func saveSecretMessage() {
         
         guard secretTextView.isHidden == false else { return }
         
@@ -53,6 +54,11 @@ class ViewController: UIViewController, UITextViewDelegate {
     }
     
     // MARK: - Actions
+    
+    @IBAction func didTapAuthenticate(_ sender: Any) {
+        
+        unlockSecretMessage()
+    }
     
     @objc private func adjustForKeyboard(notification: Notification) {
         
