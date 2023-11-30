@@ -14,7 +14,9 @@ class ViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var secretTextView: UITextView!
     
-    private let secretMessageKey: String = "SecretMessage"
+    private let secretMessageKey: String = "SecretMessageKey"
+    private let passwordKey: String = "passwordKey"
+    
     private let hiddenTitle: String = "Nothing to see here"
     private let revealedTitle: String = "Secret stuff!"
     
@@ -26,6 +28,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         
         setupNotificationCenterObservers()
         setupLayout()
+        setupAppPassword()
     }
     
     // MARK: - Methods
@@ -56,6 +59,60 @@ class ViewController: UIViewController, UITextViewDelegate {
         }
     }
     
+    private func setupAppPassword() {
+        
+        guard KeychainWrapper.standard.string(forKey: passwordKey) == nil else { return }
+        
+        let alertController = UIAlertController(title: "Create password", message: "Create a password to use this app", preferredStyle: .alert)
+        alertController.addTextField { [weak self] tf in
+            if let text = tf.text, !text.isEmpty, let unwrappedSelf = self {
+                KeychainWrapper.standard.set(text, forKey: unwrappedSelf.passwordKey)
+            }
+        }
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
+            if let tf = alertController.textFields?.first {
+                if let text = tf.text, !text.isEmpty, let unwrappedSelf = self {
+                    KeychainWrapper.standard.set(text, forKey: unwrappedSelf.passwordKey)
+                }
+            }
+        }))
+        present(alertController, animated: true)
+    }
+    
+    private func checkAppPassword() {
+        
+        guard let appPassword = KeychainWrapper.standard.string(forKey: passwordKey) else {
+            print("No password defined for the app")
+            setupAppPassword()
+            return
+        }
+        
+        let alertController = UIAlertController(title: "Password", message: "Enter the password defined for this app", preferredStyle: .alert)
+        alertController.addTextField()
+        alertController.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        alertController.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak self] _ in
+            
+            if let unwrappedSelf = self, let tf = alertController.textFields?.first {
+                if let text = tf.text, !text.isEmpty {
+                    
+                    if appPassword == text {
+                        unwrappedSelf.unlockSecretMessage()
+                    } else {
+                        let alertController = UIAlertController(title: "Wrong password", message: nil, preferredStyle: .alert)
+                        alertController.addAction(UIAlertAction(title: "OK", style: .default))
+                        alertController.addAction(UIAlertAction(title: "Try again", style: .default, handler: { _ in
+                            unwrappedSelf.checkAppPassword()
+                        }))
+                        unwrappedSelf.present(alertController, animated: true)
+                    }
+                }
+            }
+        }))
+        
+        self.present(alertController, animated: true)
+    }
+    
     @objc private func saveSecretMessage() {
         
         guard secretTextView.isHidden == false else { return }
@@ -74,14 +131,18 @@ class ViewController: UIViewController, UITextViewDelegate {
         context.localizedFallbackTitle = "Utiliser le mot de passe"
         var error: NSError?
         
-        if context.canEvaluatePolicy(.deviceOwnerAuthentication, error: &error) {
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
             let reason = "Identify yourself"
             
-            context.evaluatePolicy(.deviceOwnerAuthentication, localizedReason: reason) { [weak self] success, err in
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { [weak self] success, err in
                 
                 DispatchQueue.main.async {
                     if success {
                         self?.unlockSecretMessage()
+                    } else if let authError = err as? LAError, authError.code == .userFallback {
+                        
+                        self?.checkAppPassword()
+                        
                     } else {
                         let alertController = UIAlertController(title: "Authentication failed", message: "You could not be verified. Try again!", preferredStyle: .alert)
                         alertController.addAction(UIAlertAction(title: "OK", style: .default))
