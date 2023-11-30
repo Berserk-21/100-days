@@ -33,7 +33,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UsJ-dc-W0f">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="5Mx-j0-Bm5">
+                                <rect key="frame" x="136.33333333333334" y="438.66666666666669" width="120.66666666666666" height="44"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="44" id="d39-II-xWZ"/>
+                                </constraints>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Authenticate"/>
+                            </button>
+                            <textView hidden="YES" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="UsJ-dc-W0f">
                                 <rect key="frame" x="0.0" y="103" width="393" height="715"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <color key="textColor" systemColor="labelColor"/>
@@ -51,6 +59,8 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="UsJ-dc-W0f" secondAttribute="trailing" id="B7w-UT-hNU"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="UsJ-dc-W0f" secondAttribute="bottom" id="ER4-1J-ZdO"/>
                             <constraint firstItem="UsJ-dc-W0f" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="GHc-qb-LLf"/>
+                            <constraint firstItem="5Mx-j0-Bm5" firstAttribute="centerY" secondItem="UsJ-dc-W0f" secondAttribute="centerY" id="H7W-br-aDR"/>
+                            <constraint firstItem="5Mx-j0-Bm5" firstAttribute="centerX" secondItem="UsJ-dc-W0f" secondAttribute="centerX" id="aO5-9j-HFF"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="9bN-vp-qEE"/>
