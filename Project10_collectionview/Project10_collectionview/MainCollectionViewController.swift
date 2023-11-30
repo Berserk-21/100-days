@@ -8,11 +8,13 @@
 import UIKit
 import LocalAuthentication
 
-class MainCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class MainCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout {
     
     // MARK: - Properties
     
     var people = [Person]()
+    let interItemSpacing: CGFloat = 8.0
+    let interlineSpacing: CGFloat = 16.0
     
     // MARK: - Life Cycle
 
@@ -33,6 +35,12 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         collectionView.backgroundColor = .white
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPicture))
+        
+        let layout = UICollectionViewFlowLayout()
+        layout.minimumInteritemSpacing = interItemSpacing
+        layout.minimumLineSpacing = interlineSpacing
+        layout.sectionInset = UIEdgeInsets(top: 0.0, left: interItemSpacing, bottom: 0.0, right: interItemSpacing)
+        collectionView.collectionViewLayout = layout
     }
     
     private func getDocumentsDirectory() -> URL {
@@ -102,6 +110,41 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
                 print(authError.localizedDescription)
             }
         }
+    }
+    
+    private func RenameOrRemove(for person: Person, selectedCell: UICollectionViewCell) {
+        
+        let firstAC = UIAlertController(title: "Rename or delete ?", message: nil, preferredStyle: .actionSheet)
+        
+        firstAC.addAction(UIAlertAction(title: "Rename", style: .default, handler: { [weak self] _ in
+            
+            let ac = UIAlertController(title: "Rename person", message: nil, preferredStyle: UIAlertController.Style.alert)
+            
+            ac.addTextField()
+            
+            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak ac] _ in
+                guard let newName = ac?.textFields?[0].text else {
+                    return
+                }
+                
+                person.name = newName
+                self?.collectionView.reloadData()
+            }))
+            
+            ac.popoverPresentationController?.sourceView = selectedCell
+            self?.present(ac, animated: true)
+        }))
+        
+        firstAC.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
+            
+            self?.people.removeAll(where: { $0.image == person.image })
+            self?.collectionView.reloadData()
+        }))
+        
+        firstAC.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        firstAC.popoverPresentationController?.sourceView = selectedCell
+        
+        present(firstAC, animated: true)
     }
     
     // MARK: - Actions
@@ -202,39 +245,23 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         RenameOrRemove(for: person, selectedCell: selectedCell)
     }
     
-    private func RenameOrRemove(for person: Person, selectedCell: UICollectionViewCell) {
+    // MARK: - UICollectionViewDelegate FlowLayout
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
         
-        let firstAC = UIAlertController(title: "Rename or delete ?", message: nil, preferredStyle: .actionSheet)
+        let nbOfColumn: Int = 2
+        let collectionViewWidth: CGFloat = collectionView.frame.width
         
-        firstAC.addAction(UIAlertAction(title: "Rename", style: .default, handler: { [weak self] _ in
-            
-            let ac = UIAlertController(title: "Rename person", message: nil, preferredStyle: UIAlertController.Style.alert)
-            
-            ac.addTextField()
-            
-            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak ac] _ in
-                guard let newName = ac?.textFields?[0].text else {
-                    return
-                }
-                
-                person.name = newName
-                self?.collectionView.reloadData()
-            }))
-            
-            ac.popoverPresentationController?.sourceView = selectedCell
-            self?.present(ac, animated: true)
-        }))
+        let sidePaddings: CGFloat = interItemSpacing * 2
         
-        firstAC.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
-            
-            self?.people.removeAll(where: { $0.image == person.image })
-            self?.collectionView.reloadData()
-        }))
+        let labelHeight: CGFloat = 24.0
+        let labelYPadding: CGFloat = 4.0 + 4.0
         
-        firstAC.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        firstAC.popoverPresentationController?.sourceView = selectedCell
+        let itemWidth: CGFloat = (collectionViewWidth - (interItemSpacing) - sidePaddings) / CGFloat(nbOfColumn)
+        let itemHeight: CGFloat = itemWidth + labelHeight + labelYPadding
         
-        present(firstAC, animated: true)
+        return CGSize(width: itemWidth, height: itemHeight)
     }
+    
 }
 
