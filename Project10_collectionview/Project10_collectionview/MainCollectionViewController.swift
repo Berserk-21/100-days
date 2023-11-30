@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import LocalAuthentication
 
 class MainCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
@@ -39,26 +40,54 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         present(picker, animated: true)
     }
     
+    private func checkAuthentification(completion: @escaping (Bool, Error?) -> ()) {
+        
+        let context = LAContext()
+        var error: NSError?
+        
+        if context.canEvaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, error: &error) {
+            let reason = "whatever reason"
+            
+            context.evaluatePolicy(.deviceOwnerAuthenticationWithBiometrics, localizedReason: reason) { success, err in
+                
+                completion(success, err)
+            }
+        } else {
+            let error = NSError(domain: "Can't evaluate policy for authentification", code: 0)
+            completion(false, error)
+        }
+    }
+    
     // MARK: - Actions
 
     @objc private func addPicture() {
         
-        if UIImagePickerController.isSourceTypeAvailable(.camera) {
-            let ac = UIAlertController(title: "Select a source", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
-            ac.addAction(UIAlertAction(title: "Camera", style: .default, handler: { [weak self] _ in
-                self?.showPicker(sourceType: .camera)
-            }))
-            ac.addAction(UIAlertAction(title: "Photos library", style: .default, handler: { [weak self] _ in
-                self?.showPicker(sourceType: .photoLibrary)
-            }))
-            
-            ac.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel))
-            ac.popoverPresentationController?.sourceItem = navigationItem.leftBarButtonItem
-            
-            present(ac, animated: true)
-        } else {
-            self.showPicker(sourceType: .photoLibrary)
-        }
+        checkAuthentification(completion: { [weak self] success, err in
+            if success {
+                if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                    let ac = UIAlertController(title: "Select a source", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+                    ac.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
+                        self?.showPicker(sourceType: .camera)
+                    }))
+                    ac.addAction(UIAlertAction(title: "Photos library", style: .default, handler: { _ in
+                        self?.showPicker(sourceType: .photoLibrary)
+                    }))
+                    
+                    ac.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel))
+                    ac.popoverPresentationController?.sourceItem = self?.navigationItem.leftBarButtonItem
+                    
+                    DispatchQueue.main.async {
+                        self?.present(ac, animated: true)
+                    }
+                } else {
+                    DispatchQueue.main.async {
+                        self?.showPicker(sourceType: .photoLibrary)
+                    }
+                }
+            } else if let error = err {
+                print(error.localizedDescription)
+            }
+        })
     }
     
     // MARK: - UIImagePickerController Delegate
