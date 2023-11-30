@@ -20,10 +20,20 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPicture))
+        setupLayout()
+        
+        hidePicturesIfNeeded()
     }
     
     // MARK: - Methods
+    
+    private func setupLayout() {
+        
+        view.backgroundColor = .white
+        collectionView.backgroundColor = .white
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPicture))
+    }
     
     private func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -58,34 +68,69 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         }
     }
     
+    private func getPictures() {
+        
+        let imagesFolderUrl = getDocumentsDirectory()
+        
+        let fileManager = FileManager.default
+        
+        do {
+            let fileURLs = try fileManager.contentsOfDirectory(at: imagesFolderUrl, includingPropertiesForKeys: nil)
+            
+            self.people = fileURLs.compactMap { url in
+                
+                let imageName = url.lastPathComponent
+                return Person(name: "Unknown", image: imageName)
+            }
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
+    private func hidePicturesIfNeeded() {
+        
+        getPictures()
+        
+        collectionView.isHidden = true
+        
+        checkAuthentification { [weak self] success, error in
+            if success {
+                DispatchQueue.main.async {
+                    self?.collectionView.isHidden = false
+                }
+            } else if let authError = error as? LAError {
+                print(authError.localizedDescription)
+            }
+        }
+    }
+    
     // MARK: - Actions
 
     @objc private func addPicture() {
-        
+                
         checkAuthentification(completion: { [weak self] success, err in
-            if success {
-                if UIImagePickerController.isSourceTypeAvailable(.camera) {
-                    let ac = UIAlertController(title: "Select a source", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
-                    ac.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
-                        self?.showPicker(sourceType: .camera)
-                    }))
-                    ac.addAction(UIAlertAction(title: "Photos library", style: .default, handler: { _ in
-                        self?.showPicker(sourceType: .photoLibrary)
-                    }))
-                    
-                    ac.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel))
-                    ac.popoverPresentationController?.sourceItem = self?.navigationItem.leftBarButtonItem
-                    
-                    DispatchQueue.main.async {
+            
+            DispatchQueue.main.async {
+                if success {
+                    if UIImagePickerController.isSourceTypeAvailable(.camera) {
+                        let ac = UIAlertController(title: "Select a source", message: nil, preferredStyle: UIAlertController.Style.actionSheet)
+                        ac.addAction(UIAlertAction(title: "Camera", style: .default, handler: { _ in
+                            self?.showPicker(sourceType: .camera)
+                        }))
+                        ac.addAction(UIAlertAction(title: "Photos library", style: .default, handler: { _ in
+                            self?.showPicker(sourceType: .photoLibrary)
+                        }))
+                        
+                        ac.addAction(UIAlertAction(title: "Cancel", style: UIAlertAction.Style.cancel))
+                        ac.popoverPresentationController?.sourceItem = self?.navigationItem.leftBarButtonItem
+                        
                         self?.present(ac, animated: true)
-                    }
-                } else {
-                    DispatchQueue.main.async {
+                    } else {
                         self?.showPicker(sourceType: .photoLibrary)
                     }
+                } else if let error = err {
+                    print(error.localizedDescription)
                 }
-            } else if let error = err {
-                print(error.localizedDescription)
             }
         })
     }
@@ -106,7 +151,9 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
                 
                 let person = Person(name: "Unknown", image: imageID)
                 self.people.append(person)
-                self.collectionView.reloadData()
+                DispatchQueue.main.async {
+                    self.collectionView.reloadData()
+                }
             } catch let error {
                 print("There was an error trying to save image on disk: \(error.localizedDescription)")
             }
