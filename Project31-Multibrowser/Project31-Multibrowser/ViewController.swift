@@ -33,6 +33,14 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
         navigationItem.rightBarButtonItems = [deleteButton, addButton]
     }
     
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        if traitCollection.horizontalSizeClass == .compact {
+            stackView.axis = .vertical
+        } else {
+            stackView.axis = .horizontal
+        }
+    }
+    
     // MARK: - Setup Layout
 
     private func setDefaultTitle() {
@@ -114,5 +122,6 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
         
         return true
     }
+    
 }
 
