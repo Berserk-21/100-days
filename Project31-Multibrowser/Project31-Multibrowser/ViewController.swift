@@ -14,6 +14,8 @@ class ViewController: UIViewController {
     @IBOutlet private weak var addressBar: UITextField!
     @IBOutlet private weak var stackView: UIStackView!
     
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -25,11 +27,15 @@ class ViewController: UIViewController {
         
         navigationItem.rightBarButtonItems = [deleteButton, addButton]
     }
+    
+    // MARK: - Custom Methods
 
     private func setDefaultTitle() {
         
         title = "Multibrowser"
     }
+    
+    // MARK: - Actions
     
     @objc private func didTapAddButton() {
         
