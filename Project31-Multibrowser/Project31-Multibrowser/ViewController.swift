@@ -49,7 +49,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
     }
     
     // MARK: - Custom Methods
-    /// Adds a border width to identify visually the selected or currently active webview
+    /// Adds a border width to identify visually the selected or currently active webview.
     private func didSelect(webView: WKWebView) {
         
         selectedWebView = webView
@@ -57,6 +57,15 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
         stackView.arrangedSubviews.forEach({ $0.layer.borderWidth = 0 })
         
         selectedWebView?.layer.borderWidth = 5.0
+        
+        updateUI(for: webView)
+    }
+    
+    /// Sets the webview title as viewController title and website title as addressBar text.
+    private func updateUI(for webView: WKWebView) {
+        
+        title = webView.title
+        addressBar.text = webView.url?.absoluteString
     }
     
     // MARK: - Actions
@@ -123,5 +132,11 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
         return true
     }
     
+    // MARK: - WKNavigationDelegate
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        
+        didSelect(webView: webView)
+    }
 }
 
