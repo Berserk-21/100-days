@@ -13,7 +13,13 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
     // MARK: - Properties
 
     @IBOutlet private weak var addressBar: UITextField!
-    @IBOutlet private weak var stackView: UIStackView!
+    @IBOutlet private weak var stackView: UIStackView! {
+        didSet {
+            updateEmptyLayout()
+        }
+    }
+    
+    @IBOutlet private weak var emptyLayoutLabel: UILabel!
     
     private var selectedWebView: WKWebView?
     
@@ -66,6 +72,14 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
         
         title = webView.title
         addressBar.text = webView.url?.absoluteString
+    }
+    
+    private func updateEmptyLayout() {
+        if stackView.arrangedSubviews.isEmpty {
+            emptyLayoutLabel.isHidden = false
+        } else {
+            emptyLayoutLabel.isHidden = true
+        }
     }
     
     // MARK: - Actions
