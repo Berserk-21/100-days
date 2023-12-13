@@ -23,6 +23,8 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        addressBar.delegate = self
+        
         setDefaultTitle()
         
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton))
@@ -75,6 +77,17 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
     
     @objc private func didTapDeleteButton() {
         
+        guard let webView = selectedWebView else {
+            print("There's no selectedWebView, can't remove it")
+            return
+        }
+        
+        stackView.removeArrangedSubview(webView)
+        webView.removeFromSuperview()
+        
+        if let firstArrangedSubview = stackView.arrangedSubviews.first as? WKWebView {
+            didSelect(webView: firstArrangedSubview)
+        }
     }
     
     @objc private func didTapWebView(_ recognizer: UITapGestureRecognizer) {
@@ -92,7 +105,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
     // MARK: - UITextFieldDelegate
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let unwrappedSelectedWebView = selectedWebView, let text = textField.text, let url = URL(string: text) {
+        if let unwrappedSelectedWebView = selectedWebView, let text = textField.text, let url = URL(string: "https://\(text)") {
             unwrappedSelectedWebView.load(URLRequest(url: url))
         } else {
             print("There was an error loading a custom url")
