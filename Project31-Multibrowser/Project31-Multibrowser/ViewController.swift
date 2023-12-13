@@ -27,12 +27,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
         
         addressBar.delegate = self
         
-        setDefaultTitle()
-        
-        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton))
-        let deleteButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(didTapDeleteButton))
-        
-        navigationItem.rightBarButtonItems = [deleteButton, addButton]
+        setupLayout()
     }
     
     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
@@ -44,11 +39,24 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
     }
     
     // MARK: - Setup Layout
+    
+    private func setupLayout() {
+        
+        setDefaultTitle()
+        addRightBarButtons()
+    }
 
     private func setDefaultTitle() {
         
         title = "Multibrowser"
         addressBar.text = "https://www."
+    }
+    
+    private func addRightBarButtons() {
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton))
+        let deleteButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(didTapDeleteButton))
+        
+        navigationItem.rightBarButtonItems = [deleteButton, addButton]
     }
     
     // MARK: - Custom Methods
@@ -152,8 +160,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
         if let text = textField.text, let url = URL(string: text) {
             unwrappedSelectedWebView.load(URLRequest(url: url))
         } else {
-            print("There was an error loading a custom url")
-            emptyLayoutLabel.text = "Couldn't load the website, please double check the url"
+            print("Couldn't load the website, please double check the url")
         }
         
         textField.resignFirstResponder()
@@ -165,6 +172,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         
+        // Select the webview when it finishes loading
         didSelect(webView: webView)
     }
 }
