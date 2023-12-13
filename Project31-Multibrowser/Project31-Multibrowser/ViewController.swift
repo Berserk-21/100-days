@@ -6,8 +6,9 @@
 //
 
 import UIKit
+import WebKit
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, WKNavigationDelegate {
     
     // MARK: - Properties
 
@@ -39,7 +40,18 @@ class ViewController: UIViewController {
     
     @objc private func didTapAddButton() {
         
+        let webView = WKWebView()
+        webView.navigationDelegate = self
         
+        stackView.addArrangedSubview(webView)
+        
+        let urlString: String = "https://www.hackingwithswift.com"
+        
+        if let url = URL(string: urlString) {
+            webView.load(URLRequest(url: url))
+        } else {
+            print("There was an error with the url: \(urlString)")
+        }
     }
     
     @objc private func didTapDeleteButton() {
