@@ -98,6 +98,8 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
             print("There was an error loading a custom url")
         }
         
+        textField.resignFirstResponder()
+        
         return true
     }
 }
