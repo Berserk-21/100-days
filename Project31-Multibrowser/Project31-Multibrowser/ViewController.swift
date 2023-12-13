@@ -8,12 +8,14 @@
 import UIKit
 import WebKit
 
-class ViewController: UIViewController, WKNavigationDelegate {
+class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognizerDelegate {
     
     // MARK: - Properties
 
     @IBOutlet private weak var addressBar: UITextField!
     @IBOutlet private weak var stackView: UIStackView!
+    
+    private var selectedWebView: WKWebView?
     
     // MARK: - Life Cycle
     
@@ -29,11 +31,22 @@ class ViewController: UIViewController, WKNavigationDelegate {
         navigationItem.rightBarButtonItems = [deleteButton, addButton]
     }
     
-    // MARK: - Custom Methods
+    // MARK: - Setup Layout
 
     private func setDefaultTitle() {
         
         title = "Multibrowser"
+    }
+    
+    // MARK: - Custom Methods
+    /// Adds a border width to identify visually the selected or currently active webview
+    private func didSelect(webView: WKWebView) {
+        
+        selectedWebView = webView
+        
+        stackView.arrangedSubviews.forEach({ $0.layer.borderWidth = 0 })
+        
+        selectedWebView?.layer.borderWidth = 5.0
     }
     
     // MARK: - Actions
@@ -42,6 +55,12 @@ class ViewController: UIViewController, WKNavigationDelegate {
         
         let webView = WKWebView()
         webView.navigationDelegate = self
+        webView.layer.borderColor = UIColor.blue.cgColor
+        
+        let tapRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapWebView(_:)))
+        tapRecognizer.delegate = self
+        
+        webView.addGestureRecognizer(tapRecognizer)
         
         stackView.addArrangedSubview(webView)
         
@@ -56,7 +75,18 @@ class ViewController: UIViewController, WKNavigationDelegate {
     
     @objc private func didTapDeleteButton() {
         
-        
+    }
+    
+    @objc private func didTapWebView(_ recognizer: UITapGestureRecognizer) {
+        if let webView = recognizer.view as? WKWebView {
+            didSelect(webView: webView)
+        }
+    }
+    
+    // MARK: - UIGestureRecognizerDelegate
+
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
     }
 }
 
