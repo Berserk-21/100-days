@@ -82,7 +82,6 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
             return
         }
         
-        stackView.removeArrangedSubview(webView)
         webView.removeFromSuperview()
         
         if let firstArrangedSubview = stackView.arrangedSubviews.first as? WKWebView {
