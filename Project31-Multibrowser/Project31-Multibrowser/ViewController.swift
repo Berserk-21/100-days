@@ -17,8 +17,28 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
+        
+        setDefaultTitle()
+        
+        let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(didTapAddButton))
+        let deleteButton = UIBarButtonItem(barButtonSystemItem: .trash, target: self, action: #selector(didTapDeleteButton))
+        
+        navigationItem.rightBarButtonItems = [deleteButton, addButton]
     }
 
-
+    private func setDefaultTitle() {
+        
+        title = "Multibrowser"
+    }
+    
+    @objc private func didTapAddButton() {
+        
+        
+    }
+    
+    @objc private func didTapDeleteButton() {
+        
+        
+    }
 }
 
