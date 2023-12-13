@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognizerDelegate {
+class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognizerDelegate, UITextFieldDelegate {
     
     // MARK: - Properties
 
@@ -86,6 +86,18 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
     // MARK: - UIGestureRecognizerDelegate
 
     func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return true
+    }
+    
+    // MARK: - UITextFieldDelegate
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if let unwrappedSelectedWebView = selectedWebView, let text = textField.text, let url = URL(string: text) {
+            unwrappedSelectedWebView.load(URLRequest(url: url))
+        } else {
+            print("There was an error loading a custom url")
+        }
+        
         return true
     }
 }
