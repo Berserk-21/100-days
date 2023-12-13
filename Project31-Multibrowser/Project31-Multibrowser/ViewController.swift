@@ -13,11 +13,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
     // MARK: - Properties
 
     @IBOutlet private weak var addressBar: UITextField!
-    @IBOutlet private weak var stackView: UIStackView! {
-        didSet {
-            updateEmptyLayout()
-        }
-    }
+    @IBOutlet private weak var stackView: UIStackView!
     
     @IBOutlet private weak var emptyLayoutLabel: UILabel!
     
@@ -52,6 +48,7 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
     private func setDefaultTitle() {
         
         title = "Multibrowser"
+        addressBar.text = "https://www."
     }
     
     // MARK: - Custom Methods
@@ -68,13 +65,21 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
     }
     
     /// Sets the webview title as viewController title and website title as addressBar text.
-    private func updateUI(for webView: WKWebView) {
+    private func updateUI(for webView: WKWebView?) {
         
-        title = webView.title
-        addressBar.text = webView.url?.absoluteString
+        updateEmptyLayout()
+        
+        guard let unwrappedWebView = webView else {
+            setDefaultTitle()
+            return
+        }
+        
+        title = unwrappedWebView.title
+        addressBar.text = unwrappedWebView.url?.absoluteString
     }
     
     private func updateEmptyLayout() {
+        
         if stackView.arrangedSubviews.isEmpty {
             emptyLayoutLabel.isHidden = false
         } else {
@@ -117,6 +122,9 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
         
         if let firstArrangedSubview = stackView.arrangedSubviews.first as? WKWebView {
             didSelect(webView: firstArrangedSubview)
+        } else {
+            selectedWebView = nil
+            updateUI(for: nil)
         }
     }
     
@@ -135,10 +143,17 @@ class ViewController: UIViewController, WKNavigationDelegate, UIGestureRecognize
     // MARK: - UITextFieldDelegate
     
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
-        if let unwrappedSelectedWebView = selectedWebView, let text = textField.text, let url = URL(string: "https://\(text)") {
+        
+        guard let unwrappedSelectedWebView = selectedWebView else {
+            emptyLayoutLabel.text = "First tap on the add button then type a website url"
+            return true
+        }
+        
+        if let text = textField.text, let url = URL(string: text) {
             unwrappedSelectedWebView.load(URLRequest(url: url))
         } else {
             print("There was an error loading a custom url")
+            emptyLayoutLabel.text = "Couldn't load the website, please double check the url"
         }
         
         textField.resignFirstResponder()
