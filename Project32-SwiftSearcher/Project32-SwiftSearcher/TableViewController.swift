@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import SafariServices
 
 class TableViewController: UITableViewController {
     
@@ -47,6 +48,19 @@ class TableViewController: UITableViewController {
         
         return titleString
     }
+    
+    private func showTutorial(for projectIndex: Int) {
+        
+        if let url = URL(string: "https://www.hackingwithswift.com/read/\(projectIndex + 1)") {
+            
+            let configuration = SFSafariViewController.Configuration()
+            configuration.entersReaderIfAvailable = true
+            
+            let safariController = SFSafariViewController(url: url, configuration: configuration)
+            present(safariController, animated: true)
+        }
+        
+    }
 
     // MARK: - UITableView DataSource
     
@@ -62,6 +76,13 @@ class TableViewController: UITableViewController {
         cell.textLabel?.attributedText = makeAttributedString(for: project)
         
         return cell
+    }
+    
+    // MARK: - UITableView Delegate
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        showTutorial(for: indexPath.row)
     }
 }
 
