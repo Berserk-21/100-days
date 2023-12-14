@@ -48,8 +48,8 @@ class TableViewController: UITableViewController {
     
     private func prepareFavorites() {
         
-        if let favorites = UserDefaults.standard.object(forKey: favoritesTutorialKey) as? [Int] {
-            self.favorites = favorites
+        if let existingFavorites = UserDefaults.standard.object(forKey: favoritesTutorialKey) as? [Int] {
+            self.favorites = existingFavorites
         }
     }
     
@@ -76,7 +76,6 @@ class TableViewController: UITableViewController {
             let safariController = SFSafariViewController(url: url, configuration: configuration)
             present(safariController, animated: true)
         }
-        
     }
 
     // MARK: - UITableView DataSource
@@ -112,7 +111,9 @@ class TableViewController: UITableViewController {
         
         switch editingStyle {
         case .delete:
-            favorites.removeAll(where: { $0 == indexPath.row })
+            if let index = favorites.firstIndex(of: indexPath.row) {
+                favorites.remove(at: index)
+            }
         case .insert:
             favorites.append(indexPath.row)
         default:
