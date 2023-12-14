@@ -31,7 +31,7 @@
 /* Begin PBXFileReference section */
 		2C90B6F52AD00C8400682DD3 /* StormCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StormCollectionViewController.swift; sourceTree = "<group>"; };
 		2C90B6F72AD00CC500682DD3 /* StormCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StormCollectionViewCell.swift; sourceTree = "<group>"; };
-		2CAE32CF2A864B390087D47E /* Storm Viewer #1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Storm Viewer #1.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CAE32CF2A864B390087D47E /* Project 1 - Storm Viewer.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project 1 - Storm Viewer.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CAE32D22A864B390087D47E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CAE32D42A864B390087D47E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2CAE32D62A864B390087D47E /* StormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StormTableViewController.swift; sourceTree = "<group>"; };
@@ -66,7 +66,7 @@
 		2CAE32C62A864B390087D47E = {
 			isa = PBXGroup;
 			children = (
-				2CAE32D12A864B390087D47E /* Storm Viewer #1 */,
+				2CAE32D12A864B390087D47E /* Project 1 - Storm Viewer */,
 				2CAE32D02A864B390087D47E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -74,12 +74,12 @@
 		2CAE32D02A864B390087D47E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2CAE32CF2A864B390087D47E /* Storm Viewer #1.app */,
+				2CAE32CF2A864B390087D47E /* Project 1 - Storm Viewer.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2CAE32D12A864B390087D47E /* Storm Viewer #1 */ = {
+		2CAE32D12A864B390087D47E /* Project 1 - Storm Viewer */ = {
 			isa = PBXGroup;
 			children = (
 				2CAE32D22A864B390087D47E /* AppDelegate.swift */,
@@ -103,15 +103,15 @@
 				2CAE32EB2A864C8C0087D47E /* nssl0051.jpg */,
 				2CAE32EE2A864C8C0087D47E /* nssl0091.jpg */,
 			);
-			path = "Storm Viewer #1";
+			path = "Project 1 - Storm Viewer";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2CAE32CE2A864B390087D47E /* Storm Viewer #1 */ = {
+		2CAE32CE2A864B390087D47E /* Project 1 - Storm Viewer */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2CAE32E32A864B3A0087D47E /* Build configuration list for PBXNativeTarget "Storm Viewer #1" */;
+			buildConfigurationList = 2CAE32E32A864B3A0087D47E /* Build configuration list for PBXNativeTarget "Project 1 - Storm Viewer" */;
 			buildPhases = (
 				2CAE32CB2A864B390087D47E /* Sources */,
 				2CAE32CC2A864B390087D47E /* Frameworks */,
@@ -121,9 +121,9 @@
 			);
 			dependencies = (
 			);
-			name = "Storm Viewer #1";
+			name = "Project 1 - Storm Viewer";
 			productName = "Storm Viewer #1";
-			productReference = 2CAE32CF2A864B390087D47E /* Storm Viewer #1.app */;
+			productReference = 2CAE32CF2A864B390087D47E /* Project 1 - Storm Viewer.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -141,7 +141,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2CAE32CA2A864B390087D47E /* Build configuration list for PBXProject "Storm Viewer #1" */;
+			buildConfigurationList = 2CAE32CA2A864B390087D47E /* Build configuration list for PBXProject "Project 1 - Storm Viewer" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -154,7 +154,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2CAE32CE2A864B390087D47E /* Storm Viewer #1 */,
+				2CAE32CE2A864B390087D47E /* Project 1 - Storm Viewer */,
 			);
 		};
 /* End PBXProject section */
@@ -341,7 +341,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DFZ4MU84W6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Storm Viewer #1/Info.plist";
+				INFOPLIST_FILE = "Project 1 - Storm Viewer/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -369,7 +369,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DFZ4MU84W6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Storm Viewer #1/Info.plist";
+				INFOPLIST_FILE = "Project 1 - Storm Viewer/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -391,7 +391,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2CAE32CA2A864B390087D47E /* Build configuration list for PBXProject "Storm Viewer #1" */ = {
+		2CAE32CA2A864B390087D47E /* Build configuration list for PBXProject "Project 1 - Storm Viewer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2CAE32E12A864B3A0087D47E /* Debug */,
@@ -400,7 +400,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2CAE32E32A864B3A0087D47E /* Build configuration list for PBXNativeTarget "Storm Viewer #1" */ = {
+		2CAE32E32A864B3A0087D47E /* Build configuration list for PBXNativeTarget "Project 1 - Storm Viewer" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2CAE32E42A864B3A0087D47E /* Debug */,
