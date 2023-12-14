@@ -89,15 +89,17 @@ class TableViewController: UITableViewController {
         
         let attributeSet = CSSearchableItemAttributeSet(contentType: .text)
         attributeSet.identifier = project[0]
+        attributeSet.title = attributeSet.identifier
+        attributeSet.displayName = attributeSet.identifier
         attributeSet.contentDescription = project[1]
         
-        let item = CSSearchableItem(uniqueIdentifier: "\(item)", domainIdentifier: "com.hackingwithswift", attributeSet: attributeSet)
+        let item = CSSearchableItem(uniqueIdentifier: "com.hackingwithswift_bersker21+\(item)", domainIdentifier: "com.hackingwithswift_bersker21", attributeSet: attributeSet)
         item.expirationDate = .distantFuture
         CSSearchableIndex.default().indexSearchableItems([item]) { error in
             if let err = error {
                 print("There was an error indexing: \(err.localizedDescription)")
             } else {
-                print("search item successfully indexed!")
+                print("search item successfully indexed!: \(attributeSet.identifier)")
             }
         }
     }
@@ -154,8 +156,11 @@ class TableViewController: UITableViewController {
             if let index = favorites.firstIndex(of: indexPath.row) {
                 favorites.remove(at: index)
             }
+            
+            deindex(item: indexPath.row)
         case .insert:
             favorites.append(indexPath.row)
+            index(item: indexPath.row)
         default:
             break
         }
