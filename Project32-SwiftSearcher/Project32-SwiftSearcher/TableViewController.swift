@@ -13,6 +13,7 @@ class TableViewController: UITableViewController {
     // MARK: - Properties
     
     private var projects = [[String]]()
+    private var favorites = [Int]()
 
     // MARK: - Life Cycle
     
@@ -20,12 +21,20 @@ class TableViewController: UITableViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        prepareData()
+        prepareTableView()
+        prepareTutorials()
+        prepareFavorites()
     }
 
     // MARK: - Custom Methods
     
-    private func prepareData() {
+    private func prepareTableView() {
+        
+        tableView.isEditing = true
+        tableView.allowsSelectionDuringEditing = true
+    }
+    
+    private func prepareTutorials() {
         projects.append(["Project 1: Storm Viewer", "Constants and variables, UITableView, UIImageView, FileManager, storyboards"])
         projects.append(["Project 2: Guess the Flag", "@2x and @3x images, asset catalogs, integers, doubles, floats, operators (+= and -=), UIButton, enums, CALayer, UIColor, random numbers, actions, string interpolation, UIAlertController"])
         projects.append(["Project 3: Social Media", "UIBarButtonItem, UIActivityViewController, the Social framework, URL"])
@@ -34,6 +43,13 @@ class TableViewController: UITableViewController {
         projects.append(["Project 6: Auto Layout", "Get to grips with Auto Layout using practical examples and code"])
         projects.append(["Project 7: Whitehouse Petitions", "JSON, Data, UITabBarController"])
         projects.append(["Project 8: 7 Swifty Words", "addTarget(), enumerated(), count, index(of:), property observers, range operators."])
+    }
+    
+    private func prepareFavorites() {
+        
+        if let favorites = UserDefaults.standard.object(forKey: "favoritesTutorial") as? [Int] {
+            self.favorites = favorites
+        }
     }
     
     private func makeAttributedString(for project: [String]) -> NSAttributedString {
@@ -74,6 +90,7 @@ class TableViewController: UITableViewController {
         let project = projects[indexPath.row]
         
         cell.textLabel?.attributedText = makeAttributedString(for: project)
+        cell.editingAccessoryType = favorites.contains(indexPath.row) ? .checkmark : .none
         
         return cell
     }
@@ -83,6 +100,11 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         showTutorial(for: indexPath.row)
+    }
+    
+    override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        
+        return favorites.contains(indexPath.row) ? .delete : .insert
     }
 }
 
