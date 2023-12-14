@@ -34,6 +34,19 @@ class TableViewController: UITableViewController {
         projects.append(["Project 7: Whitehouse Petitions", "JSON, Data, UITabBarController"])
         projects.append(["Project 8: 7 Swifty Words", "addTarget(), enumerated(), count, index(of:), property observers, range operators."])
     }
+    
+    private func makeAttributedString(for project: [String]) -> NSAttributedString {
+        
+        let titleAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.font: UIFont.preferredFont(forTextStyle: .headline), NSAttributedString.Key.foregroundColor: UIColor.purple]
+        let titleString = NSMutableAttributedString(string: project[0] + "\n", attributes: titleAttributes)
+        
+        let subtitleAttributes: [NSAttributedString.Key: Any] = [.font: UIFont.preferredFont(forTextStyle: .subheadline)]
+        let subtitleString = NSAttributedString(string: project[1], attributes: subtitleAttributes)
+        
+        titleString.append(subtitleString)
+        
+        return titleString
+    }
 
     // MARK: - UITableView DataSource
     
@@ -46,7 +59,7 @@ class TableViewController: UITableViewController {
         
         let project = projects[indexPath.row]
         
-        cell.textLabel?.text = "\(project[0]), \(project[1])"
+        cell.textLabel?.attributedText = makeAttributedString(for: project)
         
         return cell
     }
