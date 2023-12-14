@@ -7,6 +7,8 @@
 
 import UIKit
 import SafariServices
+import CoreSpotlight
+import MobileCoreServices
 
 class TableViewController: UITableViewController {
     
@@ -75,6 +77,44 @@ class TableViewController: UITableViewController {
             
             let safariController = SFSafariViewController(url: url, configuration: configuration)
             present(safariController, animated: true)
+        }
+    }
+    
+    /// Indexes an item to be accessible through Spotlight searches system.
+    private func index(item: Int) {
+        
+        guard projects.count > item else { return }
+        
+        let project = projects[item]
+        
+        let attributeSet = CSSearchableItemAttributeSet(contentType: .text)
+        attributeSet.identifier = project[0]
+        attributeSet.contentDescription = project[1]
+        
+        let item = CSSearchableItem(uniqueIdentifier: "\(item)", domainIdentifier: "com.hackingwithswift", attributeSet: attributeSet)
+        item.expirationDate = .distantFuture
+        CSSearchableIndex.default().indexSearchableItems([item]) { error in
+            if let err = error {
+                print("There was an error indexing: \(err.localizedDescription)")
+            } else {
+                print("search item successfully indexed!")
+            }
+        }
+    }
+    
+    /// Removes an item indexation from Spotlight searches.
+    private func deindex(item: Int) {
+        
+        guard projects.count > item else { return }
+        
+        let identifiers: [String] = ["\(item)"]
+        
+        CSSearchableIndex.default().deleteSearchableItems(withIdentifiers: identifiers) { error in
+            if let err = error {
+                print("There was an error deleting searchableItem: \(item): \(err.localizedDescription)")
+            } else {
+                print("item \(item) successfully deleted")
+            }
         }
     }
 
