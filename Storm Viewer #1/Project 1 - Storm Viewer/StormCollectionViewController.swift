@@ -1,6 +1,6 @@
 //
 //  StormCollectionViewController.swift
-//  Storm Viewer #1
+//  Project 1 - Storm Viewer
 //
 //  Created by Berserk on 06/10/2023.
 //

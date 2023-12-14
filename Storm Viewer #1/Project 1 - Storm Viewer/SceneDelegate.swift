@@ -1,6 +1,6 @@
 //
 //  SceneDelegate.swift
-//  Storm Viewer #1
+//  Project 1 - Storm Viewer
 //
 //  Created by Berserk on 11/08/2023.
 //
