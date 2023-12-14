@@ -14,6 +14,7 @@ class TableViewController: UITableViewController {
     
     private var projects = [[String]]()
     private var favorites = [Int]()
+    private var favoritesTutorialKey: String = "favoritesTutorial"
 
     // MARK: - Life Cycle
     
@@ -47,7 +48,7 @@ class TableViewController: UITableViewController {
     
     private func prepareFavorites() {
         
-        if let favorites = UserDefaults.standard.object(forKey: "favoritesTutorial") as? [Int] {
+        if let favorites = UserDefaults.standard.object(forKey: favoritesTutorialKey) as? [Int] {
             self.favorites = favorites
         }
     }
@@ -105,6 +106,22 @@ class TableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         
         return favorites.contains(indexPath.row) ? .delete : .insert
+    }
+    
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        
+        switch editingStyle {
+        case .delete:
+            favorites.removeAll(where: { $0 == indexPath.row })
+        case .insert:
+            favorites.append(indexPath.row)
+        default:
+            break
+        }
+        
+        UserDefaults.standard.set(favorites, forKey: favoritesTutorialKey)
+        
+        tableView.reloadRows(at: [indexPath], with: .none)
     }
 }
 
