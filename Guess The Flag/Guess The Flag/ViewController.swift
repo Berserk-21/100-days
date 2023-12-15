@@ -8,7 +8,7 @@
 import UIKit
 import UserNotifications
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
     // MARK: - Properties
 
@@ -30,15 +30,15 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        setupUI()
-        setupCountries()
+        setupLayout()
+        loadCountries()
         askQuestion()
         registerLocalNotifications()
     }
 
-    // MARK: - Methods
+    // MARK: - Setup Layout
     
-    private func setupUI() {
+    private func setupLayout() {
      
         view.backgroundColor = .lightGray
 
@@ -55,46 +55,11 @@ class ViewController: UIViewController {
         bottomButton.layer.borderWidth = 2
     }
     
-    private func setupCountries() {
+    // MARK: - Custom Methods
+    
+    private func loadCountries() {
         
         countries += ["estonia", "france", "germany", "ireland", "italy", "monaco", "nigeria", "poland", "russia", "spain", "uk", "us"]
-    }
-
-    @objc private func askQuestion(action: UIAlertAction? = nil) {
-        
-        guard numberOfQuestions < maxNumberOfQuestions else {
-            
-            presentEndResults()
-            return
-        }
-        
-        numberOfQuestions += 1
-        
-        numberOfQuestionsLabel.text = "\(numberOfQuestions)/\(maxNumberOfQuestions)"
-        
-        countries.shuffle()
-        correctAnswer = Int.random(in: 0...2)
-        
-        title = countries[correctAnswer].capitalized
-        
-        topButton.setImage(UIImage(named: countries[0]), for: .normal)
-        midButton.setImage(UIImage(named: countries[1]), for: .normal)
-        bottomButton.setImage(UIImage(named: countries[2]), for: .normal)
-    }
-    
-    private func presentEndResults() {
-        
-        let ac = UIAlertController(title: "End results", message: "Your final score is \(score)", preferredStyle: UIAlertController.Style.alert)
-        let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
-            self.score = 0
-            self.numberOfQuestions = 0
-            self.askQuestion()
-        }
-        
-        ac.addAction(okAction)
-        present(ac, animated: true)
-        
-        return
     }
     
     private func registerLocalNotifications() {
@@ -112,6 +77,23 @@ class ViewController: UIViewController {
         }
     }
     
+    /// Present the final score in an alertController.
+    private func presentEndResults() {
+        
+        let ac = UIAlertController(title: "End results", message: "Your final score is \(score)", preferredStyle: UIAlertController.Style.alert)
+        let okAction = UIAlertAction(title: "Ok", style: .default) { _ in
+            self.score = 0
+            self.numberOfQuestions = 0
+            self.askQuestion()
+        }
+        
+        ac.addAction(okAction)
+        present(ac, animated: true)
+        
+        return
+    }
+    
+    /// Schedule a local notification 24h after the current execution. 60sec in DEBUG mode.
     private func scheduleDailyNotification() {
         
         let center = UNUserNotificationCenter.current()
@@ -123,35 +105,22 @@ class ViewController: UIViewController {
         content.body = "It's been a day since you played, we miss you!"
         content.categoryIdentifier = "dailyReminder"
         
-        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: 86400, repeats: true)
+        let timeInterval: TimeInterval
+        #if DEBUG
+        // Put 60 seconds in DEBUG mode to easily test the local notification
+        timeInterval = 60
+        #else
+        timeInterval = 86400
+        #endif
+        
+        let trigger = UNTimeIntervalNotificationTrigger(timeInterval: timeInterval, repeats: true)
             
         let request = UNNotificationRequest(identifier: UUID().uuidString, content: content, trigger: trigger)
         
         center.add(request)
     }
     
-    // MARK: - Actions
-    
-    @IBAction func flagWasTapped(_ sender: Any) {
-        
-        guard let selectedButton = sender as? UIButton else { return }
-        
-        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.25, initialSpringVelocity: 5) {
-            selectedButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
-
-        } completion: { finished in
-            if finished {
-                UIView.animate(withDuration: 0.25) {
-                    selectedButton.transform = CGAffineTransform.identity
-
-                } completion: { finished in
-                    self.presentAlert(selectedButton)
-                }
-            }
-        }
-    }
-    
-    private func presentAlert(_ selectedButton: UIButton) {
+    private func PresentRightOrWrongAlert(_ selectedButton: UIButton) {
         
         let title: String
         
@@ -175,6 +144,49 @@ class ViewController: UIViewController {
             let alertController = UIAlertController(title: title, message: "That's the flag of \(countries[selectedButton.tag].capitalized)", preferredStyle: .alert)
             alertController.addAction(okAction)
             present(alertController, animated: true)
+        }
+    }
+    
+    // MARK: - Actions
+
+    @objc private func askQuestion(action: UIAlertAction? = nil) {
+        
+        guard numberOfQuestions < maxNumberOfQuestions else {
+            
+            presentEndResults()
+            return
+        }
+        
+        numberOfQuestions += 1
+        
+        numberOfQuestionsLabel.text = "\(numberOfQuestions)/\(maxNumberOfQuestions)"
+        
+        countries.shuffle()
+        correctAnswer = Int.random(in: 0...2)
+        
+        title = countries[correctAnswer].capitalized
+        
+        topButton.setImage(UIImage(named: countries[0]), for: .normal)
+        midButton.setImage(UIImage(named: countries[1]), for: .normal)
+        bottomButton.setImage(UIImage(named: countries[2]), for: .normal)
+    }
+    
+    @IBAction func flagWasTapped(_ sender: Any) {
+        
+        guard let selectedButton = sender as? UIButton else { return }
+        
+        UIView.animate(withDuration: 0.5, delay: 0.0, usingSpringWithDamping: 0.25, initialSpringVelocity: 5) {
+            selectedButton.transform = CGAffineTransform(scaleX: 0.9, y: 0.9)
+
+        } completion: { finished in
+            if finished {
+                UIView.animate(withDuration: 0.25) {
+                    selectedButton.transform = CGAffineTransform.identity
+
+                } completion: { finished in
+                    self.PresentRightOrWrongAlert(selectedButton)
+                }
+            }
         }
     }
     
