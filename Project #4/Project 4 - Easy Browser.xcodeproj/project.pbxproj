@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2C2C0BF72AA4D6A100A1383C /* Project #4.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project #4.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C2C0BF72AA4D6A100A1383C /* Project 4 - Easy Browser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project 4 - Easy Browser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C2C0BFA2AA4D6A100A1383C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C2C0BFC2AA4D6A100A1383C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2C2C0BFE2AA4D6A100A1383C /* WebviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebviewViewController.swift; sourceTree = "<group>"; };
@@ -42,7 +42,7 @@
 		2C2C0BEE2AA4D6A100A1383C = {
 			isa = PBXGroup;
 			children = (
-				2C2C0BF92AA4D6A100A1383C /* Project #4 */,
+				2C2C0BF92AA4D6A100A1383C /* Project 4 - Easy Browser */,
 				2C2C0BF82AA4D6A100A1383C /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,12 +50,12 @@
 		2C2C0BF82AA4D6A100A1383C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2C2C0BF72AA4D6A100A1383C /* Project #4.app */,
+				2C2C0BF72AA4D6A100A1383C /* Project 4 - Easy Browser.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2C2C0BF92AA4D6A100A1383C /* Project #4 */ = {
+		2C2C0BF92AA4D6A100A1383C /* Project 4 - Easy Browser */ = {
 			isa = PBXGroup;
 			children = (
 				2C2C0BFA2AA4D6A100A1383C /* AppDelegate.swift */,
@@ -67,15 +67,15 @@
 				2C2C0C052AA4D6A100A1383C /* LaunchScreen.storyboard */,
 				2C2C0C082AA4D6A100A1383C /* Info.plist */,
 			);
-			path = "Project #4";
+			path = "Project 4 - Easy Browser";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2C2C0BF62AA4D6A100A1383C /* Project #4 */ = {
+		2C2C0BF62AA4D6A100A1383C /* Project 4 - Easy Browser */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2C2C0C0B2AA4D6A100A1383C /* Build configuration list for PBXNativeTarget "Project #4" */;
+			buildConfigurationList = 2C2C0C0B2AA4D6A100A1383C /* Build configuration list for PBXNativeTarget "Project 4 - Easy Browser" */;
 			buildPhases = (
 				2C2C0BF32AA4D6A100A1383C /* Sources */,
 				2C2C0BF42AA4D6A100A1383C /* Frameworks */,
@@ -85,9 +85,9 @@
 			);
 			dependencies = (
 			);
-			name = "Project #4";
+			name = "Project 4 - Easy Browser";
 			productName = "Project #4";
-			productReference = 2C2C0BF72AA4D6A100A1383C /* Project #4.app */;
+			productReference = 2C2C0BF72AA4D6A100A1383C /* Project 4 - Easy Browser.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -105,7 +105,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2C2C0BF22AA4D6A100A1383C /* Build configuration list for PBXProject "Project #4" */;
+			buildConfigurationList = 2C2C0BF22AA4D6A100A1383C /* Build configuration list for PBXProject "Project 4 - Easy Browser" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -118,7 +118,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2C2C0BF62AA4D6A100A1383C /* Project #4 */,
+				2C2C0BF62AA4D6A100A1383C /* Project 4 - Easy Browser */,
 			);
 		};
 /* End PBXProject section */
@@ -293,7 +293,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DFZ4MU84W6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Project #4/Info.plist";
+				INFOPLIST_FILE = "${PRODUCT_NAME}/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -322,7 +322,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DFZ4MU84W6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Project #4/Info.plist";
+				INFOPLIST_FILE = "${PRODUCT_NAME}/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -345,7 +345,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2C2C0BF22AA4D6A100A1383C /* Build configuration list for PBXProject "Project #4" */ = {
+		2C2C0BF22AA4D6A100A1383C /* Build configuration list for PBXProject "Project 4 - Easy Browser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C2C0C092AA4D6A100A1383C /* Debug */,
@@ -354,7 +354,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2C2C0C0B2AA4D6A100A1383C /* Build configuration list for PBXNativeTarget "Project #4" */ = {
+		2C2C0C0B2AA4D6A100A1383C /* Build configuration list for PBXNativeTarget "Project 4 - Easy Browser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C2C0C0C2AA4D6A100A1383C /* Debug */,
