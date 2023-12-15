@@ -17,7 +17,7 @@
                BlueprintIdentifier = "2CAE32CE2A864B390087D47E"
                BuildableName = "Social Media #3.app"
                BlueprintName = "Social Media #3"
-               ReferencedContainer = "container:Social media #3.xcodeproj">
+               ReferencedContainer = "container:Social Media #3.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -46,7 +46,7 @@
             BlueprintIdentifier = "2CAE32CE2A864B390087D47E"
             BuildableName = "Social Media #3.app"
             BlueprintName = "Social Media #3"
-            ReferencedContainer = "container:Social media #3.xcodeproj">
+            ReferencedContainer = "container:Social Media #3.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -63,7 +63,7 @@
             BlueprintIdentifier = "2CAE32CE2A864B390087D47E"
             BuildableName = "Social Media #3.app"
             BlueprintName = "Social Media #3"
-            ReferencedContainer = "container:Social media #3.xcodeproj">
+            ReferencedContainer = "container:Social Media #3.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>

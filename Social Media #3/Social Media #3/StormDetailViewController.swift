@@ -7,11 +7,11 @@
 
 import UIKit
 
-class StormDetailViewController: UIViewController {
+final class StormDetailViewController: UIViewController {
     
     // MARK: - Properties
     
-    @IBOutlet private var imageView: UIImageView!
+    @IBOutlet weak private var imageView: UIImageView!
     
     var selectedImage: String?
      
@@ -34,7 +34,7 @@ class StormDetailViewController: UIViewController {
         navigationController?.hidesBarsOnTap = false
     }
     
-    // MARK: - Methods
+    // MARK: - Setup Layout
     
     private func setupTitle() {
     
@@ -43,6 +43,8 @@ class StormDetailViewController: UIViewController {
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .action, target: self, action: #selector(shareTapped))
         navigationItem.largeTitleDisplayMode = .never
     }
+    
+    // MARK: - Custom Methods
     
     private func displayImage() {
         

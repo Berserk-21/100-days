@@ -7,11 +7,11 @@
 
 import UIKit
 
-class StormTableViewController: UITableViewController {
+final class StormTableViewController: UITableViewController {
 
     // MARK: - Properties
     
-    var images = [String]()
+    private var images = [String]()
     
     // MARK: - Life Cycle
 
@@ -23,13 +23,15 @@ class StormTableViewController: UITableViewController {
         addImages()
     }
     
-    // MARK: - Methods
+    // MARK: - Setup Layout
     
     private func setupTitle() {
         
         navigationController?.navigationBar.prefersLargeTitles = true
         title = "Storm Viewer"
     }
+    
+    // MARK: - Custom Methods
     
     private func addImages() {
         
