@@ -28,7 +28,8 @@ final class StormTableViewController: UITableViewController {
     private func setupTitle() {
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        title = "Storm Viewer"
+        navigationItem.title = "Storm Viewer"
+        tabBarItem.title = "TableView layout"
     }
     
     // MARK: - Custom Methods
@@ -53,6 +54,8 @@ final class StormTableViewController: UITableViewController {
                 images.append(file)
             }
         }
+        
+        images.sort()
         
         DispatchQueue.main.async {
             self.tableView.reloadData()

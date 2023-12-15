@@ -18,12 +18,25 @@ final class StormCollectionViewController: UICollectionViewController, UICollect
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setupTitle()
+        loadImages()
+    }
+    
+    // MARK: - Setup Layout
+    
+    private func setupTitle() {
+        
+        tabBarItem.title = "CollectionView layout"
+    }
+    
+    // MARK: - Methods
+    
+    private func loadImages() {
+        
         DispatchQueue.global(qos: .background).async {
             self.addImages()
         }
     }
-    
-    // MARK: - Methods
     
     private func addImages() {
         
