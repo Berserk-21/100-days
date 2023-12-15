@@ -27,7 +27,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2CAE32CF2A864B390087D47E /* Social Media #3.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Social Media #3.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CAE32CF2A864B390087D47E /* Project 3 - Social Media.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project 3 - Social Media.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CAE32D22A864B390087D47E /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CAE32D42A864B390087D47E /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2CAE32D62A864B390087D47E /* StormTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StormTableViewController.swift; sourceTree = "<group>"; };
@@ -62,7 +62,7 @@
 		2CAE32C62A864B390087D47E = {
 			isa = PBXGroup;
 			children = (
-				2CAE32D12A864B390087D47E /* Social Media #3 */,
+				2CAE32D12A864B390087D47E /* Project 3 - Social Media */,
 				2CAE32D02A864B390087D47E /* Products */,
 			);
 			sourceTree = "<group>";
@@ -70,12 +70,12 @@
 		2CAE32D02A864B390087D47E /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2CAE32CF2A864B390087D47E /* Social Media #3.app */,
+				2CAE32CF2A864B390087D47E /* Project 3 - Social Media.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2CAE32D12A864B390087D47E /* Social Media #3 */ = {
+		2CAE32D12A864B390087D47E /* Project 3 - Social Media */ = {
 			isa = PBXGroup;
 			children = (
 				2CAE32D22A864B390087D47E /* AppDelegate.swift */,
@@ -97,15 +97,15 @@
 				2CAE32EB2A864C8C0087D47E /* nssl0051.jpg */,
 				2CAE32EE2A864C8C0087D47E /* nssl0091.jpg */,
 			);
-			path = "Social Media #3";
+			path = "Project 3 - Social Media";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2CAE32CE2A864B390087D47E /* Social Media #3 */ = {
+		2CAE32CE2A864B390087D47E /* Project 3 - Social Media */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2CAE32E32A864B3A0087D47E /* Build configuration list for PBXNativeTarget "Social Media #3" */;
+			buildConfigurationList = 2CAE32E32A864B3A0087D47E /* Build configuration list for PBXNativeTarget "Project 3 - Social Media" */;
 			buildPhases = (
 				2CAE32CB2A864B390087D47E /* Sources */,
 				2CAE32CC2A864B390087D47E /* Frameworks */,
@@ -115,9 +115,9 @@
 			);
 			dependencies = (
 			);
-			name = "Social Media #3";
+			name = "Project 3 - Social Media";
 			productName = "Storm Viewer #1";
-			productReference = 2CAE32CF2A864B390087D47E /* Social Media #3.app */;
+			productReference = 2CAE32CF2A864B390087D47E /* Project 3 - Social Media.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -135,7 +135,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2CAE32CA2A864B390087D47E /* Build configuration list for PBXProject "Social Media #3" */;
+			buildConfigurationList = 2CAE32CA2A864B390087D47E /* Build configuration list for PBXProject "Project 3 - Social Media" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -148,7 +148,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2CAE32CE2A864B390087D47E /* Social Media #3 */,
+				2CAE32CE2A864B390087D47E /* Project 3 - Social Media */,
 			);
 		};
 /* End PBXProject section */
@@ -383,7 +383,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2CAE32CA2A864B390087D47E /* Build configuration list for PBXProject "Social Media #3" */ = {
+		2CAE32CA2A864B390087D47E /* Build configuration list for PBXProject "Project 3 - Social Media" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2CAE32E12A864B3A0087D47E /* Debug */,
@@ -392,7 +392,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2CAE32E32A864B3A0087D47E /* Build configuration list for PBXNativeTarget "Social Media #3" */ = {
+		2CAE32E32A864B3A0087D47E /* Build configuration list for PBXNativeTarget "Project 3 - Social Media" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2CAE32E42A864B3A0087D47E /* Debug */,
