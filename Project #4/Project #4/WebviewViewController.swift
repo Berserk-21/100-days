@@ -8,7 +8,7 @@
 import UIKit
 import WebKit
 
-class WebviewViewController: UIViewController, WKNavigationDelegate {
+final class WebviewViewController: UIViewController, WKNavigationDelegate {
     
     // MARK: - Properties
     
@@ -31,24 +31,7 @@ class WebviewViewController: UIViewController, WKNavigationDelegate {
         addProgressObserver()
     }
     
-    // MARK: - Methods
-    
-    private func setupWebView() {
-        
-        webView = WKWebView()
-        webView.navigationDelegate = self
-        
-        webView.translatesAutoresizingMaskIntoConstraints = false
-        view.addSubview(webView)
-        webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
-        webView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        webView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
-        webView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
-        
-        guard let unwrappedSelectedWebsite = selectedWebsite, let url = URL(string: "https://www.\(unwrappedSelectedWebsite).com") else { return }
-        webView.load(URLRequest(url: url))
-        webView.allowsBackForwardNavigationGestures = true
-    }
+    // MARK: - Setup Layout
     
     private func setupNavBar() {
         
@@ -72,10 +55,28 @@ class WebviewViewController: UIViewController, WKNavigationDelegate {
         navigationController?.isToolbarHidden = false
     }
     
+    // MARK: - Custom Methods
+    
+    private func setupWebView() {
+        
+        webView = WKWebView()
+        webView.navigationDelegate = self
+        
+        webView.translatesAutoresizingMaskIntoConstraints = false
+        view.addSubview(webView)
+        webView.topAnchor.constraint(equalTo: view.safeAreaLayoutGuide.topAnchor).isActive = true
+        webView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        webView.leftAnchor.constraint(equalTo: view.leftAnchor).isActive = true
+        webView.rightAnchor.constraint(equalTo: view.rightAnchor).isActive = true
+        
+        guard let unwrappedSelectedWebsite = selectedWebsite, let url = URL(string: "https://www.\(unwrappedSelectedWebsite).com") else { return }
+        webView.load(URLRequest(url: url))
+        webView.allowsBackForwardNavigationGestures = true
+    }
+    
     private func addProgressObserver() {
         
         webView.addObserver(self, forKeyPath: #keyPath(WKWebView.estimatedProgress), options: .new, context: nil)
-        
     }
     
     override func observeValue(forKeyPath keyPath: String?, of object: Any?, change: [NSKeyValueChangeKey : Any]?, context: UnsafeMutableRawPointer?) {
@@ -84,6 +85,8 @@ class WebviewViewController: UIViewController, WKNavigationDelegate {
             progressiveView.progress = Float(webView.estimatedProgress)
         }
     }
+    
+    // MARK: - Actions
 
     @objc private func openTapped() {
         
@@ -100,7 +103,6 @@ class WebviewViewController: UIViewController, WKNavigationDelegate {
     }
     
     @objc private func refresh() {
-        
         webView.reload()
     }
     

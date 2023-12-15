@@ -7,7 +7,7 @@
 
 import UIKit
 
-class WebsitesTableViewController: UITableViewController {
+final class WebsitesTableViewController: UITableViewController {
     
     // MARK: - Properties
     
