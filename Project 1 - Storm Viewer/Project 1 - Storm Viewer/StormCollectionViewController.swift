@@ -12,6 +12,8 @@ final class StormCollectionViewController: UICollectionViewController, UICollect
     // MARK: - Properties
     
     private var stormImages: [String] = []
+    private let minimumLineSpacing: CGFloat = 4.0
+    private let minimumInterItemSpacing: CGFloat = 4.0
     
     // MARK: - Life Cycle
 
@@ -86,6 +88,21 @@ final class StormCollectionViewController: UICollectionViewController, UICollect
     }
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumInteritemSpacingForSectionAt section: Int) -> CGFloat {
-        return 0.0
+        return 4.0
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let nbOfColumns: Int = 2
+        
+        let interItemSpacings = minimumInterItemSpacing * (CGFloat(nbOfColumns - 1))
+
+        let availableWidth: CGFloat = collectionView.frame.width - interItemSpacings
+        
+        let itemWidth: CGFloat = availableWidth / CGFloat(nbOfColumns)
+        
+        let itemSize = CGSize(width: itemWidth, height: itemWidth)
+        
+        return itemSize
     }
 }
