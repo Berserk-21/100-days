@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StormDetailViewController: UIViewController {
+final class StormDetailViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -37,7 +37,7 @@ class StormDetailViewController: UIViewController {
         navigationController?.hidesBarsOnTap = false
     }
     
-    // MARK: - Methods
+    // MARK: - Setup Layout
     
     private func setupTitle() {
     

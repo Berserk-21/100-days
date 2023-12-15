@@ -7,7 +7,7 @@
 
 import UIKit
 
-class StormCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
+final class StormCollectionViewController: UICollectionViewController, UICollectionViewDelegateFlowLayout {
     
     // MARK: - Properties
     

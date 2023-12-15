@@ -7,11 +7,11 @@
 
 import UIKit
 
-class StormTableViewController: UITableViewController {
+final class StormTableViewController: UITableViewController {
 
     // MARK: - Properties
     
-    var images = [String]()
+    private var images = [String]()
     
     // MARK: - Life Cycle
 
@@ -20,13 +20,10 @@ class StormTableViewController: UITableViewController {
         // Do any additional setup after loading the view.
         
         setupTitle()
-        
-        DispatchQueue.global(qos: .background).async {
-            self.addImages()
-        }
+        loadImages()
     }
     
-    // MARK: - Methods
+    // MARK: - Setup Layout
     
     private func setupTitle() {
         
@@ -34,7 +31,16 @@ class StormTableViewController: UITableViewController {
         title = "Storm Viewer"
     }
     
-    @objc private func addImages() {
+    // MARK: - Custom Methods
+    
+    private func loadImages() {
+        
+        DispatchQueue.global(qos: .background).async {
+            self.addImages()
+        }
+    }
+    
+    private func addImages() {
         
         let fileManager = FileManager.default
         
