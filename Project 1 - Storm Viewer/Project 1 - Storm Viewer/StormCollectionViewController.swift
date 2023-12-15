@@ -81,6 +81,16 @@ final class StormCollectionViewController: UICollectionViewController, UICollect
         return stormImages.count
     }
     
+    // MARK: - UICollectionView Delegate
+    
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let stormDetailVC = storyboard?.instantiateViewController(withIdentifier: "StormDetailViewController") as? StormDetailViewController else { return }
+
+        stormDetailVC.selectedImage = stormImages[indexPath.row]
+
+        self.navigationController?.pushViewController(stormDetailVC, animated: true)
+    }
+    
     // MARK: - UICollectionView Delegate Flow Layout
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, minimumLineSpacingForSectionAt section: Int) -> CGFloat {
