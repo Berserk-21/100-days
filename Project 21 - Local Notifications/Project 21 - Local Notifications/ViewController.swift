@@ -8,8 +8,10 @@
 import UIKit
 import UserNotifications
 
-class ViewController: UIViewController, UNUserNotificationCenterDelegate {
+final class ViewController: UIViewController, UNUserNotificationCenterDelegate {
 
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
@@ -17,12 +19,16 @@ class ViewController: UIViewController, UNUserNotificationCenterDelegate {
         setupBarButtonItems()
     }
 
+    // MARK: - Setup Layout
+    
     private func setupBarButtonItems() {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register", style: .plain, target: self, action: #selector(registerLocalNotification))
         navigationItem.leftBarButtonItem = UIBarButtonItem(title: "Schedule", style: .plain, target: self, action: #selector(scheduleLocalNotification))
     }
 
+    // MARK: - Custom Methods
+    
     private func registerNotificationsCategory() {
         
         let notificationCenter = UNUserNotificationCenter.current()
