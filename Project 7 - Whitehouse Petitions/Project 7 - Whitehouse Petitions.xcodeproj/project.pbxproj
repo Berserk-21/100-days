@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2C27AC712ABB286A0007CBE1 /* project7 HWS - whitehouse petitions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "project7 HWS - whitehouse petitions.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C27AC712ABB286A0007CBE1 /* Project 7 - Whitehouse Petitions.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project 7 - Whitehouse Petitions.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C27AC742ABB286A0007CBE1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C27AC762ABB286A0007CBE1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2C27AC782ABB286A0007CBE1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,7 +42,7 @@
 		2C27AC682ABB286A0007CBE1 = {
 			isa = PBXGroup;
 			children = (
-				2C27AC732ABB286A0007CBE1 /* project7 HWS - whitehouse petitions */,
+				2C27AC732ABB286A0007CBE1 /* Project 7 - Whitehouse Petitions */,
 				2C27AC722ABB286A0007CBE1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,12 +50,12 @@
 		2C27AC722ABB286A0007CBE1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2C27AC712ABB286A0007CBE1 /* project7 HWS - whitehouse petitions.app */,
+				2C27AC712ABB286A0007CBE1 /* Project 7 - Whitehouse Petitions.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2C27AC732ABB286A0007CBE1 /* project7 HWS - whitehouse petitions */ = {
+		2C27AC732ABB286A0007CBE1 /* Project 7 - Whitehouse Petitions */ = {
 			isa = PBXGroup;
 			children = (
 				2C27AC742ABB286A0007CBE1 /* AppDelegate.swift */,
@@ -67,15 +67,15 @@
 				2C27AC7F2ABB286B0007CBE1 /* LaunchScreen.storyboard */,
 				2C27AC822ABB286B0007CBE1 /* Info.plist */,
 			);
-			path = "project7 HWS - whitehouse petitions";
+			path = "Project 7 - Whitehouse Petitions";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2C27AC702ABB286A0007CBE1 /* project7 HWS - whitehouse petitions */ = {
+		2C27AC702ABB286A0007CBE1 /* Project 7 - Whitehouse Petitions */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2C27AC852ABB286B0007CBE1 /* Build configuration list for PBXNativeTarget "project7 HWS - whitehouse petitions" */;
+			buildConfigurationList = 2C27AC852ABB286B0007CBE1 /* Build configuration list for PBXNativeTarget "Project 7 - Whitehouse Petitions" */;
 			buildPhases = (
 				2C27AC6D2ABB286A0007CBE1 /* Sources */,
 				2C27AC6E2ABB286A0007CBE1 /* Frameworks */,
@@ -85,9 +85,9 @@
 			);
 			dependencies = (
 			);
-			name = "project7 HWS - whitehouse petitions";
+			name = "Project 7 - Whitehouse Petitions";
 			productName = "project7 HWS - whitehouse petitions";
-			productReference = 2C27AC712ABB286A0007CBE1 /* project7 HWS - whitehouse petitions.app */;
+			productReference = 2C27AC712ABB286A0007CBE1 /* Project 7 - Whitehouse Petitions.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -105,7 +105,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2C27AC6C2ABB286A0007CBE1 /* Build configuration list for PBXProject "project7 HWS - whitehouse petitions" */;
+			buildConfigurationList = 2C27AC6C2ABB286A0007CBE1 /* Build configuration list for PBXProject "Project 7 - Whitehouse Petitions" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -118,7 +118,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2C27AC702ABB286A0007CBE1 /* project7 HWS - whitehouse petitions */,
+				2C27AC702ABB286A0007CBE1 /* Project 7 - Whitehouse Petitions */,
 			);
 		};
 /* End PBXProject section */
@@ -293,7 +293,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MPQUCXTDKQ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "project7 HWS - whitehouse petitions/Info.plist";
+				INFOPLIST_FILE = "${PRODUCT_NAME}/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -304,7 +304,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "berserk.project7-HWS---whitehouse-petitions";
+				PRODUCT_BUNDLE_IDENTIFIER = "berserk.Project7-WhitehousePetitions";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -321,7 +321,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MPQUCXTDKQ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "project7 HWS - whitehouse petitions/Info.plist";
+				INFOPLIST_FILE = "${PRODUCT_NAME}/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -332,7 +332,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "berserk.project7-HWS---whitehouse-petitions";
+				PRODUCT_BUNDLE_IDENTIFIER = "berserk.Project7-WhitehousePetitions";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -343,7 +343,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2C27AC6C2ABB286A0007CBE1 /* Build configuration list for PBXProject "project7 HWS - whitehouse petitions" */ = {
+		2C27AC6C2ABB286A0007CBE1 /* Build configuration list for PBXProject "Project 7 - Whitehouse Petitions" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C27AC832ABB286B0007CBE1 /* Debug */,
@@ -352,7 +352,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2C27AC852ABB286B0007CBE1 /* Build configuration list for PBXNativeTarget "project7 HWS - whitehouse petitions" */ = {
+		2C27AC852ABB286B0007CBE1 /* Build configuration list for PBXNativeTarget "Project 7 - Whitehouse Petitions" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C27AC862ABB286B0007CBE1 /* Debug */,
