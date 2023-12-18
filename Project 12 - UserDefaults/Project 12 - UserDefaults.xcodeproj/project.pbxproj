@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2C8AA65E2ACD6EC900142A47 /* Project12a_collectionview.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project12a_collectionview.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C8AA65E2ACD6EC900142A47 /* Project 12 - UserDefaults.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project 12 - UserDefaults.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C8AA6612ACD6EC900142A47 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C8AA6632ACD6EC900142A47 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2C8AA6652ACD6EC900142A47 /* MainCollectionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainCollectionViewController.swift; sourceTree = "<group>"; };
@@ -44,7 +44,7 @@
 		2C8AA6552ACD6EC900142A47 = {
 			isa = PBXGroup;
 			children = (
-				2C8AA6602ACD6EC900142A47 /* Project12a_collectionview */,
+				2C8AA6602ACD6EC900142A47 /* Project 12 - UserDefaults */,
 				2C8AA65F2ACD6EC900142A47 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,12 +52,12 @@
 		2C8AA65F2ACD6EC900142A47 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2C8AA65E2ACD6EC900142A47 /* Project12a_collectionview.app */,
+				2C8AA65E2ACD6EC900142A47 /* Project 12 - UserDefaults.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2C8AA6602ACD6EC900142A47 /* Project12a_collectionview */ = {
+		2C8AA6602ACD6EC900142A47 /* Project 12 - UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
 				2C8AA6612ACD6EC900142A47 /* AppDelegate.swift */,
@@ -70,15 +70,15 @@
 				2C8AA66C2ACD6ECA00142A47 /* LaunchScreen.storyboard */,
 				2C8AA66F2ACD6ECA00142A47 /* Info.plist */,
 			);
-			path = Project12a_collectionview;
+			path = "Project 12 - UserDefaults";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2C8AA65D2ACD6EC900142A47 /* Project12a_collectionview */ = {
+		2C8AA65D2ACD6EC900142A47 /* Project 12 - UserDefaults */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2C8AA6722ACD6ECA00142A47 /* Build configuration list for PBXNativeTarget "Project12a_collectionview" */;
+			buildConfigurationList = 2C8AA6722ACD6ECA00142A47 /* Build configuration list for PBXNativeTarget "Project 12 - UserDefaults" */;
 			buildPhases = (
 				2C8AA65A2ACD6EC900142A47 /* Sources */,
 				2C8AA65B2ACD6EC900142A47 /* Frameworks */,
@@ -88,9 +88,9 @@
 			);
 			dependencies = (
 			);
-			name = Project12a_collectionview;
+			name = "Project 12 - UserDefaults";
 			productName = Project10_collectionview;
-			productReference = 2C8AA65E2ACD6EC900142A47 /* Project12a_collectionview.app */;
+			productReference = 2C8AA65E2ACD6EC900142A47 /* Project 12 - UserDefaults.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -108,7 +108,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2C8AA6592ACD6EC900142A47 /* Build configuration list for PBXProject "Project12a_collectionview" */;
+			buildConfigurationList = 2C8AA6592ACD6EC900142A47 /* Build configuration list for PBXProject "Project 12 - UserDefaults" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -121,7 +121,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2C8AA65D2ACD6EC900142A47 /* Project12a_collectionview */,
+				2C8AA65D2ACD6EC900142A47 /* Project 12 - UserDefaults */,
 			);
 		};
 /* End PBXProject section */
@@ -297,7 +297,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DFZ4MU84W6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Project12a_collectionview/Info.plist;
+				INFOPLIST_FILE = "${PRODUCT_NAME}/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -326,7 +326,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DFZ4MU84W6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Project12a_collectionview/Info.plist;
+				INFOPLIST_FILE = "${PRODUCT_NAME}/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -349,7 +349,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2C8AA6592ACD6EC900142A47 /* Build configuration list for PBXProject "Project12a_collectionview" */ = {
+		2C8AA6592ACD6EC900142A47 /* Build configuration list for PBXProject "Project 12 - UserDefaults" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C8AA6702ACD6ECA00142A47 /* Debug */,
@@ -358,7 +358,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2C8AA6722ACD6ECA00142A47 /* Build configuration list for PBXNativeTarget "Project12a_collectionview" */ = {
+		2C8AA6722ACD6ECA00142A47 /* Build configuration list for PBXNativeTarget "Project 12 - UserDefaults" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C8AA6732ACD6ECA00142A47 /* Debug */,
