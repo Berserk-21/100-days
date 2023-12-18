@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2C5373A52ACAFA81009BD759 /* milestones challenge 7-9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "milestones challenge 7-9.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C5373A52ACAFA81009BD759 /* Milestones challenge 7-9.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Milestones challenge 7-9.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C5373A82ACAFA81009BD759 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C5373AA2ACAFA81009BD759 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2C5373AC2ACAFA81009BD759 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,7 +42,7 @@
 		2C53739C2ACAFA81009BD759 = {
 			isa = PBXGroup;
 			children = (
-				2C5373A72ACAFA81009BD759 /* milestones challenge 7-9 */,
+				2C5373A72ACAFA81009BD759 /* Milestones challenge 7-9 */,
 				2C5373A62ACAFA81009BD759 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,12 +50,12 @@
 		2C5373A62ACAFA81009BD759 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2C5373A52ACAFA81009BD759 /* milestones challenge 7-9.app */,
+				2C5373A52ACAFA81009BD759 /* Milestones challenge 7-9.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2C5373A72ACAFA81009BD759 /* milestones challenge 7-9 */ = {
+		2C5373A72ACAFA81009BD759 /* Milestones challenge 7-9 */ = {
 			isa = PBXGroup;
 			children = (
 				2C5373A82ACAFA81009BD759 /* AppDelegate.swift */,
@@ -67,15 +67,15 @@
 				2C5373BC2ACB24FC009BD759 /* words_list.txt */,
 				2C5373B62ACAFA81009BD759 /* Info.plist */,
 			);
-			path = "milestones challenge 7-9";
+			path = "Milestones challenge 7-9";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2C5373A42ACAFA81009BD759 /* milestones challenge 7-9 */ = {
+		2C5373A42ACAFA81009BD759 /* Milestones challenge 7-9 */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2C5373B92ACAFA81009BD759 /* Build configuration list for PBXNativeTarget "milestones challenge 7-9" */;
+			buildConfigurationList = 2C5373B92ACAFA81009BD759 /* Build configuration list for PBXNativeTarget "Milestones challenge 7-9" */;
 			buildPhases = (
 				2C5373A12ACAFA81009BD759 /* Sources */,
 				2C5373A22ACAFA81009BD759 /* Frameworks */,
@@ -85,9 +85,9 @@
 			);
 			dependencies = (
 			);
-			name = "milestones challenge 7-9";
+			name = "Milestones challenge 7-9";
 			productName = "milestones challenge 7-9";
-			productReference = 2C5373A52ACAFA81009BD759 /* milestones challenge 7-9.app */;
+			productReference = 2C5373A52ACAFA81009BD759 /* Milestones challenge 7-9.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -105,7 +105,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2C5373A02ACAFA81009BD759 /* Build configuration list for PBXProject "milestones challenge 7-9" */;
+			buildConfigurationList = 2C5373A02ACAFA81009BD759 /* Build configuration list for PBXProject "Milestones challenge 7-9" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -118,7 +118,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2C5373A42ACAFA81009BD759 /* milestones challenge 7-9 */,
+				2C5373A42ACAFA81009BD759 /* Milestones challenge 7-9 */,
 			);
 		};
 /* End PBXProject section */
@@ -293,7 +293,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MPQUCXTDKQ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "milestones challenge 7-9/Info.plist";
+				INFOPLIST_FILE = "${PRODUCT_NAME}/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -321,7 +321,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = MPQUCXTDKQ;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "milestones challenge 7-9/Info.plist";
+				INFOPLIST_FILE = "${PRODUCT_NAME}/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -343,7 +343,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2C5373A02ACAFA81009BD759 /* Build configuration list for PBXProject "milestones challenge 7-9" */ = {
+		2C5373A02ACAFA81009BD759 /* Build configuration list for PBXProject "Milestones challenge 7-9" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C5373B72ACAFA81009BD759 /* Debug */,
@@ -352,7 +352,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2C5373B92ACAFA81009BD759 /* Build configuration list for PBXNativeTarget "milestones challenge 7-9" */ = {
+		2C5373B92ACAFA81009BD759 /* Build configuration list for PBXNativeTarget "Milestones challenge 7-9" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C5373BA2ACAFA81009BD759 /* Debug */,
