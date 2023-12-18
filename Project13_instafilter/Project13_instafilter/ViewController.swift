@@ -8,7 +8,7 @@
 import UIKit
 import CoreImage
 
-class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
+final class ViewController: UIViewController, UINavigationControllerDelegate, UIImagePickerControllerDelegate {
 
     // MARK: - Properties
 
@@ -50,6 +50,8 @@ class ViewController: UIViewController, UINavigationControllerDelegate, UIImageP
         currentFilter = CIFilter(name: "CISepiaTone")
         changeFilterButton.setTitle("CISepiaTone", for: .normal)
     }
+    
+    // MARK: - Custom Methods
     
     private func applyProcessing() {
         
