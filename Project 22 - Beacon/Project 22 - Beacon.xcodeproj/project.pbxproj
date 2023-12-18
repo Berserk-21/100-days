@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2CF98B1E2B0273090023B05A /* Project22-Beacon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project22-Beacon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CF98B1E2B0273090023B05A /* Project 22 - Beacon.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project 22 - Beacon.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CF98B212B0273090023B05A /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CF98B232B0273090023B05A /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2CF98B252B0273090023B05A /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,7 +40,7 @@
 		2CF98B152B0273090023B05A = {
 			isa = PBXGroup;
 			children = (
-				2CF98B202B0273090023B05A /* Project22-Beacon */,
+				2CF98B202B0273090023B05A /* Project 22 - Beacon */,
 				2CF98B1F2B0273090023B05A /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,12 +48,12 @@
 		2CF98B1F2B0273090023B05A /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2CF98B1E2B0273090023B05A /* Project22-Beacon.app */,
+				2CF98B1E2B0273090023B05A /* Project 22 - Beacon.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2CF98B202B0273090023B05A /* Project22-Beacon */ = {
+		2CF98B202B0273090023B05A /* Project 22 - Beacon */ = {
 			isa = PBXGroup;
 			children = (
 				2CF98B212B0273090023B05A /* AppDelegate.swift */,
@@ -64,15 +64,15 @@
 				2CF98B2C2B0273090023B05A /* LaunchScreen.storyboard */,
 				2CF98B2F2B0273090023B05A /* Info.plist */,
 			);
-			path = "Project22-Beacon";
+			path = "Project 22 - Beacon";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2CF98B1D2B0273090023B05A /* Project22-Beacon */ = {
+		2CF98B1D2B0273090023B05A /* Project 22 - Beacon */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2CF98B322B0273090023B05A /* Build configuration list for PBXNativeTarget "Project22-Beacon" */;
+			buildConfigurationList = 2CF98B322B0273090023B05A /* Build configuration list for PBXNativeTarget "Project 22 - Beacon" */;
 			buildPhases = (
 				2CF98B1A2B0273090023B05A /* Sources */,
 				2CF98B1B2B0273090023B05A /* Frameworks */,
@@ -82,9 +82,9 @@
 			);
 			dependencies = (
 			);
-			name = "Project22-Beacon";
+			name = "Project 22 - Beacon";
 			productName = "Project22-Beacon";
-			productReference = 2CF98B1E2B0273090023B05A /* Project22-Beacon.app */;
+			productReference = 2CF98B1E2B0273090023B05A /* Project 22 - Beacon.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +102,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2CF98B192B0273090023B05A /* Build configuration list for PBXProject "Project22-Beacon" */;
+			buildConfigurationList = 2CF98B192B0273090023B05A /* Build configuration list for PBXProject "Project 22 - Beacon" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +115,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2CF98B1D2B0273090023B05A /* Project22-Beacon */,
+				2CF98B1D2B0273090023B05A /* Project 22 - Beacon */,
 			);
 		};
 /* End PBXProject section */
@@ -289,7 +289,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DFZ4MU84W6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Project22-Beacon/Info.plist";
+				INFOPLIST_FILE = "${PRODUCT_NAME}/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -318,7 +318,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DFZ4MU84W6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Project22-Beacon/Info.plist";
+				INFOPLIST_FILE = "${PRODUCT_NAME}/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -341,7 +341,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2CF98B192B0273090023B05A /* Build configuration list for PBXProject "Project22-Beacon" */ = {
+		2CF98B192B0273090023B05A /* Build configuration list for PBXProject "Project 22 - Beacon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2CF98B302B0273090023B05A /* Debug */,
@@ -350,7 +350,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2CF98B322B0273090023B05A /* Build configuration list for PBXNativeTarget "Project22-Beacon" */ = {
+		2CF98B322B0273090023B05A /* Build configuration list for PBXNativeTarget "Project 22 - Beacon" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2CF98B332B0273090023B05A /* Debug */,
