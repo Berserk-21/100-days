@@ -7,10 +7,14 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
+    
+    // MARK: - Properties
     
     private var imageView: UIImageView!
     private var currentAnimation = 0
+    
+    // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -21,6 +25,8 @@ class ViewController: UIViewController {
         view.addSubview(imageView)
     }
 
+    // MARK: - Actions
+    
     @IBAction private func didTap(_ sender: UIButton) {
         
         sender.isHidden = true
