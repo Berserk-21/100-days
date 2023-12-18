@@ -18,7 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2CC9B8AD2B1896D5009D7DE7 /* Project28-SecretSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project28-SecretSwift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CC9B8AD2B1896D5009D7DE7 /* Project 28 - SecretSwift.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project 28 - SecretSwift.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CC9B8B02B1896D5009D7DE7 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CC9B8B22B1896D5009D7DE7 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2CC9B8B42B1896D5009D7DE7 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -44,7 +44,7 @@
 		2CC9B8A42B1896D4009D7DE7 = {
 			isa = PBXGroup;
 			children = (
-				2CC9B8AF2B1896D5009D7DE7 /* Project28-SecretSwift */,
+				2CC9B8AF2B1896D5009D7DE7 /* Project 28 - SecretSwift */,
 				2CC9B8AE2B1896D5009D7DE7 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -52,12 +52,12 @@
 		2CC9B8AE2B1896D5009D7DE7 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2CC9B8AD2B1896D5009D7DE7 /* Project28-SecretSwift.app */,
+				2CC9B8AD2B1896D5009D7DE7 /* Project 28 - SecretSwift.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2CC9B8AF2B1896D5009D7DE7 /* Project28-SecretSwift */ = {
+		2CC9B8AF2B1896D5009D7DE7 /* Project 28 - SecretSwift */ = {
 			isa = PBXGroup;
 			children = (
 				2CC9B8B02B1896D5009D7DE7 /* AppDelegate.swift */,
@@ -70,15 +70,15 @@
 				2CC9B8C52B18C89B009D7DE7 /* KeychainWrapper.swift */,
 				2CC9B8BE2B1896D5009D7DE7 /* Info.plist */,
 			);
-			path = "Project28-SecretSwift";
+			path = "Project 28 - SecretSwift";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2CC9B8AC2B1896D5009D7DE7 /* Project28-SecretSwift */ = {
+		2CC9B8AC2B1896D5009D7DE7 /* Project 28 - SecretSwift */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2CC9B8C12B1896D5009D7DE7 /* Build configuration list for PBXNativeTarget "Project28-SecretSwift" */;
+			buildConfigurationList = 2CC9B8C12B1896D5009D7DE7 /* Build configuration list for PBXNativeTarget "Project 28 - SecretSwift" */;
 			buildPhases = (
 				2CC9B8A92B1896D5009D7DE7 /* Sources */,
 				2CC9B8AA2B1896D5009D7DE7 /* Frameworks */,
@@ -88,9 +88,9 @@
 			);
 			dependencies = (
 			);
-			name = "Project28-SecretSwift";
+			name = "Project 28 - SecretSwift";
 			productName = "Project28-SecretSwift";
-			productReference = 2CC9B8AD2B1896D5009D7DE7 /* Project28-SecretSwift.app */;
+			productReference = 2CC9B8AD2B1896D5009D7DE7 /* Project 28 - SecretSwift.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -108,7 +108,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2CC9B8A82B1896D5009D7DE7 /* Build configuration list for PBXProject "Project28-SecretSwift" */;
+			buildConfigurationList = 2CC9B8A82B1896D5009D7DE7 /* Build configuration list for PBXProject "Project 28 - SecretSwift" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -121,7 +121,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2CC9B8AC2B1896D5009D7DE7 /* Project28-SecretSwift */,
+				2CC9B8AC2B1896D5009D7DE7 /* Project 28 - SecretSwift */,
 			);
 		};
 /* End PBXProject section */
@@ -297,7 +297,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DFZ4MU84W6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Project28-SecretSwift/Info.plist";
+				INFOPLIST_FILE = "${PRODUCT_NAME}/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -326,7 +326,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DFZ4MU84W6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Project28-SecretSwift/Info.plist";
+				INFOPLIST_FILE = "${PRODUCT_NAME}/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -349,7 +349,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2CC9B8A82B1896D5009D7DE7 /* Build configuration list for PBXProject "Project28-SecretSwift" */ = {
+		2CC9B8A82B1896D5009D7DE7 /* Build configuration list for PBXProject "Project 28 - SecretSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2CC9B8BF2B1896D5009D7DE7 /* Debug */,
@@ -358,7 +358,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2CC9B8C12B1896D5009D7DE7 /* Build configuration list for PBXNativeTarget "Project28-SecretSwift" */ = {
+		2CC9B8C12B1896D5009D7DE7 /* Build configuration list for PBXNativeTarget "Project 28 - SecretSwift" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2CC9B8C22B1896D5009D7DE7 /* Debug */,
