@@ -26,7 +26,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2CF0AD482AE802BB0063BF71 /* project14_penguin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = project14_penguin.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CF0AD482AE802BB0063BF71 /* Project 14 - Whack-a-Penguin.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project 14 - Whack-a-Penguin.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CF0AD4B2AE802BB0063BF71 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CF0AD4D2AE802BB0063BF71 /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		2CF0AD512AE802BB0063BF71 /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -59,7 +59,7 @@
 		2CF0AD3F2AE802BB0063BF71 = {
 			isa = PBXGroup;
 			children = (
-				2CF0AD4A2AE802BB0063BF71 /* project14_penguin */,
+				2CF0AD4A2AE802BB0063BF71 /* Project 14 - Whack-a-Penguin */,
 				2CF0AD492AE802BB0063BF71 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -67,12 +67,12 @@
 		2CF0AD492AE802BB0063BF71 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2CF0AD482AE802BB0063BF71 /* project14_penguin.app */,
+				2CF0AD482AE802BB0063BF71 /* Project 14 - Whack-a-Penguin.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2CF0AD4A2AE802BB0063BF71 /* project14_penguin */ = {
+		2CF0AD4A2AE802BB0063BF71 /* Project 14 - Whack-a-Penguin */ = {
 			isa = PBXGroup;
 			children = (
 				2CF0AD4B2AE802BB0063BF71 /* AppDelegate.swift */,
@@ -85,7 +85,7 @@
 				2CF0AD722AE803DD0063BF71 /* content */,
 				2CF0AD5A2AE802BC0063BF71 /* LaunchScreen.storyboard */,
 			);
-			path = project14_penguin;
+			path = "Project 14 - Whack-a-Penguin";
 			sourceTree = "<group>";
 		};
 		2CF0AD722AE803DD0063BF71 /* content */ = {
@@ -106,9 +106,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2CF0AD472AE802BB0063BF71 /* project14_penguin */ = {
+		2CF0AD472AE802BB0063BF71 /* Project 14 - Whack-a-Penguin */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2CF0AD5F2AE802BC0063BF71 /* Build configuration list for PBXNativeTarget "project14_penguin" */;
+			buildConfigurationList = 2CF0AD5F2AE802BC0063BF71 /* Build configuration list for PBXNativeTarget "Project 14 - Whack-a-Penguin" */;
 			buildPhases = (
 				2CF0AD442AE802BB0063BF71 /* Sources */,
 				2CF0AD452AE802BB0063BF71 /* Frameworks */,
@@ -118,9 +118,9 @@
 			);
 			dependencies = (
 			);
-			name = project14_penguin;
+			name = "Project 14 - Whack-a-Penguin";
 			productName = project14_penguin;
-			productReference = 2CF0AD482AE802BB0063BF71 /* project14_penguin.app */;
+			productReference = 2CF0AD482AE802BB0063BF71 /* Project 14 - Whack-a-Penguin.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -138,7 +138,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2CF0AD432AE802BB0063BF71 /* Build configuration list for PBXProject "project14_penguin" */;
+			buildConfigurationList = 2CF0AD432AE802BB0063BF71 /* Build configuration list for PBXProject "Project 14 - Whack-a-Penguin" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -151,7 +151,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2CF0AD472AE802BB0063BF71 /* project14_penguin */,
+				2CF0AD472AE802BB0063BF71 /* Project 14 - Whack-a-Penguin */,
 			);
 		};
 /* End PBXProject section */
@@ -383,7 +383,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2CF0AD432AE802BB0063BF71 /* Build configuration list for PBXProject "project14_penguin" */ = {
+		2CF0AD432AE802BB0063BF71 /* Build configuration list for PBXProject "Project 14 - Whack-a-Penguin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2CF0AD5D2AE802BC0063BF71 /* Debug */,
@@ -392,7 +392,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2CF0AD5F2AE802BC0063BF71 /* Build configuration list for PBXNativeTarget "project14_penguin" */ = {
+		2CF0AD5F2AE802BC0063BF71 /* Build configuration list for PBXNativeTarget "Project 14 - Whack-a-Penguin" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2CF0AD602AE802BC0063BF71 /* Debug */,
