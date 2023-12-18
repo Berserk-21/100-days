@@ -8,13 +8,17 @@
 import UIKit
 import MobileCoreServices
 
-class ActionViewController: UIViewController {
+final class ActionViewController: UIViewController {
+    
+    // MARK: - Properties
 
     @IBOutlet private var contentTextView: UITextView!
     
     private var pageTitle: String = ""
     private var pageURL: String = ""
 
+    // MARK: - Life Cycle
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,6 +28,8 @@ class ActionViewController: UIViewController {
         notificationCenter.addObserver(self, selector: #selector(adjustKeyboard), name: UIResponder.keyboardWillChangeFrameNotification, object: nil)
         notificationCenter.addObserver(self, selector: #selector(adjustKeyboard), name: UIResponder.keyboardWillHideNotification, object: nil)
     }
+    
+    // MARK: - Custom Methods
     
     private func getJsData() {
         
@@ -49,6 +55,8 @@ class ActionViewController: UIViewController {
             }
         }
     }
+    
+    // MARK: - Actions
     
     @objc private func adjustKeyboard(notification: Notification) {
         
