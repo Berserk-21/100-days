@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2C1F9C162B29EE4400AE2587 /* Project31-Multibrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project31-Multibrowser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C1F9C162B29EE4400AE2587 /* Project 31 - Multibrowser.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project 31 - Multibrowser.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C1F9C192B29EE4400AE2587 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C1F9C1B2B29EE4400AE2587 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2C1F9C1D2B29EE4400AE2587 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,7 +40,7 @@
 		2C1F9C0D2B29EE4400AE2587 = {
 			isa = PBXGroup;
 			children = (
-				2C1F9C182B29EE4400AE2587 /* Project31-Multibrowser */,
+				2C1F9C182B29EE4400AE2587 /* Project 31 - Multibrowser */,
 				2C1F9C172B29EE4400AE2587 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,12 +48,12 @@
 		2C1F9C172B29EE4400AE2587 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2C1F9C162B29EE4400AE2587 /* Project31-Multibrowser.app */,
+				2C1F9C162B29EE4400AE2587 /* Project 31 - Multibrowser.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2C1F9C182B29EE4400AE2587 /* Project31-Multibrowser */ = {
+		2C1F9C182B29EE4400AE2587 /* Project 31 - Multibrowser */ = {
 			isa = PBXGroup;
 			children = (
 				2C1F9C192B29EE4400AE2587 /* AppDelegate.swift */,
@@ -64,15 +64,15 @@
 				2C1F9C242B29EE4500AE2587 /* LaunchScreen.storyboard */,
 				2C1F9C272B29EE4500AE2587 /* Info.plist */,
 			);
-			path = "Project31-Multibrowser";
+			path = "Project 31 - Multibrowser";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2C1F9C152B29EE4400AE2587 /* Project31-Multibrowser */ = {
+		2C1F9C152B29EE4400AE2587 /* Project 31 - Multibrowser */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2C1F9C2A2B29EE4500AE2587 /* Build configuration list for PBXNativeTarget "Project31-Multibrowser" */;
+			buildConfigurationList = 2C1F9C2A2B29EE4500AE2587 /* Build configuration list for PBXNativeTarget "Project 31 - Multibrowser" */;
 			buildPhases = (
 				2C1F9C122B29EE4400AE2587 /* Sources */,
 				2C1F9C132B29EE4400AE2587 /* Frameworks */,
@@ -82,9 +82,9 @@
 			);
 			dependencies = (
 			);
-			name = "Project31-Multibrowser";
+			name = "Project 31 - Multibrowser";
 			productName = "Project31-Multibrowser";
-			productReference = 2C1F9C162B29EE4400AE2587 /* Project31-Multibrowser.app */;
+			productReference = 2C1F9C162B29EE4400AE2587 /* Project 31 - Multibrowser.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +102,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2C1F9C112B29EE4400AE2587 /* Build configuration list for PBXProject "Project31-Multibrowser" */;
+			buildConfigurationList = 2C1F9C112B29EE4400AE2587 /* Build configuration list for PBXProject "Project 31 - Multibrowser" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +115,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2C1F9C152B29EE4400AE2587 /* Project31-Multibrowser */,
+				2C1F9C152B29EE4400AE2587 /* Project 31 - Multibrowser */,
 			);
 		};
 /* End PBXProject section */
@@ -289,7 +289,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DFZ4MU84W6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Project31-Multibrowser/Info.plist";
+				INFOPLIST_FILE = "${PRODUCT_NAME}/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -320,7 +320,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DFZ4MU84W6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Project31-Multibrowser/Info.plist";
+				INFOPLIST_FILE = "${PRODUCT_NAME}/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -345,7 +345,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2C1F9C112B29EE4400AE2587 /* Build configuration list for PBXProject "Project31-Multibrowser" */ = {
+		2C1F9C112B29EE4400AE2587 /* Build configuration list for PBXProject "Project 31 - Multibrowser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C1F9C282B29EE4500AE2587 /* Debug */,
@@ -354,7 +354,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2C1F9C2A2B29EE4500AE2587 /* Build configuration list for PBXNativeTarget "Project31-Multibrowser" */ = {
+		2C1F9C2A2B29EE4500AE2587 /* Build configuration list for PBXNativeTarget "Project 31 - Multibrowser" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C1F9C2B2B29EE4500AE2587 /* Debug */,
