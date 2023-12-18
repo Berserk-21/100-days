@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2C30A2192ADD8D6C007C8BB1 /* Project13_instafilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Project13_instafilter.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C30A2192ADD8D6C007C8BB1 /* Project 13 - Instafilter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project 13 - Instafilter.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C30A21C2ADD8D6C007C8BB1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C30A21E2ADD8D6C007C8BB1 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2C30A2202ADD8D6C007C8BB1 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,7 +40,7 @@
 		2C30A2102ADD8D6C007C8BB1 = {
 			isa = PBXGroup;
 			children = (
-				2C30A21B2ADD8D6C007C8BB1 /* Project13_instafilter */,
+				2C30A21B2ADD8D6C007C8BB1 /* Project 13 - Instafilter */,
 				2C30A21A2ADD8D6C007C8BB1 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,12 +48,12 @@
 		2C30A21A2ADD8D6C007C8BB1 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2C30A2192ADD8D6C007C8BB1 /* Project13_instafilter.app */,
+				2C30A2192ADD8D6C007C8BB1 /* Project 13 - Instafilter.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2C30A21B2ADD8D6C007C8BB1 /* Project13_instafilter */ = {
+		2C30A21B2ADD8D6C007C8BB1 /* Project 13 - Instafilter */ = {
 			isa = PBXGroup;
 			children = (
 				2C30A21C2ADD8D6C007C8BB1 /* AppDelegate.swift */,
@@ -64,15 +64,15 @@
 				2C30A2272ADD8D6F007C8BB1 /* LaunchScreen.storyboard */,
 				2C30A22A2ADD8D6F007C8BB1 /* Info.plist */,
 			);
-			path = Project13_instafilter;
+			path = "Project 13 - Instafilter";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2C30A2182ADD8D6C007C8BB1 /* Project13_instafilter */ = {
+		2C30A2182ADD8D6C007C8BB1 /* Project 13 - Instafilter */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2C30A22D2ADD8D6F007C8BB1 /* Build configuration list for PBXNativeTarget "Project13_instafilter" */;
+			buildConfigurationList = 2C30A22D2ADD8D6F007C8BB1 /* Build configuration list for PBXNativeTarget "Project 13 - Instafilter" */;
 			buildPhases = (
 				2C30A2152ADD8D6C007C8BB1 /* Sources */,
 				2C30A2162ADD8D6C007C8BB1 /* Frameworks */,
@@ -82,9 +82,9 @@
 			);
 			dependencies = (
 			);
-			name = Project13_instafilter;
+			name = "Project 13 - Instafilter";
 			productName = Project13_instafilter;
-			productReference = 2C30A2192ADD8D6C007C8BB1 /* Project13_instafilter.app */;
+			productReference = 2C30A2192ADD8D6C007C8BB1 /* Project 13 - Instafilter.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +102,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2C30A2142ADD8D6C007C8BB1 /* Build configuration list for PBXProject "Project13_instafilter" */;
+			buildConfigurationList = 2C30A2142ADD8D6C007C8BB1 /* Build configuration list for PBXProject "Project 13 - Instafilter" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +115,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2C30A2182ADD8D6C007C8BB1 /* Project13_instafilter */,
+				2C30A2182ADD8D6C007C8BB1 /* Project 13 - Instafilter */,
 			);
 		};
 /* End PBXProject section */
@@ -289,7 +289,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DFZ4MU84W6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Project13_instafilter/Info.plist;
+				INFOPLIST_FILE = "${PRODUCT_NAME}/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -318,7 +318,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DFZ4MU84W6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = Project13_instafilter/Info.plist;
+				INFOPLIST_FILE = "${PRODUCT_NAME}/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -341,7 +341,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2C30A2142ADD8D6C007C8BB1 /* Build configuration list for PBXProject "Project13_instafilter" */ = {
+		2C30A2142ADD8D6C007C8BB1 /* Build configuration list for PBXProject "Project 13 - Instafilter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C30A22B2ADD8D6F007C8BB1 /* Debug */,
@@ -350,7 +350,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2C30A22D2ADD8D6F007C8BB1 /* Build configuration list for PBXNativeTarget "Project13_instafilter" */ = {
+		2C30A22D2ADD8D6F007C8BB1 /* Build configuration list for PBXNativeTarget "Project 13 - Instafilter" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C30A22E2ADD8D6F007C8BB1 /* Debug */,
