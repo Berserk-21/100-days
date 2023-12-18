@@ -8,35 +8,45 @@
 import UIKit
 import CoreLocation
 
-class ViewController: UIViewController, CLLocationManagerDelegate {
+final class ViewController: UIViewController, CLLocationManagerDelegate {
     
     // MARK: - Properties
     
     @IBOutlet private weak var distanceReadingLabel: UILabel!
-    var locationManager: CLLocationManager?
+    private var locationManager: CLLocationManager?
     
     // MARK: - Life Cycle
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        locationManager = CLLocationManager()
-        locationManager?.delegate = self
-        locationManager?.requestAlwaysAuthorization()
-        
+        setupLocationManager()
+        setupLayout()
+    }
+    
+    // MARK: - Setup Layout
+    
+    private func setupLayout() {
         view.backgroundColor = .gray
     }
     
-    // MARK: - Methods
+    // MARK: - Custom Methods
     
-    func startScanning() {
+    private func setupLocationManager() {
+        locationManager = CLLocationManager()
+        locationManager?.delegate = self
+        locationManager?.requestAlwaysAuthorization()
+    }
+    
+    private func startScanning() {
         addBeaconRegion(uuidString: "5A4BCFCE-174E-4BAC-A814-092E77F6B7E5", major: 123, minor: 456, identifier: "Apple AirLocate")
         addBeaconRegion(uuidString: "2F234454-CF6D-4A0F-ADF2-F4911BA9FFA6", major: 123, minor: 456, identifier: "Radius Networks")
         addBeaconRegion(uuidString: "92AB49BE-4127-42F4-B532-90fAF1E26491", major: 123, minor: 456, identifier: "TwoCanoes")
     }
         
-    func addBeaconRegion(uuidString: String, major: CLBeaconMajorValue, minor: CLBeaconMinorValue, identifier: String) {
+    private func addBeaconRegion(uuidString: String, major: CLBeaconMajorValue, minor: CLBeaconMinorValue, identifier: String) {
         let uuid = UUID(uuidString: uuidString)!
         let region = CLBeaconRegion(beaconIdentityConstraint: CLBeaconIdentityConstraint(uuid: uuid, major: major, minor: minor), identifier: identifier)
         
