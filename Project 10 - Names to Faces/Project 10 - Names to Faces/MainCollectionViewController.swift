@@ -8,13 +8,13 @@
 import UIKit
 import LocalAuthentication
 
-class MainCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout {
+final class MainCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout {
     
     // MARK: - Properties
     
-    var people = [Person]()
-    let interItemSpacing: CGFloat = 8.0
-    let interlineSpacing: CGFloat = 16.0
+    private var people = [Person]()
+    private let interItemSpacing: CGFloat = 8.0
+    private let interlineSpacing: CGFloat = 16.0
     
     // MARK: - Life Cycle
 
@@ -27,7 +27,7 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         hidePicturesIfNeeded()
     }
     
-    // MARK: - Methods
+    // MARK: - Setup Layout
     
     private func setupLayout() {
         
@@ -43,6 +43,8 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         collectionView.collectionViewLayout = layout
     }
     
+    // MARK: - Custom Methods
+ 
     private func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
         return paths[0]
@@ -233,6 +235,8 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         return cell
     }
     
+    // MARK: - UICollectionView Delegate
+    
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
         let person = people[indexPath.item]
@@ -262,6 +266,5 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         
         return CGSize(width: itemWidth, height: itemHeight)
     }
-    
 }
 
