@@ -7,7 +7,7 @@
 
 import UIKit
 
-class Person: NSObject, NSCoding {
+final class Person: NSObject, NSCoding {
     
     required init?(coder: NSCoder) {
         name = coder.decodeObject(forKey: "name") as? String ?? ""

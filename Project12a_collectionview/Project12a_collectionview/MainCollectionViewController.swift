@@ -7,11 +7,11 @@
 
 import UIKit
 
-class MainCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+final class MainCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     // MARK: - Properties
     
-    var people = [Person]()
+    private var people = [Person]()
     
     // MARK: - Life Cycle
 
@@ -19,11 +19,18 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
-        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPicture))
+        setupLayout()
         loadPeople()
     }
     
-    // MARK: - Methods
+    // MARK: - Setup Layout
+    
+    private func setupLayout() {
+        
+        navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addPicture))
+    }
+    
+    // MARK: - Helper Methods
     
     private func getDocumentsDirectory() -> URL {
         let paths = FileManager.default.urls(for: .documentDirectory, in: .userDomainMask)
@@ -40,7 +47,7 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         present(picker, animated: true)
     }
     
-    func loadPeople() {
+    private func loadPeople() {
         
         let defaults = UserDefaults.standard
         if let savedPeople = defaults.object(forKey: "people") as? Data {
@@ -52,12 +59,49 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         }
     }
     
-    func save() {
+    private func save() {
         if let savedData = try? NSKeyedArchiver.archivedData(withRootObject: people, requiringSecureCoding: false) {
             let defaults = UserDefaults.standard
             
             defaults.set(savedData, forKey: "people")
         }
+    }
+    
+    private func RenameOrRemove(for person: Person, selectedCell: UICollectionViewCell) {
+        
+        let firstAC = UIAlertController(title: "Rename or delete ?", message: nil, preferredStyle: .actionSheet)
+        
+        firstAC.addAction(UIAlertAction(title: "Rename", style: .default, handler: { [weak self] _ in
+            
+            let ac = UIAlertController(title: "Rename person", message: nil, preferredStyle: UIAlertController.Style.alert)
+            
+            ac.addTextField()
+            
+            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak ac] _ in
+                guard let newName = ac?.textFields?[0].text else {
+                    return
+                }
+                
+                person.name = newName
+                self?.collectionView.reloadData()
+                self?.save()
+            }))
+            
+            ac.popoverPresentationController?.sourceView = selectedCell
+            self?.present(ac, animated: true)
+        }))
+        
+        firstAC.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
+            
+            self?.people.removeAll(where: { $0.image == person.image })
+            self?.collectionView.reloadData()
+            self?.save()
+        }))
+        
+        firstAC.addAction(UIAlertAction(title: "Cancel", style: .cancel))
+        firstAC.popoverPresentationController?.sourceView = selectedCell
+        
+        present(firstAC, animated: true)
     }
     
     // MARK: - Actions
@@ -146,43 +190,6 @@ class MainCollectionViewController: UICollectionViewController, UIImagePickerCon
         }
         
         RenameOrRemove(for: person, selectedCell: selectedCell)
-    }
-    
-    private func RenameOrRemove(for person: Person, selectedCell: UICollectionViewCell) {
-        
-        let firstAC = UIAlertController(title: "Rename or delete ?", message: nil, preferredStyle: .actionSheet)
-        
-        firstAC.addAction(UIAlertAction(title: "Rename", style: .default, handler: { [weak self] _ in
-            
-            let ac = UIAlertController(title: "Rename person", message: nil, preferredStyle: UIAlertController.Style.alert)
-            
-            ac.addTextField()
-            
-            ac.addAction(UIAlertAction(title: "OK", style: .default, handler: { [weak ac] _ in
-                guard let newName = ac?.textFields?[0].text else {
-                    return
-                }
-                
-                person.name = newName
-                self?.collectionView.reloadData()
-                self?.save()
-            }))
-            
-            ac.popoverPresentationController?.sourceView = selectedCell
-            self?.present(ac, animated: true)
-        }))
-        
-        firstAC.addAction(UIAlertAction(title: "Delete", style: .destructive, handler: { [weak self] _ in
-            
-            self?.people.removeAll(where: { $0.image == person.image })
-            self?.collectionView.reloadData()
-            self?.save()
-        }))
-        
-        firstAC.addAction(UIAlertAction(title: "Cancel", style: .cancel))
-        firstAC.popoverPresentationController?.sourceView = selectedCell
-        
-        present(firstAC, animated: true)
     }
 }
 

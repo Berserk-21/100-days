@@ -7,12 +7,12 @@
 
 import UIKit
 
-class PersonCollectionViewCell: UICollectionViewCell {
+final class PersonCollectionViewCell: UICollectionViewCell {
     
     static let identifier: String = "PersonCollectionViewCell"
     
-    @IBOutlet var imageView: UIImageView!
-    @IBOutlet var nameLabel: UILabel!
+    @IBOutlet weak var imageView: UIImageView!
+    @IBOutlet weak var nameLabel: UILabel!
     
     
 }
