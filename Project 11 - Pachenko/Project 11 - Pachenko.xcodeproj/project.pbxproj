@@ -32,7 +32,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2C0F3A4D2AD45087002E987B /* Project11-pachenko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project11-pachenko.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C0F3A4D2AD45087002E987B /* Project 11 - Pachenko.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project 11 - Pachenko.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C0F3A502AD45087002E987B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C0F3A522AD45087002E987B /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
 		2C0F3A562AD45087002E987B /* GameScene.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScene.swift; sourceTree = "<group>"; };
@@ -71,7 +71,7 @@
 		2C0F3A442AD45087002E987B = {
 			isa = PBXGroup;
 			children = (
-				2C0F3A4F2AD45087002E987B /* Project11-pachenko */,
+				2C0F3A4F2AD45087002E987B /* Project 11 - Pachenko */,
 				2C0F3A4E2AD45087002E987B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -79,12 +79,12 @@
 		2C0F3A4E2AD45087002E987B /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2C0F3A4D2AD45087002E987B /* Project11-pachenko.app */,
+				2C0F3A4D2AD45087002E987B /* Project 11 - Pachenko.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2C0F3A4F2AD45087002E987B /* Project11-pachenko */ = {
+		2C0F3A4F2AD45087002E987B /* Project 11 - Pachenko */ = {
 			isa = PBXGroup;
 			children = (
 				2C0F3A502AD45087002E987B /* AppDelegate.swift */,
@@ -110,15 +110,15 @@
 				2C0F3A6F2AD45204002E987B /* slotGlowGood@2x.png */,
 				2C0F3A682AD45204002E987B /* spark.png */,
 			);
-			path = "Project11-pachenko";
+			path = "Project 11 - Pachenko";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2C0F3A4C2AD45087002E987B /* Project11-pachenko */ = {
+		2C0F3A4C2AD45087002E987B /* Project 11 - Pachenko */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2C0F3A642AD45087002E987B /* Build configuration list for PBXNativeTarget "Project11-pachenko" */;
+			buildConfigurationList = 2C0F3A642AD45087002E987B /* Build configuration list for PBXNativeTarget "Project 11 - Pachenko" */;
 			buildPhases = (
 				2C0F3A492AD45087002E987B /* Sources */,
 				2C0F3A4A2AD45087002E987B /* Frameworks */,
@@ -128,9 +128,9 @@
 			);
 			dependencies = (
 			);
-			name = "Project11-pachenko";
+			name = "Project 11 - Pachenko";
 			productName = "Project11-pachenko";
-			productReference = 2C0F3A4D2AD45087002E987B /* Project11-pachenko.app */;
+			productReference = 2C0F3A4D2AD45087002E987B /* Project 11 - Pachenko.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -148,7 +148,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2C0F3A482AD45087002E987B /* Build configuration list for PBXProject "Project11-pachenko" */;
+			buildConfigurationList = 2C0F3A482AD45087002E987B /* Build configuration list for PBXProject "Project 11 - Pachenko" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -161,7 +161,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2C0F3A4C2AD45087002E987B /* Project11-pachenko */,
+				2C0F3A4C2AD45087002E987B /* Project 11 - Pachenko */,
 			);
 		};
 /* End PBXProject section */
@@ -403,7 +403,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2C0F3A482AD45087002E987B /* Build configuration list for PBXProject "Project11-pachenko" */ = {
+		2C0F3A482AD45087002E987B /* Build configuration list for PBXProject "Project 11 - Pachenko" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C0F3A622AD45087002E987B /* Debug */,
@@ -412,7 +412,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2C0F3A642AD45087002E987B /* Build configuration list for PBXNativeTarget "Project11-pachenko" */ = {
+		2C0F3A642AD45087002E987B /* Build configuration list for PBXNativeTarget "Project 11 - Pachenko" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C0F3A652AD45087002E987B /* Debug */,
