@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2CF522412AF3B505003572FC /* Project15 - Animation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project15 - Animation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CF522412AF3B505003572FC /* Project 15 - Animation.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project 15 - Animation.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CF522442AF3B505003572FC /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CF522462AF3B505003572FC /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2CF522482AF3B505003572FC /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -50,7 +50,7 @@
 		2CF522422AF3B505003572FC /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2CF522412AF3B505003572FC /* Project15 - Animation.app */,
+				2CF522412AF3B505003572FC /* Project 15 - Animation.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -73,9 +73,9 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2CF522402AF3B505003572FC /* Project15 - Animation */ = {
+		2CF522402AF3B505003572FC /* Project 15 - Animation */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2CF522552AF3B506003572FC /* Build configuration list for PBXNativeTarget "Project15 - Animation" */;
+			buildConfigurationList = 2CF522552AF3B506003572FC /* Build configuration list for PBXNativeTarget "Project 15 - Animation" */;
 			buildPhases = (
 				2CF5223D2AF3B505003572FC /* Sources */,
 				2CF5223E2AF3B505003572FC /* Frameworks */,
@@ -85,9 +85,9 @@
 			);
 			dependencies = (
 			);
-			name = "Project15 - Animation";
+			name = "Project 15 - Animation";
 			productName = "Project15 - Animation";
-			productReference = 2CF522412AF3B505003572FC /* Project15 - Animation.app */;
+			productReference = 2CF522412AF3B505003572FC /* Project 15 - Animation.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -105,7 +105,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2CF5223C2AF3B505003572FC /* Build configuration list for PBXProject "Project15 - Animation" */;
+			buildConfigurationList = 2CF5223C2AF3B505003572FC /* Build configuration list for PBXProject "Project 15 - Animation" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -118,7 +118,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2CF522402AF3B505003572FC /* Project15 - Animation */,
+				2CF522402AF3B505003572FC /* Project 15 - Animation */,
 			);
 		};
 /* End PBXProject section */
@@ -293,7 +293,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DFZ4MU84W6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Project15 - Animation/Info.plist";
+				INFOPLIST_FILE = "${PRODUCT_NAME}/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -320,7 +320,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DFZ4MU84W6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Project15 - Animation/Info.plist";
+				INFOPLIST_FILE = "${PRODUCT_NAME}/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -341,7 +341,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2CF5223C2AF3B505003572FC /* Build configuration list for PBXProject "Project15 - Animation" */ = {
+		2CF5223C2AF3B505003572FC /* Build configuration list for PBXProject "Project 15 - Animation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2CF522532AF3B506003572FC /* Debug */,
@@ -350,7 +350,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2CF522552AF3B506003572FC /* Build configuration list for PBXNativeTarget "Project15 - Animation" */ = {
+		2CF522552AF3B506003572FC /* Build configuration list for PBXNativeTarget "Project 15 - Animation" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2CF522562AF3B506003572FC /* Debug */,
