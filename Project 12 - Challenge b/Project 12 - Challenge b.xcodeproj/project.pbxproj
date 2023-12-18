@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2C1B3E9C2A8A4D5D00A315A3 /* Guess The Flag - challengep12.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Guess The Flag - challengep12.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2C1B3E9C2A8A4D5D00A315A3 /* Project 12 - Challenge b.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project 12 - Challenge b.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C1B3E9F2A8A4D5D00A315A3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C1B3EA12A8A4D5D00A315A3 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2C1B3EA32A8A4D5D00A315A3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,7 +40,7 @@
 		2C1B3E932A8A4D5D00A315A3 = {
 			isa = PBXGroup;
 			children = (
-				2C1B3E9E2A8A4D5D00A315A3 /* Guess The Flag - challengep12 */,
+				2C1B3E9E2A8A4D5D00A315A3 /* Project 12 - Challenge b */,
 				2C1B3E9D2A8A4D5D00A315A3 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,12 +48,12 @@
 		2C1B3E9D2A8A4D5D00A315A3 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2C1B3E9C2A8A4D5D00A315A3 /* Guess The Flag - challengep12.app */,
+				2C1B3E9C2A8A4D5D00A315A3 /* Project 12 - Challenge b.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2C1B3E9E2A8A4D5D00A315A3 /* Guess The Flag - challengep12 */ = {
+		2C1B3E9E2A8A4D5D00A315A3 /* Project 12 - Challenge b */ = {
 			isa = PBXGroup;
 			children = (
 				2C1B3E9F2A8A4D5D00A315A3 /* AppDelegate.swift */,
@@ -64,15 +64,15 @@
 				2C1B3EAA2A8A4D5D00A315A3 /* LaunchScreen.storyboard */,
 				2C1B3EAD2A8A4D5D00A315A3 /* Info.plist */,
 			);
-			path = "Guess The Flag - challengep12";
+			path = "Project 12 - Challenge b";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2C1B3E9B2A8A4D5D00A315A3 /* Guess The Flag - challengep12 */ = {
+		2C1B3E9B2A8A4D5D00A315A3 /* Project 12 - Challenge b */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2C1B3EB02A8A4D5D00A315A3 /* Build configuration list for PBXNativeTarget "Guess The Flag - challengep12" */;
+			buildConfigurationList = 2C1B3EB02A8A4D5D00A315A3 /* Build configuration list for PBXNativeTarget "Project 12 - Challenge b" */;
 			buildPhases = (
 				2C1B3E982A8A4D5D00A315A3 /* Sources */,
 				2C1B3E992A8A4D5D00A315A3 /* Frameworks */,
@@ -82,9 +82,9 @@
 			);
 			dependencies = (
 			);
-			name = "Guess The Flag - challengep12";
+			name = "Project 12 - Challenge b";
 			productName = "Guess The Flag";
-			productReference = 2C1B3E9C2A8A4D5D00A315A3 /* Guess The Flag - challengep12.app */;
+			productReference = 2C1B3E9C2A8A4D5D00A315A3 /* Project 12 - Challenge b.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +102,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2C1B3E972A8A4D5D00A315A3 /* Build configuration list for PBXProject "Guess The Flag - challengep12" */;
+			buildConfigurationList = 2C1B3E972A8A4D5D00A315A3 /* Build configuration list for PBXProject "Project 12 - Challenge b" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +115,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2C1B3E9B2A8A4D5D00A315A3 /* Guess The Flag - challengep12 */,
+				2C1B3E9B2A8A4D5D00A315A3 /* Project 12 - Challenge b */,
 			);
 		};
 /* End PBXProject section */
@@ -288,7 +288,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Guess The Flag - challengep12/Info.plist";
+				INFOPLIST_FILE = "${PRODUCT_NAME}/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -315,7 +315,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Guess The Flag - challengep12/Info.plist";
+				INFOPLIST_FILE = "${PRODUCT_NAME}/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -337,7 +337,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2C1B3E972A8A4D5D00A315A3 /* Build configuration list for PBXProject "Guess The Flag - challengep12" */ = {
+		2C1B3E972A8A4D5D00A315A3 /* Build configuration list for PBXProject "Project 12 - Challenge b" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C1B3EAE2A8A4D5D00A315A3 /* Debug */,
@@ -346,7 +346,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2C1B3EB02A8A4D5D00A315A3 /* Build configuration list for PBXNativeTarget "Guess The Flag - challengep12" */ = {
+		2C1B3EB02A8A4D5D00A315A3 /* Build configuration list for PBXNativeTarget "Project 12 - Challenge b" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2C1B3EB12A8A4D5D00A315A3 /* Debug */,
