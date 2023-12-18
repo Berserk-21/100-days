@@ -8,11 +8,11 @@
 import UIKit
 import LocalAuthentication
 
-class ViewController: UIViewController, UITextViewDelegate {
+final class ViewController: UIViewController, UITextViewDelegate {
     
     // MARK: - Properties
 
-    @IBOutlet weak var secretTextView: UITextView!
+    @IBOutlet weak private var secretTextView: UITextView!
     
     private let secretMessageKey: String = "SecretMessageKey"
     private let passwordKey: String = "passwordKey"
@@ -31,7 +31,7 @@ class ViewController: UIViewController, UITextViewDelegate {
         setupAppPassword()
     }
     
-    // MARK: - Methods
+    // MARK: - Setup Layout
     
     private func setupLayout() {
         
@@ -39,6 +39,8 @@ class ViewController: UIViewController, UITextViewDelegate {
 
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveSecretMessage))
     }
+    
+    // MARK: - Custom Methods
     
     private func setupNotificationCenterObservers() {
         
