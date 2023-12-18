@@ -16,7 +16,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2CA701CC2B0FAD9800509A28 /* Project25-SelfieShare.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project25-SelfieShare.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CA701CC2B0FAD9800509A28 /* Project 25 - Selfie Share.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project 25 - Selfie Share.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CA701CF2B0FAD9800509A28 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CA701D12B0FAD9800509A28 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2CA701D32B0FAD9800509A28 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -40,7 +40,7 @@
 		2CA701C32B0FAD9800509A28 = {
 			isa = PBXGroup;
 			children = (
-				2CA701CE2B0FAD9800509A28 /* Project25-SelfieShare */,
+				2CA701CE2B0FAD9800509A28 /* Project 25 - Selfie Share */,
 				2CA701CD2B0FAD9800509A28 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -48,12 +48,12 @@
 		2CA701CD2B0FAD9800509A28 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2CA701CC2B0FAD9800509A28 /* Project25-SelfieShare.app */,
+				2CA701CC2B0FAD9800509A28 /* Project 25 - Selfie Share.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2CA701CE2B0FAD9800509A28 /* Project25-SelfieShare */ = {
+		2CA701CE2B0FAD9800509A28 /* Project 25 - Selfie Share */ = {
 			isa = PBXGroup;
 			children = (
 				2CA701CF2B0FAD9800509A28 /* AppDelegate.swift */,
@@ -64,15 +64,15 @@
 				2CA701DA2B0FAD9800509A28 /* LaunchScreen.storyboard */,
 				2CA701DD2B0FAD9800509A28 /* Info.plist */,
 			);
-			path = "Project25-SelfieShare";
+			path = "Project 25 - Selfie Share";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2CA701CB2B0FAD9800509A28 /* Project25-SelfieShare */ = {
+		2CA701CB2B0FAD9800509A28 /* Project 25 - Selfie Share */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2CA701E02B0FAD9800509A28 /* Build configuration list for PBXNativeTarget "Project25-SelfieShare" */;
+			buildConfigurationList = 2CA701E02B0FAD9800509A28 /* Build configuration list for PBXNativeTarget "Project 25 - Selfie Share" */;
 			buildPhases = (
 				2CA701C82B0FAD9800509A28 /* Sources */,
 				2CA701C92B0FAD9800509A28 /* Frameworks */,
@@ -82,9 +82,9 @@
 			);
 			dependencies = (
 			);
-			name = "Project25-SelfieShare";
+			name = "Project 25 - Selfie Share";
 			productName = "Project25-SelfieShare";
-			productReference = 2CA701CC2B0FAD9800509A28 /* Project25-SelfieShare.app */;
+			productReference = 2CA701CC2B0FAD9800509A28 /* Project 25 - Selfie Share.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -102,7 +102,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2CA701C72B0FAD9800509A28 /* Build configuration list for PBXProject "Project25-SelfieShare" */;
+			buildConfigurationList = 2CA701C72B0FAD9800509A28 /* Build configuration list for PBXProject "Project 25 - Selfie Share" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -115,7 +115,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2CA701CB2B0FAD9800509A28 /* Project25-SelfieShare */,
+				2CA701CB2B0FAD9800509A28 /* Project 25 - Selfie Share */,
 			);
 		};
 /* End PBXProject section */
@@ -289,7 +289,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DFZ4MU84W6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Project25-SelfieShare/Info.plist";
+				INFOPLIST_FILE = "${PRODUCT_NAME}/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -318,7 +318,7 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = DFZ4MU84W6;
 				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_FILE = "Project25-SelfieShare/Info.plist";
+				INFOPLIST_FILE = "${PRODUCT_NAME}/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -341,7 +341,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2CA701C72B0FAD9800509A28 /* Build configuration list for PBXProject "Project25-SelfieShare" */ = {
+		2CA701C72B0FAD9800509A28 /* Build configuration list for PBXProject "Project 25 - Selfie Share" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2CA701DE2B0FAD9800509A28 /* Debug */,
@@ -350,7 +350,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2CA701E02B0FAD9800509A28 /* Build configuration list for PBXNativeTarget "Project25-SelfieShare" */ = {
+		2CA701E02B0FAD9800509A28 /* Build configuration list for PBXNativeTarget "Project 25 - Selfie Share" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2CA701E12B0FAD9800509A28 /* Debug */,
