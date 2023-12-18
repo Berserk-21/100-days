@@ -8,7 +8,7 @@
 import UIKit
 import MultipeerConnectivity
 
-class PhotosCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, MCBrowserViewControllerDelegate {
+final class PhotosCollectionViewController: UICollectionViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UICollectionViewDelegateFlowLayout, MCSessionDelegate, MCNearbyServiceAdvertiserDelegate, MCBrowserViewControllerDelegate {
     
     // MARK: - Properties
     
@@ -27,20 +27,51 @@ class PhotosCollectionViewController: UICollectionViewController, UIImagePickerC
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         
+        setupLayout()
+        setupCollectionViewLayout()
+       
+        preparePeerSession()
+    }
+    
+    // MARK: - Setup Layout
+    
+    private func setupLayout() {
+        
         title = "Selfie Share"
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .camera, target: self, action: #selector(addMedia))
         
         let hostBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(showConnectionPrompt))
         let connectedDevicesBarButton = UIBarButtonItem(barButtonSystemItem: .search, target: self, action: #selector(showConnectedDevices))
         navigationItem.leftBarButtonItems = [hostBarButton, connectedDevicesBarButton]
-        
-        let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
-        collectionView.collectionViewLayout = layout
+    }
+    
+    private func setupCollectionViewLayout() {
+         
+         let layout = UICollectionViewFlowLayout()
+         layout.sectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 10, right: 10)
+         collectionView.collectionViewLayout = layout
+    }
+    
+    // MARK: - Custom Methods
+    
+    private func preparePeerSession() {
         
         peerID = MCPeerID(displayName: UIDevice.current.name)
         macSession = MCSession(peer: peerID, securityIdentity: nil, encryptionPreference: .required)
         macSession?.delegate = self
+    }
+    
+    private func startHosting(action: UIAlertAction) {
+        mcAdvertiserAssistant = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: serviceType)
+        mcAdvertiserAssistant?.delegate = self
+        mcAdvertiserAssistant?.startAdvertisingPeer()
+    }
+    
+    private func joinSession(action: UIAlertAction) {
+        guard let mcSession = self.macSession else { return }
+        let mcBrowser = MCBrowserViewController(serviceType: serviceType, session: mcSession)
+        mcBrowser.delegate = self
+        present(mcBrowser, animated: true)
     }
     
     // MARK: - Actions
@@ -93,19 +124,6 @@ class PhotosCollectionViewController: UICollectionViewController, UIImagePickerC
         ac.addAction(UIAlertAction(title: "Join a session", style: .default, handler: joinSession(action:)))
         ac.addAction(UIAlertAction(title: "Cancel", style: .cancel))
         present(ac, animated: true)
-    }
-    
-    private func startHosting(action: UIAlertAction) {
-        mcAdvertiserAssistant = MCNearbyServiceAdvertiser(peer: peerID, discoveryInfo: nil, serviceType: serviceType)
-        mcAdvertiserAssistant?.delegate = self
-        mcAdvertiserAssistant?.startAdvertisingPeer()
-    }
-    
-    private func joinSession(action: UIAlertAction) {
-        guard let mcSession = self.macSession else { return }
-        let mcBrowser = MCBrowserViewController(serviceType: serviceType, session: mcSession)
-        mcBrowser.delegate = self
-        present(mcBrowser, animated: true)
     }
     
     // MARK: - UIImagePickerController Delegate
