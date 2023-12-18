@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
     // MARK: - Life Cycle
     
@@ -22,7 +22,7 @@ class ViewController: UIViewController {
         }
     }
     
-    // MARK: - Methods
+    // MARK: - Custom Methods
     
     private func testPrints() {
         
