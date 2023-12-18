@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UITableViewController {
+final class ViewController: UITableViewController {
     
     // MARK: - Properties
     
@@ -25,13 +25,15 @@ class ViewController: UITableViewController {
         setupNavBar()
     }
 
-    // MARK: - Methods
+    // MARK: - Setup Layout
     
     private func setupNavBar() {
         
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(promptForAnswer))
         navigationItem.leftBarButtonItem = UIBarButtonItem(barButtonSystemItem: .refresh, target: self, action: #selector(startGame))
     }
+    
+    // MARK: - Helper Methods
 
     private func loadWords() {
         
@@ -45,27 +47,6 @@ class ViewController: UITableViewController {
                 print("There was an error converting start.txt to words")
             }
         }
-    }
-    
-    @objc private func startGame() {
-
-        title = allWords.randomElement()
-        usedWords.removeAll(keepingCapacity: true)
-        tableView.reloadData()
-    }
-    
-    @objc private func promptForAnswer() {
-        
-        let ac = UIAlertController(title: "Enter answer", message: nil, preferredStyle: UIAlertController.Style.alert)
-        ac.addTextField()
-        
-        let submitAction = UIAlertAction(title: "Submit", style: .default) { [weak self, weak ac] _ in
-            guard let answer = ac?.textFields?[0].text else { return }
-            self?.submit(answer)
-        }
-        
-        ac.addAction(submitAction)
-        present(ac, animated: true)
     }
     
     private func submit(_ answer: String) {
@@ -147,6 +128,30 @@ class ViewController: UITableViewController {
         ac.addAction(UIAlertAction(title: "OK", style: UIAlertAction.Style.default))
         present(ac, animated: true)
     }
+    
+    // MARK: - Actions
+    
+    @objc private func startGame() {
+
+        title = allWords.randomElement()
+        usedWords.removeAll(keepingCapacity: true)
+        tableView.reloadData()
+    }
+    
+    @objc private func promptForAnswer() {
+        
+        let ac = UIAlertController(title: "Enter answer", message: nil, preferredStyle: UIAlertController.Style.alert)
+        ac.addTextField()
+        
+        let submitAction = UIAlertAction(title: "Submit", style: .default) { [weak self, weak ac] _ in
+            guard let answer = ac?.textFields?[0].text else { return }
+            self?.submit(answer)
+        }
+        
+        ac.addAction(submitAction)
+        present(ac, animated: true)
+    }
+    
     
     // MARK: - UITableView DataSource
     
