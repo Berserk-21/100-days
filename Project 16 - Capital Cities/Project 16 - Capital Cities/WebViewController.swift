@@ -8,11 +8,11 @@
 import UIKit
 import WebKit
 
-class WebViewController: UIViewController {
+final class WebViewController: UIViewController {
     
     // MARK: - Properties
     
-    @IBOutlet private var webView: WKWebView!
+    @IBOutlet weak private var webView: WKWebView!
     
     var capitalTitle: String?
     

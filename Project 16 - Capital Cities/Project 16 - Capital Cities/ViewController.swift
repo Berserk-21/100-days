@@ -8,7 +8,7 @@
 import UIKit
 import MapKit
 
-class ViewController: UIViewController, MKMapViewDelegate, UINavigationControllerDelegate {
+final class ViewController: UIViewController, MKMapViewDelegate, UINavigationControllerDelegate {
     
     // MARK: - Properties
     
@@ -24,7 +24,7 @@ class ViewController: UIViewController, MKMapViewDelegate, UINavigationControlle
         addCapitals()
     }
     
-    // MARK: - Methods
+    // MARK: - Custom Methods
     
     private func addCapitals() {
         
