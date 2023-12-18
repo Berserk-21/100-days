@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+final class ViewController: UIViewController {
     
     // MARK: - Properties
     
@@ -64,8 +64,8 @@ class ViewController: UIViewController {
         loadLevel()
     }
     
-    // MARK: - Methods
-    
+    // MARK: - Setup Layout
+        
     private func setupLabels() {
         
         scoreLabel = UILabel()
@@ -174,6 +174,8 @@ class ViewController: UIViewController {
         }
     }
     
+    // MARK: - Custom Methods
+    
     private func loadLevel() {
         
         var clueString = ""
@@ -216,6 +218,8 @@ class ViewController: UIViewController {
             }
         }
     }
+        
+    // MARK: - Actions
     
     @objc private func resetGame() {
         
@@ -227,8 +231,6 @@ class ViewController: UIViewController {
             self.loadLevel()
         }
     }
-        
-    // MARK: - Actions
     
     @objc private func letterTapped(_ sender: UIButton) {
         
