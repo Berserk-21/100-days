@@ -42,7 +42,7 @@
 		2CF522382AF3B505003572FC = {
 			isa = PBXGroup;
 			children = (
-				2CF522432AF3B505003572FC /* Project15 - Animation */,
+				2CF522432AF3B505003572FC /* Project 15 - Animation */,
 				2CF522422AF3B505003572FC /* Products */,
 			);
 			sourceTree = "<group>";
@@ -55,7 +55,7 @@
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2CF522432AF3B505003572FC /* Project15 - Animation */ = {
+		2CF522432AF3B505003572FC /* Project 15 - Animation */ = {
 			isa = PBXGroup;
 			children = (
 				2CF522442AF3B505003572FC /* AppDelegate.swift */,
@@ -67,7 +67,7 @@
 				2CF5224F2AF3B506003572FC /* LaunchScreen.storyboard */,
 				2CF522522AF3B506003572FC /* Info.plist */,
 			);
-			path = "Project15 - Animation";
+			path = "Project 15 - Animation";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
