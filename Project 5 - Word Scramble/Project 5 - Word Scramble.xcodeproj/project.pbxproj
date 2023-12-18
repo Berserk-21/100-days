@@ -17,7 +17,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		2CA284632AA9C98400BC286D /* Project5 - Word Scramble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project5 - Word Scramble.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		2CA284632AA9C98400BC286D /* Project 5 - Word Scramble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Project 5 - Word Scramble.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		2CA284662AA9C98400BC286D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2CA284682AA9C98400BC286D /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		2CA2846A2AA9C98400BC286D /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -42,7 +42,7 @@
 		2CA2845A2AA9C98400BC286D = {
 			isa = PBXGroup;
 			children = (
-				2CA284652AA9C98400BC286D /* Project5 - Word Scramble */,
+				2CA284652AA9C98400BC286D /* Project 5 - Word Scramble */,
 				2CA284642AA9C98400BC286D /* Products */,
 			);
 			sourceTree = "<group>";
@@ -50,12 +50,12 @@
 		2CA284642AA9C98400BC286D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				2CA284632AA9C98400BC286D /* Project5 - Word Scramble.app */,
+				2CA284632AA9C98400BC286D /* Project 5 - Word Scramble.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
 		};
-		2CA284652AA9C98400BC286D /* Project5 - Word Scramble */ = {
+		2CA284652AA9C98400BC286D /* Project 5 - Word Scramble */ = {
 			isa = PBXGroup;
 			children = (
 				2CA284662AA9C98400BC286D /* AppDelegate.swift */,
@@ -67,15 +67,15 @@
 				2CA284742AA9C98500BC286D /* Info.plist */,
 				2CA2847A2AA9CDB400BC286D /* start.txt */,
 			);
-			path = "Project5 - Word Scramble";
+			path = "Project 5 - Word Scramble";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		2CA284622AA9C98400BC286D /* Project5 - Word Scramble */ = {
+		2CA284622AA9C98400BC286D /* Project 5 - Word Scramble */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 2CA284772AA9C98500BC286D /* Build configuration list for PBXNativeTarget "Project5 - Word Scramble" */;
+			buildConfigurationList = 2CA284772AA9C98500BC286D /* Build configuration list for PBXNativeTarget "Project 5 - Word Scramble" */;
 			buildPhases = (
 				2CA2845F2AA9C98400BC286D /* Sources */,
 				2CA284602AA9C98400BC286D /* Frameworks */,
@@ -85,9 +85,9 @@
 			);
 			dependencies = (
 			);
-			name = "Project5 - Word Scramble";
+			name = "Project 5 - Word Scramble";
 			productName = "Project5 - HWS";
-			productReference = 2CA284632AA9C98400BC286D /* Project5 - Word Scramble.app */;
+			productReference = 2CA284632AA9C98400BC286D /* Project 5 - Word Scramble.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -105,7 +105,7 @@
 					};
 				};
 			};
-			buildConfigurationList = 2CA2845E2AA9C98400BC286D /* Build configuration list for PBXProject "Project5 - Word Scramble" */;
+			buildConfigurationList = 2CA2845E2AA9C98400BC286D /* Build configuration list for PBXProject "Project 5 - Word Scramble" */;
 			compatibilityVersion = "Xcode 14.0";
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
@@ -118,7 +118,7 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				2CA284622AA9C98400BC286D /* Project5 - Word Scramble */,
+				2CA284622AA9C98400BC286D /* Project 5 - Word Scramble */,
 			);
 		};
 /* End PBXProject section */
@@ -291,7 +291,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MPQUCXTDKQ;
+				DEVELOPMENT_TEAM = DFZ4MU84W6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "${PRODUCT_NAME}/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -304,7 +304,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "berserk.Project5---HWS";
+				PRODUCT_BUNDLE_IDENTIFIER = "berserk.Project5-WordScramble";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -319,7 +319,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = MPQUCXTDKQ;
+				DEVELOPMENT_TEAM = DFZ4MU84W6;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "${PRODUCT_NAME}/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -332,7 +332,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "berserk.Project5---HWS";
+				PRODUCT_BUNDLE_IDENTIFIER = "berserk.Project5-WordScramble";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -343,7 +343,7 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		2CA2845E2AA9C98400BC286D /* Build configuration list for PBXProject "Project5 - Word Scramble" */ = {
+		2CA2845E2AA9C98400BC286D /* Build configuration list for PBXProject "Project 5 - Word Scramble" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2CA284752AA9C98500BC286D /* Debug */,
@@ -352,7 +352,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		2CA284772AA9C98500BC286D /* Build configuration list for PBXNativeTarget "Project5 - Word Scramble" */ = {
+		2CA284772AA9C98500BC286D /* Build configuration list for PBXNativeTarget "Project 5 - Word Scramble" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				2CA284782AA9C98500BC286D /* Debug */,

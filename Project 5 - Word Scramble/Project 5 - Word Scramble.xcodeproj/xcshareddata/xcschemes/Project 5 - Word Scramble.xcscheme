@@ -15,9 +15,9 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "2CA284622AA9C98400BC286D"
-               BuildableName = "Project5 - Word Scramble.app"
-               BlueprintName = "Project5 - Word Scramble"
-               ReferencedContainer = "container:Project5 - Word Scramble.xcodeproj">
+               BuildableName = "Project 5 - Word Scramble.app"
+               BlueprintName = "Project 5 - Word Scramble"
+               ReferencedContainer = "container:Project 5 - Word Scramble.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
       </BuildActionEntries>
@@ -44,9 +44,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2CA284622AA9C98400BC286D"
-            BuildableName = "Project5 - Word Scramble.app"
-            BlueprintName = "Project5 - Word Scramble"
-            ReferencedContainer = "container:Project5 - Word Scramble.xcodeproj">
+            BuildableName = "Project 5 - Word Scramble.app"
+            BlueprintName = "Project 5 - Word Scramble"
+            ReferencedContainer = "container:Project 5 - Word Scramble.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </LaunchAction>
@@ -61,9 +61,9 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "2CA284622AA9C98400BC286D"
-            BuildableName = "Project5 - Word Scramble.app"
-            BlueprintName = "Project5 - Word Scramble"
-            ReferencedContainer = "container:Project5 - Word Scramble.xcodeproj">
+            BuildableName = "Project 5 - Word Scramble.app"
+            BlueprintName = "Project 5 - Word Scramble"
+            ReferencedContainer = "container:Project 5 - Word Scramble.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
    </ProfileAction>
